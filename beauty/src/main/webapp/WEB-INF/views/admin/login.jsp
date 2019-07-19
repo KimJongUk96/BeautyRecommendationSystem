@@ -1,79 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>AdminLTE 2 | Log in</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.4 -->
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="/resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+<html lang="en">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body class="login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="/resources/index2.html"><b>Zerock</b>Project</a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+    <head>
+        <meta charset="utf-8" />
+        <title>관리자 페이지</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
 
-<form action="/admin/loginPost" method="post">
-  <div class="form-group has-feedback">
-    <input type="text" name="usid" class="form-control" placeholder="USER ID"/>
-    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  </div>
-  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder="Password"/>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  </div>
-  <div class="row">
-    <div class="col-xs-8">    
-      <div class="checkbox icheck">
-        <label>
-          <input type="checkbox" name="useCookie"> Remember Me
-        </label>
-      </div>                        
-    </div><!-- /.col -->
-    <div class="col-xs-4">
-      <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-    </div><!-- /.col -->
-  </div>
-</form>
+        <!-- inline style to handle loading of various element-->
+        <style>body.loading {visibility: hidden;}</style>
 
+        <!-- third party css -->
+        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
 
-        <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <!-- App css -->
+        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
 
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+    </head>
 
-    <!-- jQuery 2.1.4 -->
-    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="/resources/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
-  </body>
+    <body class="auth-fluid-pages pb-0">
+
+        <div class="auth-fluid">
+            <!--Auth fluid left content -->
+            <div class="auth-fluid-form-box">
+                <div class="align-items-center d-flex h-100">
+                    <div class="card-body">
+
+                        <!-- Logo -->
+                        <div class="auth-brand text-center text-lg-left">
+                            <a href="index.html">
+                                <span><img src="assets/images/logo-light.png" alt="" height="18"></span>
+                            </a>
+                        </div>
+
+                        <!-- title-->
+                        <h4 class="mt-0">Sign In</h4>
+                        <p class="text-muted mb-4">관리자 로그인 페이지입니다.</p>
+
+                        <!-- form -->
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="emailaddress">ID</label>
+                                <input class="form-control" type="id" id="usid" required="" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <a href="pages-recoverpw-2.html" class="text-muted float-right"><small>Forgot your password?</small></a>
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" required="" id="upw" placeholder="Enter your password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="useCookie">
+                                    <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 text-center">
+                                <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> Log In </button>
+                            </div>
+                            <!-- social-->
+                            
+                        </form>
+                        <!-- end form-->
+
+                        <!-- Footer-->
+                        <footer class="footer footer-alt">
+                            <p class="text-muted">Don't have an account? <a href="pages-register-2.html" class="text-muted ml-1"><b>Sign Up</b></a></p>
+                        </footer>
+
+                    </div> <!-- end .card-body -->
+                </div> <!-- end .align-items-center.d-flex.h-100-->
+            </div>
+            <!-- end auth-fluid-form-box-->
+
+            <!-- Auth fluid right content -->
+            <div class="auth-fluid-right text-center">
+                <div class="auth-user-testimonial">
+                    <h2 class="mb-3">I love the color!</h2>
+                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> It's a elegent templete. I love it very much! . <i class="mdi mdi-format-quote-close"></i>
+                    </p>
+                    <p>
+                        - Hyper Admin User
+                    </p>
+                </div> <!-- end auth-user-testimonial-->
+            </div>
+            <!-- end Auth fluid right content -->
+        </div>
+        <!-- end auth-fluid-->
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+
+    </body>
+
 </html>
