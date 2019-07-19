@@ -10,7 +10,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h6 class="box-title">${productVO.name}</h3>
+					<h6 class="box-title">${productVO.name}</h6>
 				</div>
 				<!-- /.box-header -->
 
@@ -78,6 +78,7 @@
 					<button type="submit" class="btn btn-primary">GO LIST</button>
 				</div>
 
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
 <script>
 	$(document).ready(function() {

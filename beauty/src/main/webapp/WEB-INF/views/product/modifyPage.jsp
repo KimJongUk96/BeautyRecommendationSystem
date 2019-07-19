@@ -92,7 +92,7 @@
 							<label for="exampleInputEmail1">글쓴이</label> 
 							<input type="text" name="adminNo" class="form-control" value="${productVO.adminNo}" readonly>
 						</div>
-
+				   </div>
 					<!-- /.box-body -->
 				</form>
 				<div class="box-footer">
@@ -100,6 +100,7 @@
 					<button type="submit" class="btn btn-warning">CANCEL</button>
 				</div>
 
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
 $(document).ready(
 	function() {
@@ -136,7 +137,6 @@ $(document).ready(
 </div>
 <!-- /.content-wrapper -->
 
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<script>
 		function checkImageType(fileName){
 			

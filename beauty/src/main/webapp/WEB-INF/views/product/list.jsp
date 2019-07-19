@@ -117,7 +117,7 @@
 </section>
 <!-- /.content -->
 
-
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
 	var result = '${msg}';
 
