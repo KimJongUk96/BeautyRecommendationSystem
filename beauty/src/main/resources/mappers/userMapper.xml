@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brs.mapper.userMapper">
+
+	<select id="login" resultType="com.brs.domain.UserVO">
+	SELECT EMAIL, PASSWORD, NICK_NAME, GENDER, AGE, SKIN_TYPE
+	FROM TBL_USER
+	WHERE EMAIL=#{usid} AND PASSWORD=#{upw}
+	</select>
+	
+	<insert id="create">
+	INSERT INTO TBL_USER(EMAIL, PASSWORD, NICK_NAME, GENDER, AGE, SKIN_TYPE)
+	VALUES(#{email}, #{password}, #{nickName}, #{gender}, #{age}, #{skinType})
+	</insert>
+	
+	<update id="update">
+	UPDATE TBL_USER
+	   SET PASSWORD = #{password},
+	   	   NICK_NAME = #{nickName},
+	   	   AGE = #{age},
+	   	   SKIN_TYPE = #{skinType}
+	 WHERE EMAIL = #{email}
+	</update>
+	
+	<select id="checkpw" resultType="String">
+	SELECT '1'
+	  FROM TBL_USER
+	 WHERE PASSWORD = #{password} AND EMAIL=#{email}
+	</select>
+	
+	<select id="read" resultType="com.brs.domain.UserVO">
+	SELECT EMAIL, PASSWORD, NICK_NAME, GENDER, AGE, SKIN_TYPE
+	  FROM TBL_USER
+	 WHERE EMAIL = #{email}
+	</select>
+	
+	<select id="forgetpw" resultType="String">
+	SELECT PASSWORD
+	  FROM TBL_USER
+	 WHERE EMAIL=#{email}
+	</select>
+
+	<select id="checkid" resultType="int">
+	SELECT COUNT(*)
+	  FROM TBL_USER
+	 WHERE EMAIL=#{email}
+	</select>
+	
+</mapper>

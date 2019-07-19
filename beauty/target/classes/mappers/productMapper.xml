@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--    PROD_NO              NUMBER         NOT NULL , -->
+<!-- 	NAME                 VARCHAR2(100)  NOT NULL , -->
+<!-- 	CUS_GENDER           CHAR(1)        NOT NULL , -->
+<!-- 	COMP_NAME            VARCHAR2(100)  NULL , -->
+<!-- 	PRICE                VARCHAR2(15)   NULL , -->
+<!-- 	LINK                 VARCHAR2(200)  NULL , -->
+<!-- 	IMG                  VARCHAR2(300)  NULL , -->
+<!-- 	REGDATE              DATE           NULL , -->
+<!-- 	ADMIN_NO             NUMBER         NOT NULL , -->
+<!-- 	PRODTYPE_NO          NUMBER         NOT NULL  -->
+
+
+<!--    private int     prodNo; -->
+<!-- 	private String  name; -->
+<!-- 	private String  cusGender; -->
+<!-- 	private String  compName; -->
+<!-- 	private String  price; -->
+<!-- 	private String  link; -->
+<!-- 	private String  img; -->
+<!-- 	private Date    regdate; -->
+<!-- 	private String  prodtypeNo; -->
+<!-- 	private int     adminNo; -->
+
+
+
+<mapper namespace="com.brs.mapper.ProductMapper">
+
+	<insert id="create">
+		insert into
+			tbl_product(PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, ADMIN_NO, PRODTYPE_NO)
+		values
+			(seq_product.nextval, #{name}, #{cusGender}, #{compName}, #{price}, #{link}, #{img}, #{adminNo}, #{prodtypeNo})
+	</insert>
+
+	<select id="read" resultType="com.brs.domain.product.ProductVO">
+			select 
+				PROD_NO,
+				NAME,
+				CUS_GENDER,
+				COMP_NAME,
+				PRICE, 
+				LINK, 
+				IMG, 
+				REGDATE, 
+				ADMIN_NO, 
+				PRODTYPE_NO
+			from
+				tbl_product
+			where
+				PROD_NO =#{prodNo}
+	</select>
+	
+	<update id="update">
+		update
+			tbl_product
+		set
+			NAME = #{name},
+			CUS_GENDER  =#{cusGender},
+			COMP_NAME =#{compName},
+			PRICE =#{price},
+			LINK =#{link},
+			IMG =#{img},
+			REGDATE =sysdate,
+			ADMIN_NO =#{adminNo},
+			PRODTYPE_NO =#{prodtypeNo}
+		where
+			PROD_NO =#{prodNo}
+	</update>
+	
+	<delete id="delete">
+		delete 
+		from
+			tbl_product
+		where
+			PROD_NO =#{prodNo}
+	</delete>
+	
+	
+		
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'pn'.toString()">
+				and NAME like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'cn'.toString()">
+				and COMP_NAME like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'ptn'.toString()">
+				and PRODTYPE_NO like '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
+
+
+
+	<select id="listSearch" resultType="com.brs.domain.product.ProductVO">
+		<![CDATA[  
+		select 
+			* 
+		from (
+		  	select
+		  		rownum rnum,
+		  		PROD_NO, 
+		  		NAME, 
+		  		CUS_GENDER, 
+		  		COMP_NAME, 
+		  		PRICE, 
+		  		LINK, 
+		  		IMG, 
+		  		REGDATE, 
+		  		ADMIN_NO, 
+		  		PRODTYPE_NO
+		  	from (
+		  		select 
+		   			PROD_NO, 
+			  		NAME, 
+			  		CUS_GENDER, 
+			  		COMP_NAME, 
+			  		PRICE, 
+			  		LINK, 
+			  		IMG, 
+			  		REGDATE, 
+			  		ADMIN_NO, 
+			  		PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0 
+		]]>
+				<include refid="search"></include>
+				
+				order by 
+					PROD_NO desc, 
+					regdate desc
+		  
+		<![CDATA[    
+		 		)
+		 	) 
+		 where(
+		 	rnum >= #{pageStart} AND rnum <= #{pageEnd}
+		 	  ) 
+		order by
+			PROD_NO desc,
+			regdate desc
+		]]>
+
+	</select>
+
+
+	<select id="listSearchCount" resultType="int">
+		<![CDATA[  
+		  select 
+		  	count(PROD_NO) 
+		  from 
+		  	tbl_product 
+		  where 
+		  	PROD_NO > 0 
+		]]>
+				<include refid="search"></include>
+
+	</select>
+	
+</mapper>

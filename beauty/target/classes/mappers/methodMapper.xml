@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brs.mapper.methodMapper">
+
+<!-- method insert -->
+<insert id="create">
+
+	<selectKey keyProperty="methodNo" resultType="Integer" order="BEFORE">
+		select seq_method.nextval from DUAL
+	</selectKey>
+	
+	insert into tbl_method (
+	method_no,
+	skin_type,
+	makeup_degree,
+	method_step,
+	season,
+	weather,
+	dust,
+	admin_no
+	)
+	values(#{methodNo}, #{skinType}, #{makeUpDegree}, #{methodStep}, #{season}, #{weather}, #{dust}, #{adminNo})
+	
+</insert>
+
+<!-- methodDetail insert -->
+<insert id="insert">
+
+	insert into tbl_method_detail (
+	DETAIL_NO,
+	step,
+	method,
+	method_no,
+	prod_no
+	)
+	values(SEQ_METHOD_DETAIL.nextval, #{step}, #{method}, #{methodNo}, #{prodNo})
+
+</insert>
+
+<!-- product list -->
+<select id="prodList" resultType="com.brs.domain.product.ProductVO">
+	select prod_no, name from tbl_product
+</select>
+
+<!-- productType list -->
+<select id="prodTypeList" resultType="com.brs.domain.product.ProdTypeVO">
+	select prodtype_no, name from tbl_prod_type
+</select>
+
+<!-- method read -->
+<select id="readMethod" resultType="com.brs.domain.method.MethodVO">
+	select
+           method_no,
+		   skin_type,
+		   makeup_degree,
+		   method_step,
+		   season,
+		   weather,
+		   dust,
+		   regdate
+      from tbl_method 
+      where method_no = #{methodNo}
+</select>
+
+<!-- methodDetail read -->
+<select id="readDetail" resultType="com.brs.domain.method.MethodDetailVO">
+	select 
+           detail_no,
+           step,
+           method,
+           prod_no
+	from tbl_method_detail
+	  where method_no = #{methodNo}
+</select>
+
+<!-- method Update -->
+<update id="methodUpdate">
+	update tbl_method set 
+		skin_type = #{skinType},
+		makeup_degree = #{makeUpDegree},
+		method_step = #{methodStep},
+		season = #{season},
+		weather = #{weather},
+		dust = #{dust}
+	where method_no = #{methodNo}
+</update>
+
+<!-- methodDetail Update -->
+<update id="detailUpdate">
+	update tbl_method_detail set
+		method = #{method},
+		prod_no = #{prodNo}
+	where method_no = #{methodNo} and step = #{step}
+</update>
+
+<!-- method remove -->
+<delete id="removeMethod">
+	delete from tbl_method where method_no = #{methodNo}
+</delete>
+
+<!-- methodDetail remove -->
+<delete id="detailRemove">
+	delete from tbl_method_detail where method_no = #{methodNo}
+</delete>
+
+
+<!-- Searchlist -->
+<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'p'.toString()">
+				and skin_type like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'g'.toString()">
+				and makeup_degree like '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="com.brs.domain.method.MethodVO">
+	<![CDATA[
+	
+	 select * from(
+ 	 select rownum rnum, method_no, skin_type, makeup_degree, method_step, regdate from (
+ 	 select 
+  	 method_no, skin_type, makeup_degree, method_step, regdate 
+ 	 from tbl_method where method_no > 0
+ 	 
+	]]>
+		<include refid="search"></include>
+	 order by method_no desc, regdate desc
+  
+	<![CDATA[    
+	 )) where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
+	 order by method_no desc, regdate desc
+	]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[  
+ 	 select count(method_no) 
+ 	 from tbl_method 
+ 	 where method_no > 0 
+	]]>
+		<include refid="search"></include>
+	</select>
+	
+</mapper>

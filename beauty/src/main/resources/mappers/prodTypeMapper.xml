@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brs.mapper.prodTypeMapper">
+
+<insert id="create">
+insert into tbl_prod_type(prodtype_no, name, category_no) values
+(seq_prod_type.nextval, #{name}, #{categoryNo})
+</insert>
+
+<select id="listCriteria" resultType="com.brs.domain.product.ProdTypeVO">
+<![CDATA[
+select * from (
+select rownum rnum, p.prodtype_no, p.name, p.regdate
+from tbl_prod_type p
+where prodtype_no> 0)
+where rnum >= #{pageStart}
+and rnum <= #{pageEnd}
+order by prodtype_no desc
+]]>
+</select>
+
+<select id="countPaging" resultType="int">
+<![CDATA[
+select count(prodtype_no)
+from tbl_prod_type
+where prodtype_no > 0 
+]]>
+</select>
+
+<select id="read" resultType="com.brs.domain.product.ProdTypeVO">
+select prodtype_no, name, regdate, category_no
+from tbl_prod_type
+where prodtype_no = #{prodtypeNo}
+</select>
+
+<select id="check" resultType="String">
+select '1'  
+from tbl_prod_type 
+where name=#{name} and category_no=#{categoryNo}
+</select>
+
+<update id="update">
+update tbl_prod_type set category_no = #{categoryNo}
+where prodtype_no = #{prodtypeNo}
+</update>
+
+<delete id="delete">
+delete from tbl_prod_type where prodtype_no = #{prodtypeNo}
+</delete>
+
+</mapper>

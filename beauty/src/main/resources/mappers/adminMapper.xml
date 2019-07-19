@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brs.mapper.adminMapper">
+
+	<select id="login" resultType="com.brs.domain.AdminVO">
+	SELECT ID, PW
+	FROM TBL_ADMIN
+	WHERE ID=#{usid} AND PW=#{upw}
+	</select>
+	
+	<insert id="createCategory">
+	INSERT INTO TBL_CATEGORY (CATEGORY_NO, CATEGORY_NAME)
+	VALUES(SEQ_CATEGORY.NEXTVAL, #{categoryName})
+	</insert>
+	
+</mapper>
