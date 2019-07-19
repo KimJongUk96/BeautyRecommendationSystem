@@ -5,119 +5,203 @@
 <%@ page session="false"%>
 
 
-<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
 
+<!DOCTYPE html>
+<html>
 
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">Product List</h3>
-				</div>
+    <head>
+        <meta charset="utf-8" />
+        <title>관리자 페이지</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
 
+        <!-- inline style to handle loading of various element-->
+        <style>body.loading {visibility: hidden;}</style>
 
-				<div class='box-body'>
+        <!-- third party css -->
+        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
 
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="pn"
-							<c:out value="${cri.searchType eq 'pn'?'selected':''}"/>>
-							제품명</option>
-						<option value="cn"
-							<c:out value="${cri.searchType eq 'cn'?'selected':''}"/>>
-							제품 회사명</option>
-						<option value="ptn"
-							<c:out value="${cri.searchType eq 'ptn'?'selected':''}"/>>
-							제품 종류</option>
-						
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-					<button id='searchBtn'>검색</button>
-					<button id='newBtn'>등록</button>
-					<button id='logout'>logout</button>
+        <!-- App css -->
+        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
 
-				</div>
-			</div>
+    </head>
+	
+	<body class="loading">
+	<div id="detached-topbar-placeholder"></div>
+        <!-- Begin page -->
+        <div class="wrapper">
 
+            <div id="vertical-sidebar-placeholder"></div>
+            <div id="detached-sidebar-placeholder"></div>
 
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">LIST PAGING</h3>
-				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 90px">제품 번호</th>
-							<th>사진</th>
-							<th>제품명</th>
-							<th>회사명</th>
-							<th>제품 종류</th>
-							<th>가격</th>
-							<th>등록일</th>
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+				
+				<div class="content-page">
+				
+					<div class="content">
+					
+					<div id="vertical-topbar-placeholder"></div>
+                    <div id="horizontal-topbar-placeholder"></div>
+				<div><h3></h3></div>
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+							<div class="row">
+								<div class="col-xl-12">
+									<div class="card">
+										<div class="card-body">
+
+										<!-- general form elements -->
+										
+											 <h4 class="header-title">제품 리스트</h4>
+											 <div align="right">
+											 <select name="searchType">
+													<option value="n"
+														<c:out value="${cri.searchType == null?'selected':''}"/>>
+														---</option>
+													<option value="pn"
+														<c:out value="${cri.searchType eq 'pn'?'selected':''}"/>>
+														제품명</option>
+													<option value="cn"
+														<c:out value="${cri.searchType eq 'cn'?'selected':''}"/>>
+														제품 회사명</option>
+													<option value="ptn"
+														<c:out value="${cri.searchType eq 'ptn'?'selected':''}"/>>
+														제품 종류</option>
+													
+												</select>
+												<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
+											   <button id='searchBtn' type="button" class="btn btn-light btn-rounded">검색</button>
+											   <button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+											   <button id='logout' type="button" class="btn btn-light btn-rounded">로그아웃</button>
+										     </div>
 							
-						</tr>
-
-						<c:forEach items="${list}" var="productVO">
-
-							<tr>
-								<td>${productVO.prodNo}</td>
-								<td> <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" alt="이미지 없음"/> </td>
-								<td><a href='/product/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
-										${productVO.name} </a></td>
-								<td>${productVO.compName}</td>	
-								<td>${productVO.prodtypeNo}</td>
-								<td>${productVO.price}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${productVO.regdate}"></fmt:formatDate></td>
+							
+						
+											<div class="table-responsive-sm">
+												<table class="table table-hover table-centered mb-0">
+												 <thead>
+														<tr>
+															<th style="width: 90px">번호</th>
+															<th>사진</th>
+															<th>제품명</th>
+															<th>회사명</th>
+															<th>제품 종류</th>
+															<th>가격</th>
+															<th>등록일</th>
+															
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach items="${list}" var="productVO">
 								
-							</tr>
-
-						</c:forEach>
-
-					</table>
-				</div>
-				<!-- /.box-body -->
-
-
-				<div class="box-footer">
-
-					<div class="text-center">
-						<ul class="pagination">
+															<tr>
+																<td>${productVO.prodNo}</td>
+																<td> <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" alt="이미지 없음"/> </td>
+																<td><a href='/product/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+																		${productVO.name} </a></td>
+																<td>${productVO.compName}</td>	
+																<td>${productVO.prodtypeNo}</td>
+																<td>${productVO.price}</td>
+																<td><fmt:formatDate pattern="yyyy-MM-dd" value="${productVO.regdate}"></fmt:formatDate></td>
+																
+															</tr>
+								
+														</c:forEach>
+												    </tbody>
+												</table>
+											</div>
+											<!-- /.box-body -->
+							
+							
+                  <div class="text-center" align="center">
+					<nav>
+						<ul class="pagination pagination-rounded">
 
 							<c:if test="${pageMaker.prev}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+								<li class="page-item"><a
+									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }" >&laquo;</a></li>
 							</c:if>
 
-							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-								<li
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li class="page-item active"
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="list${pageMaker.makeQuery(idx)}" class="page-link">${idx}</a>
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+								<li class="page-item"><a
+									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }" >&raquo;</a></li>
 							</c:if>
 
 						</ul>
-					</div>
-
-				</div>
-				<!-- /.box-footer-->
+						</nav>
+					</div>											
+										
+									
+							
+									</div> <!-- end card body-->
+								</div> <!-- end card -->
+							</div><!-- end col-->
+							
+						</div>
+                        <!-- end row-->
+				
+				  </div> <!-- container -->
+				 
+				</div> <!-- content -->
+				
+				<!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2018 - 2019 © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+				
 			</div>
-		</div>
-		<!--/.col (left) -->
+			
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
-	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
+
+        </div>
+        <!-- END wrapper -->
+
 
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  		<!-- App js -->
+        <script src="/resources/dist/assets/js/app_admin.js"></script>
+
+        <!-- third party js -->
+        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
+        <!-- end demo js-->
+
 <script>
 	var result = '${msg}';
 
@@ -156,4 +240,5 @@
 
 			});
 </script>
-
+</body>
+</html>

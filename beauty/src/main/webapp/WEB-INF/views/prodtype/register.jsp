@@ -81,7 +81,7 @@
 
                                           
                                                
-                                            </div> <!-- end col -->
+                                            
                                         </div>
                                         <!-- end row-->
 
@@ -92,9 +92,8 @@
                         <!-- end row -->
 
                     </div> <!-- container -->
-
+					
                 </div> <!-- content -->
-
                 <!-- Footer Start -->
                  <footer class="footer">
                     <div class="container-fluid">
@@ -113,8 +112,10 @@
                     </div>
                 </footer>
                 <!-- end Footer -->
+                
+            
 
-            </div>
+           
 
             <!-- ============================================================== -->
             <!-- End Page content -->

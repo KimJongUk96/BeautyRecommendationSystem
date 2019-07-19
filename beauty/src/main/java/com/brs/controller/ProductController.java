@@ -91,7 +91,10 @@ public class ProductController {
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
 	public String modifyPagingPOST(ProductVO product, RedirectAttributes rttr, SearchCriteria cri) throws Exception {
 		
+		
+		System.out.println(product.toString());
 		service.update(product);
+		
 		
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
