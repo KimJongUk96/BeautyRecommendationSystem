@@ -1,29 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>관리자 페이지</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
 
-<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">MODIFY REVIEW</h3>
-				</div>
-				<!-- /.box-header -->
+        <!-- inline style to handle loading of various element-->
+        <style>body.loading {visibility: hidden;}</style>
 
-<form role="form" action="modifyPage" method="post">
+        <!-- third party css -->
+        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
 
-	<input type='hidden' name='methodNo' value="${methodVO.methodNo}">
-	<input type='hidden' name='page' value="${cri.page}"> <input
-		type='hidden' name='perPageNum' value="${cri.perPageNum}">
-	<input type='hidden' name='searchType' value="${cri.searchType}">
-	<input type='hidden' name='keyword' value="${cri.keyword}">
+        <!-- App css -->
+        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
 
-							<div class="box-body">
-						<div class="form-group">
+    </head>
+
+    <body class="loading">
+        <div id="detached-topbar-placeholder"></div>
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <div id="vertical-sidebar-placeholder"></div>
+            <div id="detached-sidebar-placeholder"></div>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <div id="vertical-topbar-placeholder"></div>
+                    <div id="horizontal-topbar-placeholder"></div>
+					<div><h3></h3></div>
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                       
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">세안법 수정</h4>
+                                       
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                            
+					<form role="form" action="modifyPage" method="post">
+
+						<input type='hidden' name='methodNo' value="${methodVO.methodNo}">
+						<input type='hidden' name='page' value="${cri.page}"> 
+						<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+						<input type='hidden' name='searchType' value="${cri.searchType}">
+						<input type='hidden' name='keyword' value="${cri.keyword}">
+                                                	
+
+                        <div class="form-group mb-3">
 							<label for="exampleInputEmail1">피부타입</label>
 							<select name="skinType">
 							<option value="DR"<c:out value="${methodVO.skinType eq 'DR'?'selected':''}"/>>건성</option>
@@ -52,13 +97,13 @@
 							</select>
 						</div>
 						
-						<div class="form-group">
+						<div class="form-group mb-3">
 							<c:forEach items="${detailList}" var="methodDetailVO">
 							<input type="hidden" name="step" id="step" value="${methodDetailVO.step}">
 							</c:forEach>
 						</div>
 						
-						<div class="form-group" id="method">
+						<div class="form-group mb-3" id="method">
 							<label for="exampleInputPassword1">세안법</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
@@ -81,7 +126,7 @@
 							</select>
 						</div> 
 						
-						<div class="form-group" id="method2">
+						<div class="form-group mb-3" id="method2">
 							<label for="exampleInputPassword1">세안법2</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '2'}">
@@ -104,7 +149,7 @@
 							</select>
 						</div> 
 						
-						<div class="form-group" id="method3">
+						<div class="form-group mb-3" id="method3">
 							<label for="exampleInputPassword1">세안법3</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '3'}">
@@ -149,15 +194,71 @@
 							<input type="radio" name="dust" value="D3"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
 							<input type="radio" name="dust" value="D4"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
 						</div>
-						
-					</div>
-				<!-- /.box-body -->
-				</form>
+											</form>
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">SAVE</button>
 					<button type="submit" class="btn btn-warning">CANCEL</button>
 				</div>
+                                            </div> <!-- end col -->
 
+                                          
+                                               
+                                            </div> <!-- end col -->
+                                        </div>
+                                        <!-- end row-->
+
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                 <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2018 - 2019 © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- App js -->
+        <script src="/resources/dist/assets/js/app_admin.js"></script>
+
+        <!-- third party js -->
+        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
+        <!-- end demo js-->
+    </body>
 <script>
 $(document).ready(
 	function() {
@@ -178,8 +279,8 @@ $(document).ready(
 				});
 	});
 </script>
-
-<script>
+	
+	<script>
 $(document).ready(function(){
 	
 	var value = jQuery('#methodStep option:selected').val();
@@ -223,18 +324,4 @@ jQuery('#methodStep').change(function(){
 		}
 	});
 </script>
-
-
-
-			</div>
-			<!-- /.box -->
-		</div>
-		<!--/.col (left) -->
-
-	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
+</html>

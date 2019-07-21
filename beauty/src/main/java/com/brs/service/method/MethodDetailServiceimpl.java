@@ -30,8 +30,8 @@ public class MethodDetailServiceimpl implements MethodDetailService{
 	}
 
 	@Override
-	public void detailRemove(int methodNo) throws Exception {
-		mDAO.detailRemove(methodNo);
+	public List<MethodDetailVO> detailRemove(MethodDetailVO mVO) throws Exception {
+		return mDAO.detailRemove(mVO);
 	}
 
 	@Override

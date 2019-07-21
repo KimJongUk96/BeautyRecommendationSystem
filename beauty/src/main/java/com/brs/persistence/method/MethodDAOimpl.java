@@ -39,7 +39,7 @@ public class MethodDAOimpl implements MethodDAO{
 
 	@Override
 	public void removeMethod(int methodNo) throws Exception {
-		session.selectOne(namespace+".remove", methodNo);
+		session.selectOne(namespace+".removeMethod", methodNo);
 	}
 
 	@Override

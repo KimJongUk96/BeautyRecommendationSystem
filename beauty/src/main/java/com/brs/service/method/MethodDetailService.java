@@ -11,7 +11,7 @@ public interface MethodDetailService {
 	
 	public void detailUpdate(MethodDetailVO mVO) throws Exception;
 	
-	public void detailRemove(int methodNo) throws Exception;
+	public List<MethodDetailVO> detailRemove(MethodDetailVO mVO) throws Exception;
 	
 	public List<ProductVO> prodList() throws Exception;
 	

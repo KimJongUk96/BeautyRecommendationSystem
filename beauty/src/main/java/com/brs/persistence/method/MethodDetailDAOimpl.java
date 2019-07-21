@@ -31,8 +31,8 @@ public class MethodDetailDAOimpl implements MethodDetailDAO{
 		
 	}
 	@Override
-	public void detailRemove(int methodNo) throws Exception {
-		session.selectOne(namespace+".detailRemove", methodNo);
+	public List<MethodDetailVO> detailRemove(MethodDetailVO mVO) throws Exception {
+		return session.selectList(namespace+".detailRemove", mVO);
 	}
 	@Override
 	public List<ProductVO> prodList() throws Exception {
