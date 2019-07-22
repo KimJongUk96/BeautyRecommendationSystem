@@ -12,10 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brs.domain.AdminVO;
 import com.brs.domain.product.CategoryVO;
+import com.brs.domain.util.PageMaker;
+import com.brs.domain.util.SearchCriteria;
 import com.brs.dto.LoginDTO;
 import com.brs.service.AdminService;
 
@@ -84,4 +87,85 @@ public class AdminController {
 		}
 	
 	
+	//주현이 part
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	   public void registerGET(AdminVO admin, Model model) throws Exception {
+
+	      logger.info("register get ..........");
+	   }
+
+	   @RequestMapping(value = "/register", method = RequestMethod.POST)
+	   public String registPOST(AdminVO admin, RedirectAttributes rttr) throws Exception {
+
+	      logger.info("register post ..........");
+	      logger.info(admin.toString());
+
+	      service.regist(admin);
+
+	      rttr.addAttribute("result", "success");
+
+	       /* return "/board/success"; */
+	      return "redirect:/admin/list";
+	   }
+
+	   @RequestMapping(value = "/list", method = RequestMethod.GET)
+	   public void listSearchPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+	      logger.info(cri.toString());
+	      
+	      System.out.println("=====" + cri);
+	      model.addAttribute("list", service.listCriteria(cri));
+	      PageMaker pageMaker = new PageMaker();
+	      pageMaker.setCri(cri);
+
+	      pageMaker.setTotalCount(service.listCountCriteria(cri));
+	      model.addAttribute("pageMaker", pageMaker);
+	   }
+
+
+	   @RequestMapping(value = "/read", method = RequestMethod.GET)
+	   public void read(@RequestParam("adminNo") int adminNo, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+	      model.addAttribute(service.read(adminNo));
+	   }
+
+	   @RequestMapping(value = "/remove")
+	   public String remove(@RequestParam("adminNo") int adminNo, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+
+	      service.remove(adminNo);
+
+	      rttr.addAttribute("page", cri.getPage());
+	      rttr.addAttribute("perPageNum", cri.getPerPageNum());
+	      rttr.addAttribute("searchType", cri.getSearchType());
+	      rttr.addAttribute("keyword", cri.getKeyword());
+	      rttr.addFlashAttribute("msg", "SUCCESS");
+
+	      return "redirect:/admin/list";
+	   }
+
+	   @RequestMapping(value = "/modify", method = RequestMethod.GET)
+	   public void modifyGET(@RequestParam("no") int no, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+	      model.addAttribute(service.read(no));
+	   }
+
+	   @RequestMapping(value = "/modify", method = RequestMethod.POST)
+	   public String modifyPOST(AdminVO admin, RedirectAttributes rttr, SearchCriteria cri) throws Exception {
+
+	      logger.info(cri.toString());
+	      service.modify(admin);
+	      
+	      rttr.addAttribute("page", cri.getPage());
+	      rttr.addAttribute("perPageNum", cri.getPerPageNum());
+	      rttr.addAttribute("searchType", cri.getSearchType());
+	      rttr.addAttribute("keyword", cri.getKeyword());
+	      rttr.addFlashAttribute("msg", "SUCCESS");
+
+	      logger.info(rttr.toString());
+	      
+	      return "redirect:/admin/list";
+
+	
+	   }
 }

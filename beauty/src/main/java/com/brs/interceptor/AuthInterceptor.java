@@ -1,7 +1,5 @@
 package com.brs.interceptor;
 
-import javax.inject.Inject;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.util.WebUtils;
 
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
@@ -17,25 +14,42 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
    private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 
 
-
-   
-
-   private void saveDest(HttpServletRequest req) {
+   private String saveDest(HttpServletRequest req) {
 
       String uri = req.getRequestURI();
-
       String query = req.getQueryString();
+      
+      String path ="/user/login";
 
       if (query == null || query.equals("null")) {
          query = "";
       } else {
          query = "?" + query;
       }
+      
+      logger.info("uri: " + uri);
+      logger.info("query: " + query);
+      
+      if(uri.equals("/admin/list")) {
+    	  //관리자로 인식한다.
+    	  logger.info("/admin/list: " + "/admin/list");
+    	  path ="/admin/login";
+    	  
+      }else if(uri.equals("/prodtype/list")) {
+    	  //관리자로 인식한다.
+    	  logger.info("/prodtype/list: " + "/prodtype/list");
+    	  path ="/admin/login";
+      }
+      
 
       if (req.getMethod().equals("GET")) {
          logger.info("dest: " + (uri + query));
          req.getSession().setAttribute("dest", uri + query);
       }
+      
+
+      return path;
+      
    }
 
    @Override
@@ -48,9 +62,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
          logger.info("current user is not logined");
 
-         saveDest(request);
-
-         response.sendRedirect("/user/login");
+         String path = saveDest(request);
+         response.sendRedirect(path);
          return false;
       }
       return true;
