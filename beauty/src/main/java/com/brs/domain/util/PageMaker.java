@@ -8,12 +8,12 @@ public class PageMaker {
    private int totalCount;
    private int startPage;
    private int endPage;
-   private boolean prev; //?´? „ ?˜?´ì§?ê°? ?ˆ?Š”ì§? ?Œ?‹¨
+   private boolean prev; //?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½
    private boolean next;
 
    private int displayPageNum = 10;
 
-   private Criteria cri; //?˜?´ì§??— ???•œ ? •ë³?
+   private Criteria cri; //?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½ ???ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 
    public void setCri(Criteria cri) {
       this.cri = cri;
@@ -27,7 +27,7 @@ public class PageMaker {
 
    private void calcData() {
 
-      endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum); //displayPageNum ?‚¬?š©??—ê²? ë³´ì—¬ì¤? ?˜?´ì§? ë²„íŠ¼?˜ ?ˆ˜
+      endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum); //displayPageNum ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë³´ì—¬ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë²„íŠ¼?ï¿½ï¿½ ?ï¿½ï¿½
 
       startPage = (endPage - displayPageNum) + 1;
 
@@ -71,7 +71,7 @@ public class PageMaker {
       return cri;
    }
 
-   public String makeQuery(int page) { //?˜?´ì§? ë²„íŠ¼?„ ?ƒ?„±
+   public String makeQuery(int page) { //?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë²„íŠ¼?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½
 
       UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page) 
             .queryParam("perPageNum", cri.getPerPageNum()).build();
@@ -87,6 +87,17 @@ public class PageMaker {
             .queryParam("keyword", ((SearchCriteria) cri).getKeyword()).build();
 
       return uriComponents.toUriString();
+   }
+   
+   public String methodSuggest(int page) {
+	   UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+			   .queryParam("perPageNum", cri.getPerPageNum())
+			   .queryParam("skinType", ((MethodSuggestCriteria) cri).getSkinType())
+			   .queryParam("makeUp", ((MethodSuggestCriteria) cri).getMakeUp())
+			   .queryParam("weather", ((MethodSuggestCriteria) cri).getWeather())
+			   .queryParam("dust", ((MethodSuggestCriteria) cri).getDust()).build();
+	   
+	   return uriComponents.toUriString();
    }
 
 }
