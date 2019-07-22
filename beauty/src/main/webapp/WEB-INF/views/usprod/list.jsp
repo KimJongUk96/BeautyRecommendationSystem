@@ -15,7 +15,7 @@
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
-					<h3 class="box-title">Product List</h3>
+					<h3 class="box-title">세안제품 리스트</h3>
 				</div>
 
 

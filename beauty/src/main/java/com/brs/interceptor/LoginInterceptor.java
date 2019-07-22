@@ -15,7 +15,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
    private static final String LOGIN = "login";
    private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
-   //UserVO ê°ì²´ ?™•?¸(ë¡œê·¸?¸?´ ê°??Š¥?•œì§?) -> HttpSession ???ž¥
+   //UserVO, adminVO ì²˜ë¦¬
    @Override
    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
          ModelAndView modelAndView) throws Exception {
@@ -24,20 +24,28 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
       ModelMap modelMap = modelAndView.getModelMap();
       Object userVO = modelMap.get("userVO");
+      Object adminVO = modelMap.get("adminVO");
 
-      if (userVO != null) {
+      if (userVO != null) { //ì‚¬ìš©ìž ë¡œê·¸ì¸
 
          logger.info("new login success");
          session.setAttribute(LOGIN, userVO);
-         // response.sendRedirect("/");
          
-         //ë¡œê·¸?¸ ? „?— ë³´ê³  ?žˆ?˜ ê²½ë¡œ, ë¡œê·¸?¸ ?›„ ë³´ì—¬ì¤˜ì•¼ ?•˜?Š” ?Ž˜?´ì§? ê²½ë¡œ
          Object dest = session.getAttribute("dest");
          response.sendRedirect(dest != null ? (String) dest : "/");
+         
+      }else if(adminVO != null) { //ê´€ë¦¬ìž ë¡œê·¸ì¸ 
+    	  
+    	  logger.info("new login success");
+          session.setAttribute(LOGIN, adminVO);
+          
+          Object dest = session.getAttribute("dest");
+          response.sendRedirect(dest != null ? (String) dest : "/");
+    	  
       }
    }
 
-   //ë¯¸ë¦¬ ?„¸?Œ… : HttpSessionì´ˆê¸°?™”
+   //ë¯¸ë¦¬ ?ï¿½ï¿½?ï¿½ï¿½ : HttpSessionì´ˆê¸°?ï¿½ï¿½
    @Override 
    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
          throws Exception {
@@ -53,5 +61,5 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
    }
 
    
-   //Interceptor -> ë¡œê·¸?¸?´ ?•„?š”?•œ ?ž‘?—… ?‹œ?— ë¡œê·¸?¸?™”ë©´ìœ¼ë¡? ?ž?™?œ¼ë¡? ?„˜?–´ê°?ê²? ?•˜?Š” ê¸°ëŠ¥
+   //Interceptor -> ë¡œê·¸?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ë¡œê·¸?ï¿½ï¿½?ï¿½ï¿½ë©´ìœ¼ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ê¸°ëŠ¥
 }

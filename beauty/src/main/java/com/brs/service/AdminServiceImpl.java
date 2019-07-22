@@ -19,50 +19,50 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDAO dao;
 	
 	@Override
-	public void create(AdminVO aVO) throws Exception {
-		// TODO Auto-generated method stub
+	   public void regist(AdminVO aVO) throws Exception {
+	      dao.create(aVO);
 
-	}
+	   }
 
-	@Override
-	public AdminVO read(int adminNo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	   @Override
+	   public AdminVO read(int adminNo) throws Exception {
+	      return dao.read(adminNo);
 
-	@Override
-	public void update(AdminVO aVO) throws Exception {
-		// TODO Auto-generated method stub
+	   }
 
-	}
+	   @Override
+	   public void modify(AdminVO aVO) throws Exception {
+	      dao.update(aVO);
 
-	@Override
-	public void delete(int adminNo) throws Exception {
-		// TODO Auto-generated method stub
+	   }
 
-	}
+	   @Override
+	   public void remove(int adminNo) throws Exception {
+	      dao.delete(adminNo);
 
-	@Override
-	public List<AdminVO> listSearch(SearchCriteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	   }
 
-	@Override
-	public int listSearchCount(SearchCriteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	   @Override
+	   public List<AdminVO> listCriteria(SearchCriteria cri) throws Exception {
+	      return dao.listCriteria(cri);
+	   }
 
-	@Override
-	public AdminVO login(LoginDTO dto) throws Exception {
-		return dao.login(dto);
-	}
+	   @Override
+	   public int listCountCriteria(SearchCriteria cri) throws Exception {
+	      return dao.countPaging(cri);
+	   }
 
-	@Override
-	public void registerCategory(CategoryVO cVO) throws Exception {
-		dao.createCategory(cVO);
+	   //로그인
+	   @Override
+	   public AdminVO login(LoginDTO dto) throws Exception {
+		   return dao.login(dto);
+	   }
+	   
+	   //카테고리 등록
+	   @Override
+	   public void registerCategory(CategoryVO cVO) throws Exception {
+		   dao.createCategory(cVO);
 		
-	}
+	   }
 
 }

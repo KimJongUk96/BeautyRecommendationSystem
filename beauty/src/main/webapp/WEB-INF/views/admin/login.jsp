@@ -45,16 +45,20 @@
                         <p class="text-muted mb-4">관리자 로그인 페이지입니다.</p>
 
                         <!-- form -->
-                        <form action="#">
+                        <form action="/user/loginPost" method="post">
                             <div class="form-group">
                                 <label for="emailaddress">ID</label>
-                                <input class="form-control" type="id" id="usid" required="" placeholder="Enter your email">
+                                <input class="form-control" type="text" name="usid"  placeholder="Enter your ID">
                             </div>
+                            
+                            
                             <div class="form-group">
                                 <a href="pages-recoverpw-2.html" class="text-muted float-right"><small>Forgot your password?</small></a>
                                 <label for="password">Password</label>
-                                <input class="form-control" type="password" required="" id="upw" placeholder="Enter your password">
+                                <input class="form-control" type="password" name="upw" placeholder="Enter your password">
                             </div>
+                            
+                            
                             <div class="form-group mb-3">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="checkbox-signin" name="useCookie">
@@ -62,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> Log In </button>
+                                <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> 로그인 </button>
                             </div>
                             <!-- social-->
                             
