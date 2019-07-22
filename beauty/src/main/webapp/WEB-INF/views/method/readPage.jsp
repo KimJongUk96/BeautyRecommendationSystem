@@ -71,11 +71,11 @@
                         <div class="form-group mb-3">
 							<label for="exampleInputEmail1">피부타입</label>
 							<select name="skinType">
-							<option value="DR"<c:out value="${methodVO.skinType eq 'DR'?'selected':''}"/>>건성</option>
-							<option value="NE"<c:out value="${methodVO.skinType eq 'NE'?'selected':''}"/>>중성</option>
-							<option value="OI"<c:out value="${methodVO.skinType eq 'OI'?'selected':''}"/>>지성</option>
-							<option value="CO"<c:out value="${methodVO.skinType eq 'CO'?'selected':''}"/>>복합성</option>
-							<option value="SE"<c:out value="${methodVO.skinType eq 'SE'?'selected':''}"/>>민감성</option>
+							<option disabled="disabled" value="DR"<c:out value="${methodVO.skinType eq 'DR'?'selected':''}"/>>건성</option>
+							<option disabled="disabled" value="NE"<c:out value="${methodVO.skinType eq 'NE'?'selected':''}"/>>중성</option>
+							<option disabled="disabled" value="OI"<c:out value="${methodVO.skinType eq 'OI'?'selected':''}"/>>지성</option>
+							<option disabled="disabled" value="CO"<c:out value="${methodVO.skinType eq 'CO'?'selected':''}"/>>복합성</option>
+							<option disabled="disabled" value="SE"<c:out value="${methodVO.skinType eq 'SE'?'selected':''}"/>>민감성</option>
 							</select>
 						</div>
 						

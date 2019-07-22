@@ -88,10 +88,18 @@
 
 <!-- methodDetail Update -->
 <update id="detailUpdate">
-	update tbl_method_detail set
-		method = #{method},
-		prod_no = #{prodNo}
-	where method_no = #{methodNo} and step = #{step}
+MERGE INTO tbl_method_detail USING dual ON (
+     step = #{step}
+     and method_no = #{methodNo}
+)
+	WHEN MATCHED THEN 	
+		UPDATE SET  
+    method = #{method},
+    prod_no = #{prodNo}
+		
+	WHEN NOT MATCHED THEN
+		INSERT (detail_no, step, method, method_no, prod_no)
+		VALUES(seq_method_detail.nextval, #{step}, #{method}, #{methodNo}, #{prodNo})
 </update>
 
 <!-- method remove -->

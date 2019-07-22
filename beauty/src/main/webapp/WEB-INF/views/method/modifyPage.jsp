@@ -128,12 +128,44 @@
 						
 						<div class="form-group mb-3" id="method2">
 							<label for="exampleInputPassword1">세안법2</label>
+							<c:choose>
+							<c:when test="${methodVO.methodStep <= 1}">
+							<!-- 3번 세안법이 없을 경우 -->
+							<div class="form-group mb-3" id="method2">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step2 세안법"></textarea>
+							</div>
+							
+							</c:when>
+							<c:otherwise>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							
+							
 							<c:if test="${status.count eq '2'}">
-							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step2 세안법">${methodDetailVO.method}</textarea>
+							
+							
+							<c:if test="${not empty methodDetailVO}">
+							 <!-- 실제 값 있을 경우 만들어라 -->
+								<div class="form-group mb-3" id="method2">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step2 세안법">${methodDetailVO.method}</textarea>
+							</div>							
 							</c:if>
-								</c:forEach>
+							
+							
+							<c:if test="${empty methodDetailVO}">
+							 <!-- 빈통을 만들어라 -->
+							 <div class="form-group mb-3" id="method2">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step2 세안법"></textarea>
+							</div>
+							</c:if>
+							</c:if>
+							
+							</c:forEach>
+							
+							</c:otherwise>
+							</c:choose>
 						</div>
 						
 						<div class="form-group" id="prodNo2">
@@ -144,6 +176,9 @@
 							<c:if test="${status.count eq '2'}">
 							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
 							</c:if>
+							<c:if test="${status.count eq '1'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
 							</c:forEach>
 							</c:forEach>
 							</select>
@@ -151,15 +186,50 @@
 						
 						<div class="form-group mb-3" id="method3">
 							<label for="exampleInputPassword1">세안법3</label>
+							
+							<c:choose>
+							<c:when test="${methodVO.methodStep <= 2}">
+							<!-- 3번 세안법이 없을 경우 -->
+							<div class="form-group mb-3" id="method3">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step3 세안법"></textarea>
+							</div>
+							
+							</c:when>
+							<c:otherwise>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							
+							
 							<c:if test="${status.count eq '3'}">
-							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step3 세안법">${methodDetailVO.method}</textarea>
+							
+							
+							<c:if test="${not empty methodDetailVO}">
+							 <!-- 실제 값 있을 경우 만들어라 -->
+								<div class="form-group mb-3" id="method3">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step3 세안법">${methodDetailVO.method}</textarea>
+							</div>							
 							</c:if>
-								</c:forEach>
+							
+							
+							<c:if test="${empty methodDetailVO}">
+							 <!-- 빈통을 만들어라 -->
+							 <div class="form-group mb-3" id="method3">
+								<textarea class="form-control" name="method" rows="5"
+									placeholder="Step3 세안법"></textarea>
+							</div>
+							</c:if>
+							</c:if>
+							
+							</c:forEach>
+							
+							</c:otherwise>
+							</c:choose>
+							
+								
 						</div>
 						
-						<div class="form-group" id="prodNo3">
+							<div class="form-group" id="prodNo3">
 							<label for="exampleInputEmail1">사용제품명3</label>
 							<select name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
@@ -167,10 +237,13 @@
 							<c:if test="${status.count eq '3'}">
 							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
 							</c:if>
+							<c:if test="${status.count eq '1'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
 							</c:forEach>
 							</c:forEach>
 							</select>
-						</div> 
+							</div> 
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">계절</label> 
@@ -292,6 +365,9 @@ $(document).ready(function(){
 	   }else if($(value == '3').trigger('click')){
 		   $('#methodStep').change();
 	   }
+	
+	
+	
 	});
 </script>
 
