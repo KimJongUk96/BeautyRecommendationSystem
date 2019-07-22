@@ -20,7 +20,16 @@ public class ReviewVO {
 	private String command;
 	private Date regdate;
 	private int prodNo;
-	private String email;
+	//사용자 아이디
+	private String userEmail;
+	//사용자 닉네임
+	private String userNickName;
+	//사용자 성별
+	private String userGender;
+	//사용자 연령대
+	private String userAge;
+	//사용자 피부 타입
+	private String userSkinType;
 	public int getReviewNo() {
 		return reviewNo;
 	}
@@ -57,18 +66,41 @@ public class ReviewVO {
 	public void setProdNo(int prodNo) {
 		this.prodNo = prodNo;
 	}
-	public String getEmail() {
-		return email;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserNickName() {
+		return userNickName;
+	}
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
+	}
+	public String getUserGender() {
+		return userGender;
+	}
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+	public String getUserAge() {
+		return userAge;
+	}
+	public void setUserAge(String userAge) {
+		this.userAge = userAge;
+	}
+	public String getUserSkinType() {
+		return userSkinType;
+	}
+	public void setUserSkinType(String userSkinType) {
+		this.userSkinType = userSkinType;
 	}
 	
-	@Override
-	public String toString() {
-		return "ReviewVO [reviewNo=" + reviewNo + ", rating=" + rating + ", reviewText=" + reviewText + ", command="
-				+ command + ", regdate=" + regdate + ", prodNo=" + prodNo + ", email=" + email + "]";
-	}
+	
+	
+	
+	
 	
 	
 }

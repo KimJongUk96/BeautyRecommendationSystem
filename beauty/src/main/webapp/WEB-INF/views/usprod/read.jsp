@@ -7,6 +7,7 @@
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
+	<form role="form" action="register" method="post">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
@@ -14,15 +15,13 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" action="modifyPage" method="post">
-
-	<input type='hidden' name='reviewNo' value="${productVO.prodNo}"> <input
-		type='hidden' name='page' value="${cri.page}"> <input
-		type='hidden' name='perPageNum' value="${cri.perPageNum}">
+	<input type="hidden" name="email" value="${login.email }">
+	<input type='hidden' name='prodNo' value="${productVO.prodNo}"> 
+	<input type='hidden' name='page' value="${cri.page}"> 
+	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 	<input type='hidden' name='searchType' value="${cri.searchType}">
 	<input type='hidden' name='keyword' value="${cri.keyword}">
 
-</form>
 
 				<div class="box-body">
 					<div class="form-group">
@@ -42,8 +41,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">타입</label> 
-							<input type='hidden' name=prodtypeNo value="${productVO.prodtypeNo}">
+							<label for="exampleInputEmail1">카테고리</label> 
+							<input type="text"
+								name='categoryName' class="form-control" value="${productVO.categoryName}" readonly="readonly">
+						</div>
+						
+						<div class="form-group">
+							<label for="exampleInputEmail1">제품타입</label> 
 							<input type="text"
 								name='prodtypeName' class="form-control" value="${productVO.prodtypeName}" readonly="readonly">
 						</div>
@@ -57,16 +61,44 @@
 							<label for="exampleInputEmail1">평점</label> <input type="text"
 								name='ratingAvg' class="form-control" value="${productVO.ratingAvg}" readonly="readonly">
 						</div>
+						</div>
+						
+						
+						
+						
+						<div class="box-body">
+						<c:forEach items="${list}" var="reviewVO">
+						<table class="table table-bordered">
+							<tr>
+								<td colspan="3">${reviewVO.userNickName}</td>
+							</tr>
+							<tr>	
+								<td>${reviewVO.userAge}</td>
+								<td>${reviewVO.userGender}</td>
+								<td>${reviewVO.userSkinType}</td>
+							</tr>	
+							<tr>
+								<td colspan="3">${reviewVO.rating}</td>
+							</tr>
+							<tr>
+							<td>
+							${reviewVO.reviewText}
+							</td>
+							</tr>
+						</table>
+						</c:forEach>
 							
 						</div>
+						
 				</div>
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-					<button type="submit" class="btn btn-warning">Modify</button>
-					<button type="submit" class="btn btn-danger">REMOVE</button>
-					<button type="submit" class="btn btn-primary">GO LIST</button>
+					<button type="submit" class="btn btn-danger">리뷰 등록</button>
+					<button type="button" class="btn btn-danger">목록으로</button>
 				</div>
+</form>
+
 
 
 <script>

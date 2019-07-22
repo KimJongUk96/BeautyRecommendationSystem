@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.brs.domain.product.ProductVO;
+import com.brs.domain.review.ReviewVO;
 import com.brs.domain.util.PageMaker;
 import com.brs.domain.util.SearchCriteria;
 import com.brs.service.product.UserProductService;
@@ -47,7 +50,36 @@ public class UserProductController {
 	public void read(@RequestParam("prodNo") int prodNo, 
 			@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception {
 		
+		logger.info("세안 제품 상세보기");
 		model.addAttribute(service.read(prodNo));
+		model.addAttribute("list", service.listReview(prodNo));
+		
+	}
+	
+	//리뷰 등록 화면 넘어가기
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void registerGET(ProductVO vo, Model model) throws Exception {
+
+	/*public void registerGET(@RequestParam("prodNo") int prodNo, @RequestParam("name") String name,
+			@RequestParam("prodtypeNo") String prodtypeNo, @RequestParam("prodtypeName") String prodtypeName, 
+			Model model) throws Exception {*/
+
+		logger.info("regiser get...");
+		logger.info(vo.toString());
+	}
+	
+	//리뷰 등록하기
+	@RequestMapping(value="register", method = RequestMethod.POST)
+	public String registerPOST(ReviewVO vo, RedirectAttributes rttr) throws Exception{
+		
+		logger.info("register post...");
+		logger.info("ReviewVO :" +vo);
+		
+		service.register(vo);
+		
+		rttr.addAttribute("prodNo",vo.getProdNo());
+		
+		return "redirect:/usprod/read";
 	}
 		
 }

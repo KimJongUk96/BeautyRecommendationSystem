@@ -103,24 +103,38 @@
 
 
 	<select id = "read" resultType="com.brs.domain.product.ProductVO">
-	select prod.prod_no, prod.name, prod.comp_name, prod.price, prod.link,
-	       prod.img, prod.regdate, prod.prodtype_no, pt.name as prodtypeName, rt.rating_avg
+	select prod.prod_no, prod.name, prod.comp_name, prod.price, prod.link,prod.img,
+	        prod.regdate, ct.category_name, pt.name as prodtypeName, rt.rating_avg
 	       
-	  from tbl_product prod, rating_avg_view rt, tbl_prod_type pt
+	  from tbl_product prod, rating_avg_view rt, tbl_prod_type pt, tbl_category ct
 	 where prod.prod_no = rt.prod_no
        and pt.prodtype_no = prod.prodtype_no
+       and ct.category_no = pt.category_no
 	   and prod.prod_no = #{prodNo}
 	</select>
 	
+	
 	<select id = "readReivew" resultType="com.brs.domain.review.ReviewVO">
-	select prod.prod_no, prod.name, prod.comp_name, prod.price, prod.link,
-	       prod.img, prod.regdate, prod.prodtype_no, pt.name as prodtypeName, rt.rating_avg
-	       
-	  from tbl_product prod, rating_avg_view rt, tbl_prod_type pt
-	 where prod.prod_no = rt.prod_no
-       and pt.prodtype_no = prod.prodtype_no
-	   and prod.prod_no = #{prodNo}
+	select us.nick_name as userNickName, us.gender as userGender, us.skin_type as userSkinType, 
+		   us.age as userAge, re.rating, re.review_text, re.regdate
+ 	  from tbl_review re, tbl_user us
+	 where us.email = re.email
+  	   and re.prod_no = #{prodNo}
+	 order by regdate desc
 	</select>
 
+	<select id = "readReviewRegister" resultType="com.brs.domain.product.ProductVO">
+	select prod.prod_no, prod.name, ct.category_name, pt.name as prodtype_name
+ 	  from tbl_product prod, tbl_prod_type pt, tbl_category ct
+ 	 where pt.prodtype_no = prod.prodtype_no
+       and ct.category_no = pt.category_no
+ 	   and prod_no = #{prodNo}
+ 	 </select>
+ 	 
+ 	<insert id="create">
+ 	insert into tbl_review
+	values(SEQ_REVIEW.nextval, #{rating}, #{reviewText}, SYSDATE, #{userEmail}, #{command}, #{prodNo})
+	</insert>
+	
 	
 </mapper>

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.brs.domain.product.ProductVO;
+import com.brs.domain.review.ReviewVO;
 import com.brs.domain.util.SearchCriteria;
 @Repository
 public class UserProductDAOImpl implements UserProductDAO {
@@ -34,6 +35,18 @@ public class UserProductDAOImpl implements UserProductDAO {
 	@Override
 	public ProductVO read(int prodNo) throws Exception {
 		return session.selectOne(namespace+".read", prodNo);
+	}
+
+	//세안제품 리뷰 등록하기
+	@Override
+	public void create(ReviewVO vo) throws Exception {
+		session.insert(namespace + ".create", vo);
+	}
+
+	//리뷰 조회하기
+	@Override
+	public List<ReviewVO> listReview(int prodNo) throws Exception {
+		return session.selectList(namespace + ".readReivew", prodNo);
 	}
 
 }

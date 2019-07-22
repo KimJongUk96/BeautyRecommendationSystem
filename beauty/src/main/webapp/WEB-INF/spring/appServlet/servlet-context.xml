@@ -55,9 +55,8 @@
       </interceptor>
       
       <interceptor>
-         <mapping path="/review/register" />
-         <mapping path="/review/modifyPage" />
-         <mapping path="/review/removePage" />
+         <mapping path="/usprod/register" />
+         
          <beans:ref bean="authInterceptor" />
       </interceptor>
 
