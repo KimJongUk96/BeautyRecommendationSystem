@@ -169,9 +169,22 @@
 		</div>
 		<!-- END wrapper -->		
 
-	    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+		 <!-- App js -->
+        <script src="/resources/dist/assets/js/app_admin.js"></script>
+
+        <!-- third party js -->
+        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
+        <!-- end demo js-->
+	</body>
 	
-		<script>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script>
 			function checkImageType(fileName){
 				
 				var pattern = /jpg|gif|png|jpeg/i;
@@ -191,13 +204,10 @@
 				
 			}
 			
-	
-		
 			$(".fileDrop").on("dragenter dragover", function(event) {
-				event.preventDefault();
-			});
-			
-			
+		        event.preventDefault();
+		    });
+				
 		    //클릭으로 파일 업로드할 때 호출되는 함수
 		    $("#fileUpload").on("change", function(event) {
 		        event.preventDefault();
@@ -248,8 +258,9 @@
 		            }
 		        });
 		    });
-	
-				
+			
+		    
+		    	
 	
 			$(".fileDrop").on("drop", function(event){
 				event.preventDefault();
@@ -319,20 +330,5 @@
 	
 			
 	
-		</script>
-	
-	
-	    <!-- App js -->
-        <script src="/resources/dist/assets/js/app_admin.js"></script>
-
-        <!-- third party js -->
-        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
-        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
-        <!-- third party js ends -->
-
-        <!-- demo app -->
-        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
-        <!-- end demo js-->
-
-	</body>
+</script>
 </html>

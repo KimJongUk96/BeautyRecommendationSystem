@@ -80,7 +80,7 @@
 
                                                     <div class="form-group mb-3">
                                                         <label for="example-select">사용자 성별</label>
-                                                        <input type="text" id="cusGender" name='cusGender' class="form-control" value="${productVO.cusGender}" readonly="readonly">
+                                                        <input type="text" id="cusGender" name='cusGender' class="form-control" value="" readonly="readonly">
                                                     </div>
 
                                                     <div class="form-group mb-3">
@@ -212,5 +212,18 @@
         });
 
     });
+    function changeName(dataName) {
+		switch(dataName){
+		  case "U1" :
+			  return "여성용";
+			  break;
+		  case "U2" :
+			  return "남성용";
+			  break;
+		}
+	}
+	
+	var gen = "${productVO.cusGender}";
+	document.getElementById("cusGender").value = changeName(gen);
 </script>
 </html>

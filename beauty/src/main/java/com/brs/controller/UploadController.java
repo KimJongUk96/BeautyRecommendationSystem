@@ -81,7 +81,7 @@ public class UploadController {
 	}
 	
 	  @ResponseBody
-	  @RequestMapping("/product/displayFile")
+	  @RequestMapping(value= {"/product/displayFile", "/productSuggest/displayFile"})
 	  public ResponseEntity<byte[]>  displayFile(String fileName)throws Exception{
 	    
 	    InputStream in = null; 

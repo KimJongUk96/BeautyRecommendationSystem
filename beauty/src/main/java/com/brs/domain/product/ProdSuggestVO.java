@@ -2,7 +2,7 @@ package com.brs.domain.product;
 
 public class ProdSuggestVO {
 	
-	private String gender; // PRODUCT TABLE
+	private String gender; 
 	private String age;
 	private String skinType;
 	

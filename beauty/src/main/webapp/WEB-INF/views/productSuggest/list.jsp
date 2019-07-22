@@ -5,113 +5,166 @@
 <%@ page session="false"%>
 
 
-<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
 
+<!DOCTYPE html>
+<html>
 
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">추천 목록</h3>
-				</div>
+    <head>
+        <meta charset="utf-8" />
+        <title>추천 제품 목록</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
 
+        <!-- inline style to handle loading of various element-->
+        <style>body.loading {visibility: hidden;}</style>
 
-				<div class='box-body'>
+        <!-- third party css -->
+        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
 
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="pn"
-							<c:out value="${cri.searchType eq 'pn'?'selected':''}"/>>
-							제품명</option>
-						<option value="cn"
-							<c:out value="${cri.searchType eq 'cn'?'selected':''}"/>>
-							제품 회사명</option>
-						<option value="ptn"
-							<c:out value="${cri.searchType eq 'ptn'?'selected':''}"/>>
-							제품 종류</option>
+        <!-- App css -->
+        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
+
+    </head>
+	
+	<body class="loading">
+	<div id="detached-topbar-placeholder"></div>
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <div id="vertical-sidebar-placeholder"></div>
+            <div id="detached-sidebar-placeholder"></div>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+				
+				<div class="content-page">
+				
+					<div class="content">
+					
+					<div id="vertical-topbar-placeholder"></div>
+                    <div id="horizontal-topbar-placeholder"></div>
+				<div><h3></h3></div>
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+							<div class="row">
+								<div class="col-xl-12">
+									<div class="card">
+										<div class="card-body">
+
+										<!-- general form elements -->
+										
+											 <h2>제품 추천 순위</h2>
+											 <hr>
+											 <div align="left">
+											 	<h4 id='gend' style="float: left"></h4>
+											 	<h4 style="float: left">&nbsp;&nbsp;&nbsp;#${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
+											 	<h4 id='skin' style="float: left"></h4>
+										     </div>
+							
+							
 						
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-					<button id='searchBtn'>검색</button>
-					<button id='newBtn'>등록</button>
-					<button id='logout'>logout</button>
-
-				</div>
-			</div>
-
-
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">LIST PAGING</h3>
-				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 90px">제품 추천 순위</th>
-							<th>사진</th>
-							<th>제품 정보</th>
-						</tr>
-
-						<c:forEach items="${list}" var="productVO">
-
-							<tr>
-								<td>${productVO.prodNo}</td>
-								<td><a href='/productSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> 
-								        <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" alt="이미지 없음"/></a></td>
-								<td><a href='/productSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
-										${productVO.name} </a></td>
-								<br/>${productVO.compName}	
-								<br/>${productVO.prodtypeNo}
-								<br/>${productVO.price}</td>
+											<div class="table-responsive-sm">
+												<table class="table table-hover table-centered mb-0">
+												 <thead>
+														<tr>
+															<th style="width: 90px">순위</th>
+															<th>제품 사진</th>
+															<th>제품 정보</th>
+															
+															
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach items="${list}" var="productVO" varStatus="status">
 								
-							</tr>
+															<tr>
+																<td id='rank'>${status.count}</td>
+																<td>
+																   <a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+																      <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 
+																   </a>
+																</td>
+																<td>
+																	<a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
+																	<br/>
+																	<p>제조사 : ${productVO.compName}</p>
+																	<br/>
+																	<p>타입 : ${productVO.prodtypeNo}</p>
+																	<br/>
+																	<p>가격 : ${productVO.price}</p>
+																	<br/>
+																	<a href="${productVO.link}">구매 링크</a>
+																</td>
 
-						</c:forEach>
-
-					</table>
-				</div>
-				<!-- /.box-body -->
-
-
-				<div class="box-footer">
-
-					<div class="text-center">
-						<ul class="pagination">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-					</div>
-
-				</div>
-				<!-- /.box-footer-->
+															</tr>
+								
+														</c:forEach>
+												    </tbody>
+												</table>
+											</div>
+											<!-- /.box-body -->
+											
+							
+									</div> <!-- end card body-->
+								</div> <!-- end card -->
+							</div><!-- end col-->
+							
+						</div>
+                        <!-- end row-->
+				
+				  </div> <!-- container -->
+				 
+				</div> <!-- content -->
+				
+				<!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2018 - 2019 © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+				
 			</div>
-		</div>
-		<!--/.col (left) -->
+			
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
-	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
 
+        </div>
+        <!-- END wrapper -->
+
+</body>
+
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  		<!-- App js -->
+        <script src="/resources/dist/assets/js/app_admin.js"></script>
+
+        <!-- third party js -->
+        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
+        <!-- end demo js-->
 
 <script>
 	var result = '${msg}';
@@ -150,5 +203,39 @@
 				});
 
 			});
+	
+	
+	function changeName(dataName) {
+		switch(dataName){
+		  case "U1" :
+			  return "#여성";
+			  break;
+		  case "U2" :
+			  return "#남성";
+			  break;
+		  case "DR" :
+			  return "#건성";
+			  break;
+		  case "NE" :
+			  return "#중성";
+			  break;
+		  case "OI" :
+			  return "#지성";
+			  break;
+		  case "CO" :
+			  return "#복합성";
+			  break;
+		  case "SE" : 
+			  return "#민감성";
+			  break;
+		}
+	}
+	
+	var gen = "${prodSuggestVO.gender}";
+	var skn = "${prodSuggestVO.skinType}";
+	
+	document.getElementById("gend").innerHTML = changeName(gen);
+	document.getElementById("skin").innerHTML = changeName(skn);
+	
 </script>
-
+</html>
