@@ -27,6 +27,7 @@
 
 </head>
 
+
 <body class="loading">
 <div id="detached-topbar-placeholder"></div>
 <!-- Begin page -->
@@ -51,7 +52,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">${productVO.name}</h4>
+                                        <h3>${productVO.name}</h3>
 
 
                                         <div class="row">
@@ -65,7 +66,7 @@
                                                     <input type='hidden' name='keyword' value="${cri.keyword}">
 
                                                     <div class="form-group mb-3">
-                                                        <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" alt="이미지 없음"/>
+                                                        <img id='photo' height="200px" width="350px" src="" alt="이미지 없음"/>
                                                     </div>
 
                                                     <div class="form-group mb-3">
@@ -172,8 +173,8 @@
         <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
         <!-- end demo js-->
 </body>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
     $(document).ready(function() {
 
@@ -212,6 +213,7 @@
         });
 
     });
+    
     function changeName(dataName) {
 		switch(dataName){
 		  case "U1" :
@@ -222,8 +224,20 @@
 			  break;
 		}
 	}
+    
+    function realPhoto(thumbnail){
+    	var date = thumbnail.split('s');
+    	var array = thumbnail.split('_');
+    	return date[0]+array[1]+"_"+array[2];
+    }
 	
 	var gen = "${productVO.cusGender}";
 	document.getElementById("cusGender").value = changeName(gen);
+	
+	
+	var thumbnail = "${productVO.img}";
+	document.getElementById("photo").src = "displayFile?fileName="+realPhoto(thumbnail);
 </script>
+
+
 </html>
