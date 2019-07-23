@@ -34,6 +34,12 @@ from tbl_prod_type
 where prodtype_no = #{prodtypeNo}
 </select>
 
+<select id="allType" resultType="com.brs.domain.product.ProdTypeVO">
+ select pd.prodtype_no, pd.name, ca.category_no, ca.category_name as category 
+ from tbl_prod_type pd, TBL_category ca 
+ where pd.category_no = ca.category_no
+</select>
+
 <select id="check" resultType="String">
 select '1'  
 from tbl_prod_type 
