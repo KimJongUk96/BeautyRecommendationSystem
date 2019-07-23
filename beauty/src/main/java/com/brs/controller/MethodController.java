@@ -148,9 +148,7 @@ public class MethodController {
 	public String remove(MethodDetailVO dVO, @RequestParam("methodNo") int methodNo, SearchCriteria cri, RedirectAttributes rttr)throws Exception {
 		
 		detailservice.detailRemove(dVO);
-		System.out.println("s");
 		service.removeMethod(methodNo);
-		System.out.println("n");
 		
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());

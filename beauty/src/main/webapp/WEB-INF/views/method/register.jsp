@@ -61,8 +61,8 @@
                                                 	
 
                          <div class="form-group mb-3">
-                            <label for="exampleInputEmail1">피부타입</label>
-							<select name="skinType">
+                            <label for="example-select">피부타입</label>
+							<select class="form-control" name="skinType">
 							<option value="DR">건성</option>
 							<option value="NE">중성</option>
 							<option value="OI">지성</option>
@@ -72,8 +72,8 @@
 						</div>
 						
 						<div class="form-group mb-3">
-							<label for="exampleInputEmail1">화장정도</label>
-							<select name="makeUpDegree">
+							<label for="example-select">화장정도</label>
+							<select class="form-control" name="makeUpDegree">
 							<option value="NM">노 메이크업</option>
 							<option value="YM">메이크업</option>
 							<option value="SM">색조 메이크업</option>
@@ -81,8 +81,8 @@
 						</div>
 						
 						<div class="form-group mb-3">
-							<label for="exampleInputPassword1">세안법 Step</label>
-							<select name="methodStep" id="methodStep">
+							<label for="example-select">세안법 Step</label>
+							<select class="form-control" name="methodStep" id="methodStep">
 							<option value="1" id="step1">step1</option>
 							<option value="2" id="step2">step2</option>
 							<option value="3" id="step3">step3</option>
@@ -90,19 +90,19 @@
 						</div>
 						
 						<div class="form-group mb-3">
-							<label for="exampleInputEmail1">step</label> <input type="text"
+							<label for="simpleinput">step</label> <input type="text"
 								name="step" class="form-control" id="step">
 						</div>
 						
 						<div class="form-group mb-3" id="method">
-							<label for="exampleInputPassword1">세안법</label>
+							<label for="simpleinput">세안법</label>
 							<textarea class="form-control" name="method" rows="5"
 								placeholder="Step1 세안법"></textarea>
 						</div>
 						
 						<div class="form-group" id="prodNo">
-							<label for="exampleInputEmail1">사용제품명</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${prodList}" var="productVO">
 							<option value="${productVO.prodNo}">${productVO.name}</option>
 							</c:forEach>
@@ -110,14 +110,14 @@
 						</div> 
 						
 						<div class="form-group mb-3" id="method2">
-							<label for="exampleInputPassword1">세안법2</label>
+							<label for="simpleinput">세안법2</label>
 							<textarea class="form-control" name="method" rows="5"
 								placeholder="Step2 세안법"></textarea>
 						</div>
 						
 						<div class="form-group mb-3" id="prodNo2">
-							<label for="exampleInputEmail1">사용제품명2</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명2</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${prodList}" var="productVO">
 							<option value="${productVO.prodNo}">${productVO.name}</option>
 							</c:forEach>
@@ -125,14 +125,14 @@
 						</div> 
 						
 						<div class="form-group mb-3" id="method3">
-							<label for="exampleInputPassword1">세안법3</label>
+							<label for="simpleinput">세안법3</label>
 							<textarea class="form-control" name="method" rows="5"
 								placeholder="Step3 세안법"></textarea>
 						</div>
 						
 						<div class="form-group" id="prodNo3">
-							<label for="exampleInputEmail1">사용제품명3</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명3</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${prodList}" var="productVO">
 							<option value="${productVO.prodNo}">${productVO.name}</option>
 							</c:forEach>
@@ -151,7 +151,7 @@
 						-->
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">계절</label> 
+							<label for="example-select">계절</label> 
 							<input type="radio" name="season" value="S1">봄
 							<input type="radio" name="season" value="S2">여름
 							<input type="radio" name="season" value="S3">가을
@@ -159,14 +159,14 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">날씨</label>
+							<label for="example-select">날씨</label>
 							<input type="radio" name="weather" value="W1">맑음
 							<input type="radio" name="weather" value="W2">흐림
 							<input type="radio" name="weather" value="W3">눈/비
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">미세먼지</label> 
+							<label for="example-select">미세먼지</label> 
 							<input type="radio" name="dust" value="D1">좋음
 							<input type="radio" name="dust" value="D2">보통
 							<input type="radio" name="dust" value="D3">나쁨

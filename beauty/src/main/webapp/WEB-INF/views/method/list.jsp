@@ -74,8 +74,9 @@
                                         <h4 class="header-title">세안법 등록</h4>
                                         <div align="right">
                                         <div align="left">
-					<label>피부타입</label>
-					<select name="searchType">
+                                        <div class="form-group mb-3">
+					<label for="example-select">피부타입</label>
+					<select class="form-control" name="searchType" style="width:110px">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -95,9 +96,9 @@
 							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
 							민감성</option>
 					</select>
-						
-					<label>화장정도</label>
-					<select name="searchType">
+					<div><h4>   </h1></div>	
+					<label for="example-select">화장정도</label>
+					<select class="form-control" name="searchType" style="width:110px">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -117,9 +118,14 @@
 							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
 							민감성</option>
 					</select>
-					<button id='searchBtn'>검색</button>
+					<div align="right">
+					<button id='searchBtn' class="btn btn-outline-info btn-rounded">검색</button>
+					</div>
 										</div>
+										<div align="right">
 											<button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+										</div>
+										</div>
 										</div>
 										<div><h4>   </h1></div>
 		
@@ -135,7 +141,7 @@
 							                        </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach items="${methodList}" var="methodVO">
+                          <c:forEach items="${methodList}" var="methodVO">
 							<tr>
 								<td>${methodVO.methodNo}</td>
 								<c:if test="${methodVO.skinType eq 'DR'}">

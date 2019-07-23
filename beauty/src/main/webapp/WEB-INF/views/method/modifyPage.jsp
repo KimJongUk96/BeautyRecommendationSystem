@@ -69,8 +69,8 @@
                                                 	
 
                         <div class="form-group mb-3">
-							<label for="exampleInputEmail1">피부타입</label>
-							<select name="skinType">
+							<label for="example-select">피부타입</label>
+							<select class="form-control" name="skinType">
 							<option value="DR"<c:out value="${methodVO.skinType eq 'DR'?'selected':''}"/>>건성</option>
 							<option value="NE"<c:out value="${methodVO.skinType eq 'NE'?'selected':''}"/>>중성</option>
 							<option value="OI"<c:out value="${methodVO.skinType eq 'OI'?'selected':''}"/>>지성</option>
@@ -80,8 +80,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">화장정도</label>
-							<select name="makeUpDegree">
+							<label for="example-select">화장정도</label>
+							<select class="form-control" name="makeUpDegree">
 							<option value="NM"<c:out value="${methodVO.makeUpDegree eq 'NM'?'selected':''}"/>>노 메이크업</option>
 							<option value="YM"<c:out value="${methodVO.makeUpDegree eq 'YM'?'selected':''}"/>>메이크업</option>
 							<option value="SM"<c:out value="${methodVO.makeUpDegree eq 'SM'?'selected':''}"/>>색조메이크업</option>
@@ -89,8 +89,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputPassword1">세안법 Step</label>
-							<select name="methodStep" id="methodStep">
+							<label for="example-select">세안법 Step</label>
+							<select class="form-control" name="methodStep" id="methodStep">
 							<option value="1" id="step1"<c:out value="${methodVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
 							<option value="2" id="step2"<c:out value="${methodVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
 							<option value="3" id="step3"<c:out value="${methodVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
@@ -114,8 +114,8 @@
 						</div>
 						
 						<div class="form-group" id="prodNo">
-							<label for="exampleInputEmail1">사용제품명</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '1'}">
@@ -169,8 +169,8 @@
 						</div>
 						
 						<div class="form-group" id="prodNo2">
-							<label for="exampleInputEmail1">사용제품명2</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명2</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '2'}">
@@ -230,8 +230,8 @@
 						</div>
 						
 							<div class="form-group" id="prodNo3">
-							<label for="exampleInputEmail1">사용제품명3</label>
-							<select name="prodNo" id="prodNo">
+							<label for="example-select">사용제품명3</label>
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '3'}">
