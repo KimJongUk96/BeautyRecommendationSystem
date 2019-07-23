@@ -10,7 +10,7 @@ METHOD: VARCHAR2(500) NOT NULL
 PROD_NO: NUMBER NOT NULL (FK)
 
  */
-public class MethodDetailVO{
+public class MethodDetailVO extends ProductVO{
 
 	private int detailNo;
 	private int step;

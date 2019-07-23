@@ -8,12 +8,12 @@ public class PageMaker {
    private int totalCount;
    private int startPage;
    private int endPage;
-   private boolean prev; //?��?�� ?��?���?�? ?��?���? ?��?��
+   private boolean prev; //?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙占�?占�? ?占쏙옙?占쏙옙占�? ?占쏙옙?占쏙옙
    private boolean next;
 
    private int displayPageNum = 10;
 
-   private Criteria cri; //?��?���??�� ???�� ?���?
+   private Criteria cri; //?占쏙옙?占쏙옙占�??占쏙옙 ???占쏙옙 ?占쏙옙占�?
 
    public void setCri(Criteria cri) {
       this.cri = cri;
@@ -27,7 +27,7 @@ public class PageMaker {
 
    private void calcData() {
 
-      endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum); //displayPageNum ?��?��?��?���? 보여�? ?��?���? 버튼?�� ?��
+      endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum); //displayPageNum ?占쏙옙?占쏙옙?占쏙옙?占쏙옙占�? 蹂댁뿬占�? ?占쏙옙?占쏙옙占�? 踰꾪듉?占쏙옙 ?占쏙옙
 
       startPage = (endPage - displayPageNum) + 1;
 
@@ -71,7 +71,7 @@ public class PageMaker {
       return cri;
    }
 
-   public String makeQuery(int page) { //?��?���? 버튼?�� ?��?��
+   public String makeQuery(int page) { //?占쏙옙?占쏙옙占�? 踰꾪듉?占쏙옙 ?占쏙옙?占쏙옙
 
       UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page) 
             .queryParam("perPageNum", cri.getPerPageNum()).build();
@@ -93,7 +93,7 @@ public class PageMaker {
 	   UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
 			   .queryParam("perPageNum", cri.getPerPageNum())
 			   .queryParam("skinType", ((MethodSuggestCriteria) cri).getSkinType())
-			   .queryParam("makeUp", ((MethodSuggestCriteria) cri).getMakeUp())
+			   .queryParam("makeUpDegree", ((MethodSuggestCriteria) cri).getMakeUpDegree())
 			   .queryParam("weather", ((MethodSuggestCriteria) cri).getWeather())
 			   .queryParam("dust", ((MethodSuggestCriteria) cri).getDust()).build();
 	   

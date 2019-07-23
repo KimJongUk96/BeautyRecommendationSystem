@@ -1,16 +1,25 @@
 package com.brs.domain.method;
 
-public class MethodSuggestVO {
+
+public class MethodSuggestVO extends MethodDetailVO {
 	int methodNo;
+	int methodStep;
 	String skinType;
-	String makeUp;
+	String makeUpDegree;
 	String weather;
 	String dust;
+	
 	public int getMethodNo() {
 		return methodNo;
 	}
 	public void setMethodNo(int methodNo) {
 		this.methodNo = methodNo;
+	}
+	public int getMethodStep() {
+		return methodStep;
+	}
+	public void setMethodStep(int methodStep) {
+		this.methodStep = methodStep;
 	}
 	public String getSkinType() {
 		return skinType;
@@ -18,11 +27,11 @@ public class MethodSuggestVO {
 	public void setSkinType(String skinType) {
 		this.skinType = skinType;
 	}
-	public String getMakeUp() {
-		return makeUp;
+	public String getMakeUpDegree() {
+		return makeUpDegree;
 	}
-	public void setMakeUp(String makeUp) {
-		this.makeUp = makeUp;
+	public void setMakeUpDegree(String makeUpDegree) {
+		this.makeUpDegree = makeUpDegree;
 	}
 	public String getWeather() {
 		return weather;
@@ -36,11 +45,11 @@ public class MethodSuggestVO {
 	public void setDust(String dust) {
 		this.dust = dust;
 	}
+	
 	@Override
 	public String toString() {
-		return "MethodSuggestVO [methodNo=" + methodNo + ", skinType=" + skinType + ", makeUp=" + makeUp + ", weather="
-				+ weather + ", dust=" + dust + "]";
+		return "MethodSuggestVO [methodNo=" + methodNo + ", methodStep=" + methodStep + ", skinType=" + skinType
+				+ ", makeUpDegree=" + makeUpDegree + ", weather=" + weather + ", dust=" + dust + "]";
 	}
-	
 	
 }

@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.brs.domain.method.MethodDetailVO;
 import com.brs.domain.method.MethodSuggestVO;
-import com.brs.domain.method.MethodVO;
 import com.brs.domain.util.MethodSuggestCriteria;
 import com.brs.persistence.method.MethodSuggestDAO;
 
@@ -18,13 +18,13 @@ public class MethodSuggestServiceImpl implements MethodSuggestService{
 	private MethodSuggestDAO mDao;
 
 	@Override
-	public List<MethodVO> read(MethodVO mVO) throws Exception {
-		return mDao.read(mVO);
+	public MethodSuggestVO read(int methodNo) throws Exception {
+		return mDao.read(methodNo);
 	}
 
 	@Override
-	public List<MethodVO> listCriteria(MethodSuggestCriteria cri) throws Exception {
-		return mDao.listCriteria(cri);
+	public List<MethodDetailVO> listSearch(MethodSuggestCriteria cri) throws Exception {
+		return mDao.listSearch(cri);
 	}
 
 	@Override
@@ -33,9 +33,9 @@ public class MethodSuggestServiceImpl implements MethodSuggestService{
 	}
 
 	@Override
-	public List<MethodVO> search(MethodVO mVo) throws Exception {
-		
-		return mDao.search(mVo);
+	public List<MethodSuggestVO> search(MethodSuggestVO mVO) throws Exception {
+		return mDao.search(mVO);
 	}
+
 
 }

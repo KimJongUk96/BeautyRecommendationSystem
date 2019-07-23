@@ -8,10 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.brs.domain.method.MethodDetailVO;
-import com.brs.domain.method.MethodVO;
-import com.brs.domain.product.ProdTypeVO;
 import com.brs.domain.product.ProductVO;
-import com.brs.domain.util.SearchCriteria;
 
 @Repository
 public class MethodDetailDAOimpl implements MethodDetailDAO{

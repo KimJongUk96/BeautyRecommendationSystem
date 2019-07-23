@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.brs.domain.method.MethodDetailVO;
 import com.brs.domain.method.MethodSuggestVO;
-import com.brs.domain.method.MethodVO;
 import com.brs.domain.util.MethodSuggestCriteria;
 
 @Repository
@@ -19,13 +19,13 @@ public class MethodSuggestDAOImpl implements MethodSuggestDAO{
 	private static String namespace = "com.brs.mapper.methodSuggestMapper";
 
 	@Override
-	public List<MethodVO> read(MethodVO mVO) throws Exception {
-		return session.selectList(namespace+".read", mVO);
+	public MethodSuggestVO read(int methodNo) throws Exception {
+		return session.selectOne(namespace+".read", methodNo);
 	}
 
 	@Override
-	public List<MethodVO> listCriteria(MethodSuggestCriteria cri) throws Exception {
-		return session.selectList(namespace+".listCriteria", cri);
+	public List<MethodDetailVO> listSearch(MethodSuggestCriteria cri) throws Exception {
+		return session.selectList(namespace+".listSearch", cri);
 	}
 
 	@Override
@@ -34,9 +34,10 @@ public class MethodSuggestDAOImpl implements MethodSuggestDAO{
 	}
 
 	@Override
-	public List<MethodVO> search(MethodVO mVo) throws Exception {
-		
-		return session.selectList(namespace+".search", mVo);
+	public List<MethodSuggestVO> search(MethodSuggestVO mVO) throws Exception {
+		return session.selectList(namespace+".search", mVO);
+				
 	}
+
 
 }

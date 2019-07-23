@@ -35,9 +35,6 @@ public class YJDAOTest {
 	@Test
 	public void testListCriteria() throws Exception{
 		MethodSuggestVO mVO = new MethodSuggestVO();
-		mVO.setDust("1");
-		mVO.setMakeUp("1");
-		mVO.setSkinType("1");
-		mVO.setWeather("1");
+
 	}
 }

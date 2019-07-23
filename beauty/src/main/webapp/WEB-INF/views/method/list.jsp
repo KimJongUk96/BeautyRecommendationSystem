@@ -141,7 +141,7 @@
 							                        </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach items="${methodList}" var="methodVO">
+                          <c:forEach items="${methodList}" var="methodVO">
 							<tr>
 								<td>${methodVO.methodNo}</td>
 								<c:if test="${methodVO.skinType eq 'DR'}">

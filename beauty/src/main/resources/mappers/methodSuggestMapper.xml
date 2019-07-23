@@ -3,42 +3,53 @@
 
 <mapper namespace="com.brs.mapper.methodSuggestMapper">
 
-	<select id="read" resultType="com.brs.domain.method.MethodVO">
-	select m.method_no, m.step, p.product_name, m.method
-	from tbl_product p, tbl_method_detail m
-	where p.product_no=m.product_no and m.method_no=#{method_no}
-	</select>
-
-	<select id="listCriteria" resultType="com.brs.domain.method.MethodVO">
-	<![CDATA[
-	select * from (
-	select rownum rnum, m.method_no, md.step, p.name, md.method
-	from (select method_no
-			from tbl_method
-			where skin_type=#{skinType} and makeup_degree=#{makeUp} and weather=#{weather} and dust=#{dust}) m, 
-		 tbl_product p, tbl_method_detail md 
-	where p.prod_no=md.prod_no and m.method_no=md.method_no and method_no>0)
-	where rnum >= #{pageStart}
-	and rnum <= #{pageEnd}
-	order by method_no asc, step asc
-	]]>
-	</select>
-
-	<select id="countPaging" resultType="int">
-	<![CDATA[
-	select count(method_no)
-	from tbl_method
-	where method_no > 0 
-	]]>
-	</select>
-
-<select id="search" resultType="com.brs.domain.method.MethodVO">
-SELECT *
-  FROM TBL_METHOD
- WHERE SKIN_TYPE = #{skinType}
-   AND MAKEUP_DEGREE = #{makeUpDegree}
-   AND WEATHER = #{weather}
-   AND DUST = #{dust}
+<select id="read" resultType="com.brs.domain.method.MethodSuggestVO">
+	select method_no, method_step, regdate 
+    from tbl_method
+    where method_no = #{methodNo}
 </select>
 
+<select id="search" resultType="com.brs.domain.method.MethodSuggestVO">
+	 SELECT METHOD_NO,METHOD_STEP FROM TBL_METHOD 
+     where skin_type= #{skinType, jdbcType=VARCHAR}
+     and makeup_degree = #{makeUpDegree, jdbcType=VARCHAR}
+     and weather = #{weather, jdbcType=VARCHAR}
+     and dust = #{dust, jdbcType=VARCHAR}
+</select>
+
+<select id="listSearch" resultType="com.brs.domain.method.MethodSuggestVO">
+		<![CDATA[
+	
+	 select * from(
+ 	 select rownum rnum, prod_no, name, method_no, method_step, regdate from (
+ 	 select 
+  	 m.method_no, m.method_step, m.regdate, p.prod_no, p.name
+ 	 from tbl_method m,tbl_method_detail md, tbl_product p
+ 	 where md.prod_no = p.prod_no
+	 and m.method_no = md.method_no
+     and m.skin_type= #{skinType, jdbcType=VARCHAR}
+     and m.makeup_degree = #{makeUpDegree, jdbcType=VARCHAR}
+     and m.weather = #{weather, jdbcType=VARCHAR}
+     and m.dust = #{dust, jdbcType=VARCHAR}
+ 	 
+	]]>
+	
+	 order by method_no desc, regdate desc
+  
+	<![CDATA[    
+	 )) where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
+	 order by method_no desc, regdate desc
+	]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	<![CDATA[  
+ 	 select count(method_no) 
+ 	 from tbl_method 
+ 	 where method_no > 0 
+	]]>
+	
+	</select>
+	
+		
 </mapper>
