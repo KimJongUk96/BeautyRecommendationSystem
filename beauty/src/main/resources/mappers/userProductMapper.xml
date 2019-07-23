@@ -3,26 +3,28 @@
 
 <mapper namespace="com.brs.mapper.UserProductMapper">
 
+	<!-- 높은 별점 순으로 리스트  -->
 	<select id="listSearch" resultType="com.brs.domain.product.ProductVO">
 	<![CDATA[  
 	 select * from(
-    select rownum rnum, prod_no, name, comp_name, 
-    	   img, rating_avg, prodtype_name, category_name  
+    select rownum rnum, prod_no, name, comp_name, img, rating_avg, 
+                  prodtype_name, category_name, price, regdate, count
       from (
-        select prod.prod_no, prod.name, prod.comp_name, 
-        	   prod.img, rt.rating_avg , pt.name as prodtype_name, ca.category_name
-          from rating_avg_view rt, tbl_product prod, tbl_prod_type pt ,tbl_category ca
+        select prod.prod_no, prod.name, prod.comp_name, prod.img, rt.rating_avg,
+               pt.name as prodtype_name, ca.category_name, prod.price, prod.regdate, cr.count
+          from rating_avg_view rt, tbl_product prod, tbl_prod_type pt ,tbl_category ca, count_review_view cr
          where prod.prod_no = rt.prod_no 
+           and cr.prod_no = prod.prod_no
            and pt.prodtype_no = prod.prodtype_no
            and ca.category_no = pt.category_no
 	]]>
 		<include refid="searchCategory"></include>
 		<include refid="searchProdtype"></include>
-				 order by rating_avg desc
+		<!-- <include refid="order"></include> -->
   
 	<![CDATA[    
 	 			)) where (rnum >= #{pageStart} AND rnum <= #{pageEnd})
-				 order by rating_avg desc
+				 
 	]]>
 	</select>
 	
@@ -101,6 +103,21 @@
 		</if>
 	</sql>
 
+
+	<!-- <sql id="order">
+		<if test="order != null">
+			<if test="order == 'regdate'">
+				order by regdate desc
+			</if>
+			<if test="order == 'avg'">
+				order by rating_avg desc
+			</if>
+			<if test="order == 'count'.toString()">
+				order by count desc
+			</if>
+		</if>
+	</sql> -->
+	
 
 	<select id = "read" resultType="com.brs.domain.product.ProductVO">
 	select prod.prod_no, prod.name, prod.comp_name, prod.price, prod.link,prod.img,

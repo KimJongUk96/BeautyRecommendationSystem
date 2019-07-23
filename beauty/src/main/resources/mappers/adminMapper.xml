@@ -4,7 +4,7 @@
 <mapper namespace="com.brs.mapper.adminMapper">
 
 	<select id="login" resultType="com.brs.domain.AdminVO">
-	SELECT ID, PW
+	SELECT *
 	FROM TBL_ADMIN
 	WHERE ID=#{usid} AND PW=#{upw}
 	</select>
@@ -30,12 +30,12 @@
   	 </select>
 
    	<update id="modify">
-      update tbl_admin set id =#{id}, pw =#{pw}
-      where
-      admin_no = #{adminNo}
+      update tbl_admin 
+         set id =#{id}, pw =#{pw}, name =#{name}
+       where admin_no = #{adminNo}
   	 </update>
 
-  	 <delete id="remove">
+  	 <delete id="delete">
       delete from tbl_admin where admin_no = #{adminNo}
   	 </delete>
 

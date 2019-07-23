@@ -53,44 +53,40 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Product Type Modify</h4>
+                                        <h4 class="header-title">Product Type READ</h4>
                                        
 
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <form role="form" action="modify" method="post">
-
-												<input type='hidden' name='prodtypeNo' value='${prodTypeVO.prodtypeNo}'>
+                                                
+                                                <input type='hidden' name='adminNo' value="${adminVO.adminNo}">
 												<input type='hidden' name='page' value="${cri.page}"> 
 												<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
                                                 	
 
                                                     <div class="form-group mb-3">
-                                                        <label for="simpleinput">제품 타입 명</label>
-                                                        <input type="text" name='name' class="form-control" value="${prodTypeVO.name}" readonly="readonly">
+                                                        <label for="simpleinput">관리자 ID</label>
+                                                        <input type="text" name='id' class="form-control" value="${adminVO.id}" readonly="readonly">
+                                                    </div>
+                                                    
+                                                    <div class="form-group mb-3">
+                                                        <label for="simpleinput">관리자 이름</label>
+                                                        <input type="text" name='name' class="form-control" value="${adminVO.name}" readonly="readonly">
                                                     </div>
                                                     
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">등록일</label>
-                                                         <input type="text" class="form-control" value=<fmt:formatDate pattern="yyyy-MM-dd" value="${prodTypeVO.regdate}"/> readonly="readonly">
+                                                        <input type="text" class="form-control" value=<fmt:formatDate pattern="yyyy-MM-dd" value="${adminVO.regdate}"/> readonly="readonly">
                                                     </div>
 
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-select">카테고리</label>
-                                                        <select class="form-control" name = "categoryNo">
-							
-															<option value = "1000" <c:out value="${prodTypeVO.categoryNo eq '1000'?'selected':'1000'}"/>>클렌징</option>
-															<option value = "1001" <c:out value="${prodTypeVO.categoryNo eq '1001'?'selected':'1001'}"/>>모이스춰라이저</option>
-															<option value = "1002" <c:out value="${prodTypeVO.categoryNo eq '1002'?'selected':'1002'}"/>>토너</option>
-															<option value = "1003" <c:out value="${prodTypeVO.categoryNo eq '1003'?'selected':'1003'}"/>>썬스크린</option>
-								
-														</select>
-                                                    </div>
+                                                    
+												</form>
 												<div class="box-footer" align="center">
-													<button type="submit" class="btn btn-outline-success btn-rounded">저장</button>
-													<button type="button" class="btn btn-outline-danger btn-rounded">취소</button>
+													<button type="submit" class="btn btn-outline-danger btn-rounded">삭제</button>
+													<button type="submit" class="btn btn-outline-success btn-rounded">수정</button>
+													<button type="submit" class="btn btn-outline-info btn-rounded">목록</button>
 												</div>
-											</form>
                                             </div> <!-- end col -->
 
                                           
@@ -152,22 +148,30 @@
         <!-- end demo js-->
     </body>
     <script>
-	$(document).ready(
-		function() {
-	
-			var formObj = $("form[role='form']");
+	$(document).ready(function() {
 
-			console.log(formObj);
+		var formObj = $("form[role='form']");
+		var adminNo = ${adminVO.adminNo};
 
-			$(".btn-outline-danger")
-				.on("click",function() {
-					self.location = "/prodtype/list?page=${cri.page}&perPageNum=${cri.perPageNum}";
-				});
+		console.log(formObj);
 
-			$(".btn-outline-success").on("click",
-				function() {
-					formObj.submit();
-				});
+		$(".btn-outline-success").on("click", function() {
+			formObj.attr("action", "/admin/modify");
+			formObj.attr("method", "get");
+			formObj.submit();
+		});
+
+		$(".btn-outline-danger").on("click", function() {
+			formObj.attr("action", "/admin/delete?adminNo=" + adminNo);
+			formObj.submit();
+		});
+
+		$(".btn-outline-info").on("click", function() {
+			formObj.attr("method", "get");
+			formObj.attr("action", "/admin/list");
+			formObj.submit();
+		});
+
 	});
 	</script>
 </html>

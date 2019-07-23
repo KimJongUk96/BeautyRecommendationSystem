@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,49 +51,38 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Product Type Modify</h4>
+                                        <h4 class="header-title">Product Type Register</h4>
                                        
 
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form role="form" action="modify" method="post">
-
-												<input type='hidden' name='prodtypeNo' value='${prodTypeVO.prodtypeNo}'>
-												<input type='hidden' name='page' value="${cri.page}"> 
-												<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+                                                <form role="form" method="post">
                                                 	
 
                                                     <div class="form-group mb-3">
-                                                        <label for="simpleinput">제품 타입 명</label>
-                                                        <input type="text" name='name' class="form-control" value="${prodTypeVO.name}" readonly="readonly">
-                                                    </div>
-                                                    
-                                                    <div class="form-group mb-3">
-                                                        <label for="simpleinput">등록일</label>
-                                                         <input type="text" class="form-control" value=<fmt:formatDate pattern="yyyy-MM-dd" value="${prodTypeVO.regdate}"/> readonly="readonly">
+                                                        <label for="simpleinput">ID</label>
+                                                        <input type="text" id="id" name='id' class="form-control">
                                                     </div>
 
                                                     <div class="form-group mb-3">
-                                                        <label for="example-select">카테고리</label>
-                                                        <select class="form-control" name = "categoryNo">
-							
-															<option value = "1000" <c:out value="${prodTypeVO.categoryNo eq '1000'?'selected':'1000'}"/>>클렌징</option>
-															<option value = "1001" <c:out value="${prodTypeVO.categoryNo eq '1001'?'selected':'1001'}"/>>모이스춰라이저</option>
-															<option value = "1002" <c:out value="${prodTypeVO.categoryNo eq '1002'?'selected':'1002'}"/>>토너</option>
-															<option value = "1003" <c:out value="${prodTypeVO.categoryNo eq '1003'?'selected':'1003'}"/>>썬스크린</option>
-								
-														</select>
+                                                        <label for="simpleinput">비밀번호</label>
+                                                        <input type="password" id="pw" name='pw' class="form-control">
                                                     </div>
+                                                    
+                                                    <div class="form-group mb-3">
+                                                        <label for="simpleinput">이름</label>
+                                                        <input type="text" id="name" name='name' class="form-control">
+                                                    </div>
+                                                    
 												<div class="box-footer" align="center">
-													<button type="submit" class="btn btn-outline-success btn-rounded">저장</button>
-													<button type="button" class="btn btn-outline-danger btn-rounded">취소</button>
+													<button type="submit" class="btn btn-outline-success btn-rounded">Submit</button>
 												</div>
 											</form>
                                             </div> <!-- end col -->
 
                                           
                                                
-                                            </div> <!-- end col -->
+                                            
                                         </div>
                                         <!-- end row-->
 
@@ -106,9 +93,8 @@
                         <!-- end row -->
 
                     </div> <!-- container -->
-
+					
                 </div> <!-- content -->
-
                 <!-- Footer Start -->
                  <footer class="footer">
                     <div class="container-fluid">
@@ -127,8 +113,10 @@
                     </div>
                 </footer>
                 <!-- end Footer -->
+                
+            
 
-            </div>
+           
 
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -152,22 +140,10 @@
         <!-- end demo js-->
     </body>
     <script>
-	$(document).ready(
-		function() {
-	
-			var formObj = $("form[role='form']");
+		var result = '${msg}';
 
-			console.log(formObj);
-
-			$(".btn-outline-danger")
-				.on("click",function() {
-					self.location = "/prodtype/list?page=${cri.page}&perPageNum=${cri.perPageNum}";
-				});
-
-			$(".btn-outline-success").on("click",
-				function() {
-					formObj.submit();
-				});
-	});
+		if (result == 'SUCCESS') {
+			alert("처리가 완료되었습니다.");
+		}
 	</script>
 </html>

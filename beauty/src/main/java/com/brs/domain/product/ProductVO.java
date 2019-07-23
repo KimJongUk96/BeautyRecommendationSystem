@@ -27,12 +27,14 @@ public class ProductVO {
 	private String prodtypeNo;
 	private int adminNo;
 	
-	//º°Á¡Æò±Õ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String ratingAvg;
-	//»óÇ°Å¸ÀÔ ÀÌ¸§
+	//ï¿½ï¿½Ç°Å¸ï¿½ï¿½ ï¿½Ì¸ï¿½
 	private String prodtypeName;
-	//»óÇ° Ä«Å×°í¸®
+	//ï¿½ï¿½Ç° Ä«ï¿½×°ï¿½
 	private String categoryName;
+	//ì¹´ìš´íŠ¸
+	private String count;
 	
 	public int getProdNo() {
 		return prodNo;
@@ -112,7 +114,12 @@ public class ProductVO {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "ProductVO [prodNo=" + prodNo + ", name=" + name + ", cusGender=" + cusGender + ", compName=" + compName

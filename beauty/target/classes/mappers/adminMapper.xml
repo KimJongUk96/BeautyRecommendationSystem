@@ -4,7 +4,7 @@
 <mapper namespace="com.brs.mapper.adminMapper">
 
 	<select id="login" resultType="com.brs.domain.AdminVO">
-	SELECT ID, PW
+	SELECT *
 	FROM TBL_ADMIN
 	WHERE ID=#{usid} AND PW=#{upw}
 	</select>
@@ -13,5 +13,69 @@
 	INSERT INTO TBL_CATEGORY (CATEGORY_NO, CATEGORY_NAME)
 	VALUES(SEQ_CATEGORY.NEXTVAL, #{categoryName})
 	</insert>
+	
+	
+	<insert id="regist">
+      insert into tbl_admin (admin_no, id, pw, name, regdate)
+      values(seq_admin.nextval ,#{id},#{pw}, #{name}, sysdate)
+   	</insert>
+
+   	<select id="read" resultType="com.brs.domain.AdminVO">
+      select
+      admin_No, id, pw, name,
+      regdate
+      from
+      tbl_admin
+      where admin_no = #{adminNo}
+  	 </select>
+
+   	<update id="modify">
+      update tbl_admin 
+         set id =#{id}, pw =#{pw}, name =#{name}
+       where admin_no = #{adminNo}
+  	 </update>
+
+  	 <delete id="delete">
+      delete from tbl_admin where admin_no = #{adminNo}
+  	 </delete>
+
+  	 <sql id="search">
+     	 <if test="searchType != null">
+         <if test="searchType == 'i'.toString()">
+            and admin_id like '%' || #{keyword} || '%'
+         </if>
+         <if test="searchType == 'n'.toString()">
+            and admin_name like '%' || #{keyword} || '%'
+         </if>
+     	 </if>
+   	</sql>
+
+   	<select id="listCriteria" resultType="com.brs.domain.AdminVO">
+	 <![CDATA[
+	select * from (
+		select  rownum rnum,  admin_no, id, pw, name, regdate from (
+  			select admin_No, id, pw, name, regdate
+ 			  from tbl_admin where admin_no > 0
+   	]]>
+      
+     <include refid="search"></include>
+     		order by admin_No desc, regdate desc
+
+  	<![CDATA[    
+    		)) where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
+    		order by admin_no desc, regdate desc
+   ]]>
+   </select>
+
+
+   	<select id="countPaging" resultType="int">
+ 	<![CDATA[
+ 	select count(admin_no) 
+  	  from tbl_admin 
+ 	 where admin_no > 0 
+ 	]]>
+     
+     <include refid="search"></include>
+   	</select>
 	
 </mapper>

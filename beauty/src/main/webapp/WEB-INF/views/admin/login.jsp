@@ -45,7 +45,7 @@
                         <p class="text-muted mb-4">관리자 로그인 페이지입니다.</p>
 
                         <!-- form -->
-                        <form action="/user/loginPost" method="post">
+                        <form action="/admin/loginPost" method="post">
                             <div class="form-group">
                                 <label for="emailaddress">ID</label>
                                 <input class="form-control" type="text" name="usid"  placeholder="Enter your ID">

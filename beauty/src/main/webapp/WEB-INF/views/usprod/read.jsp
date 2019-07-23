@@ -7,7 +7,7 @@
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
-	<form role="form" action="register" method="post">
+	<form role="form" action="register" method="GET">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">

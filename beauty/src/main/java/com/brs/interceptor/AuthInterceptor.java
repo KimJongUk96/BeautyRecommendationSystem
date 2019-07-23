@@ -29,18 +29,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       
       logger.info("uri: " + uri);
       logger.info("query: " + query);
-      
-      if(uri.equals("/admin/list")) {
-    	  //관리자로 인식한다.
-    	  logger.info("/admin/list: " + "/admin/list");
-    	  path ="/admin/login";
-    	  
-      }else if(uri.equals("/prodtype/list")) {
-    	  //관리자로 인식한다.
-    	  logger.info("/prodtype/list: " + "/prodtype/list");
-    	  path ="/admin/login";
-      }
-      
 
       if (req.getMethod().equals("GET")) {
          logger.info("dest: " + (uri + query));
