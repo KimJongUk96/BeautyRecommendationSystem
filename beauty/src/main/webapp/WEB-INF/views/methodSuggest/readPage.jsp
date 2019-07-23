@@ -90,7 +90,7 @@
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
-							<input type="text" name="prodNo" value="${productVO.prodNo}" readonly="readonly">
+							<input type="text" name="prodNo" value="${productVO.name}" readonly="readonly">
 								</c:if>
 								</c:forEach>
 						</div>
@@ -109,7 +109,7 @@
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
 							<c:if test="${status.count eq '2'}">
-							<input type="text" name="prodNo" value="${productVO.prodNo}" readonly="readonly">
+							<input type="text" name="prodNo" value="${productVO.name}" readonly="readonly">
 								</c:if>
 								</c:forEach>
 						</div>
@@ -129,7 +129,7 @@
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
 							<c:if test="${status.count eq '3'}">
-							<input type="text" name="prodNo" value="${productVO.prodNo}" readonly="readonly">
+							<input type="text" name="prodNo" value="${productVO.name}" readonly="readonly">
 								</c:if>
 								</c:forEach>
 						</div>
