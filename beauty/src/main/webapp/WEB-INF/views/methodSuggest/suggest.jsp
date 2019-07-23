@@ -1,15 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form method="post">
-<h3>피부정보 입력</h3>
+	<head>
+		<title>Generic - Intensify by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/resources/templated-intensify/assets/css/main.css" />
+		
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<nav class="left">
+					<a href="#menu"><span>Menu</span></a>
+				</nav>
+				<a href="index.html" class="logo">intensify</a>
+				<nav class="right">
+					<a href="#" class="button alt">Log in</a>
+				</nav>
+			</header>
+
+		<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul>
+				<ul class="actions vertical">
+					<li><a href="#" class="button fit">Login</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<form method="post">
+<h4>피부정보 입력</h4>
 <div>
 <label>피부 타입</label>
 <select name="skinType" id="skinType">
@@ -21,6 +57,7 @@
 	<option value="SE">민감성</option>
 </select>
 </div>
+<div><h3></h3></div>
 <div>
 <label>화장정도</label>
 <select name="makeUpDegree" id="makeUpDegree">
@@ -30,55 +67,57 @@
 	<option value="SM">색조메이크업</option>
 </select>
 </div>
-<div></div>
-<h3>날씨 정보 입력</h3>
+<div><h1></h1></div>
+<h4>날씨 정보 입력</h4>
 <div>
 <label>날씨</label>
+
 <%-- 	<input type="radio" name="weather" value="W1"<c:out value="${methodSuggestVO.weather eq 'W1'?'checked':''}"/>>맑음 --%>
-<input type="radio" name="weather" value="1">맑음
-	<input type="radio" name="weather" value="W2">흐림
-	<input type="radio" name="weather" value="W3">눈/비
+	<input type="radio" name="weather" value="W1" id="W1"><label for="W1">맑음</label>
+	<input type="radio" name="weather" value="W2" id="W2"><label for="W2">흐림</label>
+	<input type="radio" name="weather" value="W3" id="W3"><label for="W3">눈/비</label>
 </div>
+<div><h3></h3></div>
 <div>	
 <label>미세먼지</label> 
 <%-- 	<input type="radio" name="dust" value="D1"<c:out value="${methodSuggestVO.dust eq 'D1'?'checked':''}"/>>좋음 --%>
-<input type="radio" name="dust" value="1">좋음
-	<input type="radio" name="dust" value="D2">보통
-	<input type="radio" name="dust" value="D3">나쁨
-	<input type="radio" name="dust" value="D4">매우나쁨
+<div></div>
+	<input type="radio" name="dust" value="D1" id="D1"><label for="D1">좋음</label>
+	<input type="radio" name="dust" value="D2" id="D2"><label for="D2">보통</label>
+	<input type="radio" name="dust" value="D3" id="D3"><label for="D3">나쁨</label>
+	<input type="radio" name="dust" value="D4" id="D4"><label for="D4">매우나쁨</label>
 </div>	
-
-<div class="box-footer" align="center">
-	<button type="submit">Submit</button>
 </div>
 
-</form>								
+<div class="box-footer" align="center">
+	<button type="submit" class="button small">Submit</button>
+</div>
 
-</body>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-	$(document).ready(function(){
+</form>	</div>
+			</section>
 
-				$('#searchBtn').on("click",function(event) {
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<h2>Get In Touch</h2>
+					<ul class="actions">
+						<li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
+						<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+						<li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+				</div>
+			</footer>
 
-// 							self.location = "list"
-// 									+ '${pageMaker.makeQuery(1)}'
-// 									+ "&skinType="
-// 									+ $("select option:selected").val()
-// 									+ "&makeUp="
-// 									+ $("select option:selected").val()
-// 									+ "&weather=" + $('#weather').val()
-// 									+ "&dust=" + $('#dust').val();
-							var skinType = $("#skinType").val();
-							var makeUp = $("#makeUpDegree").val();
-							var weather = $("input[name='weather']:checked").val();
-							var dust = $("input[name='dust']:checked").val();
-							
-						});
+		<!-- Scripts -->
+			<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+			<script src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+			<script src="/resources/templated-intensify/assets/js/util.js"></script>
+			<script src="/resources/templated-intensify/assets/js/main.js"></script>
+			
 
-			});
-
-
-	
-</script>
+	</body>
 </html>
