@@ -17,7 +17,7 @@ import com.brs.domain.product.ProdSuggestVO;
 import com.brs.domain.product.ProductVO;
 import com.brs.domain.util.PageMaker;
 import com.brs.domain.util.SearchCriteria;
-
+import com.brs.service.product.ProdTypeService;
 import com.brs.service.product.ProductService;
 
 @Controller
@@ -28,6 +28,9 @@ public class ProdSuggestController {
 	
 	@Inject
 	private ProductService service;
+	
+	@Inject
+	private ProdTypeService typeService;
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -45,7 +48,7 @@ public class ProdSuggestController {
 		// button을 몇개 만들어야 하는지를 담당하는 부분
 		pageMaker.setTotalCount(service.listSearchCount(cri)); //fixed
 		
-		
+		model.addAttribute("prodTypeList", typeService.getAllType());
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("prodSuggestVO", prodSuggest);
 	}
