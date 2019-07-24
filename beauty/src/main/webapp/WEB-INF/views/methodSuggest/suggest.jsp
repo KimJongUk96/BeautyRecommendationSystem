@@ -28,6 +28,8 @@
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
 			<a href="/user/login" class="button alt">Log in</a>
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read" class="button alt">내 정보 수정</a>
 		</nav>
 	</header>
 
