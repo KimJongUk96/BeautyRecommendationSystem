@@ -56,7 +56,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form role="form" method="post">
+                                                <form method="post" name="frm">
                                                 	
 
                                                     <div class="form-group mb-3">
@@ -74,7 +74,7 @@
                                                         </select>
                                                     </div>
 												<div class="box-footer" align="center">
-													<button type="submit" class="btn btn-outline-success btn-rounded">Submit</button>
+													<button class="btn btn-outline-success btn-rounded" onclick="check()">등록</button>
 												</div>
 											</form>
                                             </div> <!-- end col -->
@@ -138,4 +138,21 @@
         <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
         <!-- end demo js-->
     </body>
+    <script>
+    function check(){
+    	var name = document.frm.name;
+    	
+    	 if (name.value == '') {
+             window.alert("타입 명을 입력해주세요.");
+             document.frm.name.focus();
+             document.getElementById("name").select();
+             return false;
+          }
+    	 $(document).ready(function(){
+    	      alert('등록되었습니다.')
+    	   });
+    	      return ture;
+    	      }
+    }
+    </script>
 </html>
