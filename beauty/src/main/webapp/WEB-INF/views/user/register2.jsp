@@ -126,9 +126,9 @@
 
 	<!-- Footer -->
 	<footer id="footer">
-		<div>
+		<div class="inner">
 			<h2>Get In Touch</h2>
-			<ul>
+			<ul class="actions">
 				<li><span class="icon fa-phone"></span> <a href="#">(000)
 						000-0000</a></li>
 				<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
@@ -152,6 +152,7 @@
 
 
 </body>
+</html>
 <script type="text/javascript">
 	//아이디가 맞지 않을 경우 가입버튼 비활성화를 위한 변수설정
 	$(function() {
@@ -198,4 +199,3 @@
 	}
 }
 </script>
-</html>

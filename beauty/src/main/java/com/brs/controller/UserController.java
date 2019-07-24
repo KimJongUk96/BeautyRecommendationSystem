@@ -150,7 +150,7 @@ public class UserController {
 		service.modify(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	
 	// 비밀번호 확인하는 폼으로 이동
