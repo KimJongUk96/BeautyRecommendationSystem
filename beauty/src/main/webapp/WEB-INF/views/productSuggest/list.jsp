@@ -9,40 +9,38 @@
 <html>
 
     <head>
-        <title>추천 제품 목록</title>
-        <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet"
-			href="/resources/templated-intensify/assets/css/main.css" />
-		<style>
-		
-		</style>
-    </head>
-	
-	<body class="subpage">
-		<!-- Header -->
-		<header id="header">
-			<nav class="left">
-				<a href="#menu"><span>Menu</span></a>
-			</nav>
-			<a href="index.html" class="logo">intensify</a>
-			<nav class="right">
-				<a href="#" class="button alt">Log in</a>
-			</nav>
-		</header>
-		
-		<!-- Menu -->
-		<nav id="menu">
-			<ul class="links">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="generic.html">세안 제품 목록</a></li>
-				<li><a href="elements.html">세안 제품 추천</a></li>
-				<li><a href="elements.html">세안법 추천</a></li>
-			</ul>
-			<ul class="actions vertical">
-				<li><a href="#" class="button fit">Login</a></li>
-			</ul>
+<title>Beauty</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="/resources/templated-intensify/assets/css/main.css" />
+
+</head>
+<body class="subpage">
+
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
 		</nav>
+		<a href="/index" class="logo">Beauty</a>
+		<nav class="right">
+			<a href="/user/login" class="button alt">Log in</a>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="/index">Home</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button fit">Login</a></li>
+		</ul>
+	</nav>
 		
 		
 		<!-- Main -->
