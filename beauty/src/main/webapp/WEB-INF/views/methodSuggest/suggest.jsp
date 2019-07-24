@@ -102,7 +102,7 @@
 		</div>
 
 		<div class="box-footer" align="center">
-			<button type="submit" class="button small">세안법 추천 받기</button>
+			<button type="submit" class="button special small">세안법 추천 받기</button>
 		</div>
 
 		</form>

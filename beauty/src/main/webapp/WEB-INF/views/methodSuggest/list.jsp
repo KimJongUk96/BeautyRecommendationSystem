@@ -36,7 +36,7 @@
 	<!-- Menu -->
 	<nav id="menu">
 		<ul class="links">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="index">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
 			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
@@ -54,7 +54,7 @@
 				<input type="hidden" name="weather" value="${methodSuggestVO.weather}"> 
 				<input type="hidden" name="dust" value="${methodSuggestVO.dust}">
 			</form>
-			<div>
+			<div style="margin-right:150px; margin-left:150px">
 				<h4>세안법 추천</h4>
 				
 				<div>
@@ -81,30 +81,8 @@
 				</table>
 			</div>
 			<div align="center">
-					<nav>
-						<ul>
-
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }" >&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeQuery(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }" >&raquo;</a></li>
-							</c:if>
-
-						</ul>
-						</nav>
-					</div>
+				<a href="/methodSuggest/suggest"><button class="button special small">세안법 다시 추천 받기</button></a>
+			</div>
 	</section>
 
 	<!-- Footer -->

@@ -33,7 +33,7 @@
 	<!-- Menu -->
 	<nav id="menu">
 		<ul class="links">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="index">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
 			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
@@ -64,8 +64,9 @@
 					<option value="3" id="step3"<c:out value="${methodSuggestVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
 					</select>
 				</div>
+				<h3></h3>
 				<div class="form-group mb-3" id="method">
-							<label for="simpleinput">세안법</label>
+							<label for="simpleinput" >세안법</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
 							<textarea class="form-control" name="method" rows="5"
@@ -73,7 +74,7 @@
 								</c:if>
 								</c:forEach>
 						</div>
-						
+						<h3></h3>
 						<div class="form-group mb-3" id="prodNo">
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
@@ -82,7 +83,7 @@
 								</c:if>
 								</c:forEach>
 						</div>
-						
+						<h3></h3>
 						<div class="form-group mb-3" id="method2">
 							<label for="simpleinput">세안법2</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
@@ -92,7 +93,7 @@
 							</c:if>
 								</c:forEach>
 						</div>
-						
+						<h3></h3>
 						<div class="form-group mb-3" id="prodNo2">
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
@@ -101,7 +102,7 @@
 								</c:if>
 								</c:forEach>
 						</div>
-						
+						<h3></h3>
 						
 						<div class="form-group mb-3" id="method3">
 							<label for="simpleinput">세안법3</label>
@@ -112,7 +113,7 @@
 							</c:if>
 								</c:forEach>
 						</div>
-						
+						<h3></h3>
 						<div class="form-group mb-3" id="prodNo3">
 							<label for="simpleinput">사용제품</label>
 							<c:forEach items="${prodList}" var="productVO" varStatus="status">
@@ -128,7 +129,7 @@
 
 		</form>
 		<div class="box-footer" align="center">
-			<button type="submit" class="button small">목록</button>
+			<button type="submit" class="button special small">목록</button>
 		</div>
 		</div>
 	</section>
