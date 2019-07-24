@@ -34,9 +34,9 @@
 	<nav id="menu">
 		<ul class="links">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">세안 제품 목록</a></li>
-			<li><a href="elements.html">세안 제품 추천</a></li>
-			<li><a href="elements.html">세안법 추천</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		<ul class="actions vertical">
 			<li><a href="#" class="button fit">Login</a></li>
@@ -47,62 +47,63 @@
 	<section id="main" class="wrapper">
 		<div class="inner">
 		<div text-align="center">
-			<h2>세안법 추천</h2>
-			<p>
-			<hr>
-			피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안법을 추천 받으세요
-			<hr>
+			<h2>리뷰 등록</h2>
+			
 			</p>
 			</div>
 			<form method="post">
-				<h4>피부정보 입력</h4>
+			<input type="hidden" name="userEmail" value="${login.email}">
+		    <input type='hidden' name='prodNo' value="${productVO.prodNo}"> 
+			<input type='hidden' name='page' value="${cri.page}"> 
+			<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+			<input type='hidden' name='searchType' value="${cri.searchType}">
+			<input type='hidden' name='keyword' value="${cri.keyword}">
+				<h4></h4>
 				<div>
-					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
-						<!-- 	<option value="DR">건성</option> -->
-						<option value="DR">건성</option>
-						<option value="NE">중성</option>
-						<option value="OI">지성</option>
-						<option value="CO">복합성</option>
-						<option value="SE">민감성</option>
-					</select>
+					<label>제품 명</label> 
+					<input type="text" id="name" name='name' class="form-control" readonly value = '${productVO.name }' style="width:300px">
+					
 				</div>
 				<div>
-					<h3></h3>
+					<label>카테고리</label> 
+					<input type="text" id="categoryName" name='categoryName' class="form-control" readonly value = '${productVO.categoryName }' style="width:300px">
+					
 				</div>
 				<div>
-					<label>화장정도</label> <select name="makeUpDegree" id="makeUpDegree" style="width:150px">
-						<option value="NM">노 메이크업</option>
-						<option value="YM">메이크업</option>
-						<option value="SM">색조메이크업</option>
-					</select>
+					<label>제품 타입</label> 
+					<input type="text" id="prodtypeName" name='prodtypeName' class="form-control" readonly  value = '${productVO.prodtypeName }' style="width:300px">
+					
 				</div>
+				<div>
+					<label>이미지</label> 
+					<input type="text" id="img" name='img' class="form-control" readonly value = '${productVO.img }'>
+					
+				</div>
+				<div>
+					<label>별점</label> 
+					<input type="text" id="rating" name='rating' class="form-control" placeholder="별점 " style="width:100px">
+					
+				</div>
+				<div>
+					<label>리뷰</label> 
+					<input type="text" id="reviewText" name='reviewText' class="form-control" placeholder="리뷰를 적어주세요."style="width:300px">
+					
+				</div>
+				<div class="form-group mb-3">
+		          <label>추천여부</label>
+		               <select name="command" style="width:150px">
+		               <option value ="0" selected>추천</option>
+		               <option value ="1">비추천</option>
+		           </select>
+		        </div>
 				<div>
 					<h1></h1>
 				</div>
-				<h4>날씨 정보 입력</h4>
-				<div>
-					<label>날씨</label>
-					<input type="radio" name="weather" value="W1" id="W1"><label for="W1">맑음</label> 
-					<input type="radio" name="weather" value="W2" id="W2"><label for="W2">흐림</label> 
-					<input type="radio" name="weather" value="W3" id="W3"><label for="W3">눈/비</label>
-				</div>
-				<div>
-					<h3></h3>
-				</div>
-				<div>
-					<label>미세먼지</label>
-					<div></div>
-					<input type="radio" name="dust" value="D1" id="D1"><label
-						for="D1">좋음</label> <input type="radio" name="dust" value="D2"
-						id="D2"><label for="D2">보통</label> <input type="radio"
-						name="dust" value="D3" id="D3"><label for="D3">나쁨</label>
-					<input type="radio" name="dust" value="D4" id="D4"><label
-						for="D4">매우나쁨</label>
-				</div>
+				
 		</div>
 
 		<div class="box-footer" align="center">
-			<button type="submit" class="button small">세안법 추천 받기</button>
+			<button type="submit" class="button small">제품 리뷰 등록</button>
 		</div>
 
 		</form>
@@ -135,7 +136,6 @@
 	<script src="/resources/templated-intensify/assets/js/util.js"></script>
 	<script src="/resources/templated-intensify/assets/js/main.js"></script>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	
 		<script>
 			function checkImageType(fileName){
 				
