@@ -1,168 +1,142 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
 <html>
+<head>
+<title>Beauty</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="/resources/templated-intensify/assets/css/main.css" />
 
-    <head>
-        <meta charset="utf-8" />
-        <title>제품 추천 받기</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
+</head>
+<body class="subpage">
 
-        <!-- inline style to handle loading of various element-->
-        <style>body.loading {visibility: hidden;}</style>
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+		<a href="index.html" class="logo">intensify</a>
+		<nav class="right">
+			<a href="#" class="button alt">Log in</a>
+		</nav>
+	</header>
 
-        <!-- third party css -->
-        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="generic.html">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button fit">Login</a></li>
+		</ul>
+	</nav>
 
-        <!-- App css -->
-        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
-        
-    </head>
-
-
-	<body class="loading">
-		<div id="detached-topbar-placeholder"></div>
-		<!-- Begin page -->
-		<div class="wrapper">
-		
-		    <div id="vertical-sidebar-placeholder"></div>
-		    <div id="detached-sidebar-placeholder"></div>
-		
-		    <!-- ============================================================== -->
-		    <!-- Start Page Content here -->
-		    <!-- ============================================================== -->
-		
-		    <div class="content-page">
-		
-		        <div class="content">
-		
-		            <div id="vertical-topbar-placeholder"></div>
-		            <div id="horizontal-topbar-placeholder"></div>
-		            <div><h3></h3></div>
-		            <!-- Start Content-->
-		            <div class="container-fluid">
-		                <div class="row">
-		                    <div class="col-12">
-		                        <div class="card">
-		                            <div class="card-body">
-		                                <h1>세안 제품 추천</h1>
-		                                <p> 
-		                                	<hr>
-		                                	피부 타입과 피부 고민에 따른
-		                                	<br/>나만의 맞춤형 세안 제품을 추천 받으세요
-		                                	<hr>
-		                                </p>
-
-		                                        <form role="form" method="post">
-		                                        <h3> 피부 정보 입력 </h3>
-		                                        <br/><br/>
-		                                        
-		                                            <div class="form-group mb-3">
-		                                                <label for="gender">제품 이름</label>
-		                                                <fieldset>
-												            
-														                 여성 <input type="radio" name="gender" value="U1" checked />
-														        &nbsp;
-														        &nbsp;
-														        &nbsp;         
-														                 남성 <input type="radio" name="gender" value="U2" />
-												        </fieldset>
-		                                            </div>
-													<hr>
-		                                            <div class="form-group mb-3">
-		                                                <label for="example-select">성별</label>
-		                                                <select class="form-control" id="age" name="age" style="width:100px">
-		                                                    <option value = "10"> 10대        </option>
-		                                                    <option value = "20"> 20대        </option>
-		                                                    <option value = "30"> 30대        </option>
-		                                                    <option value = "40"> 40대        </option>
-		                                                    <option value = "50"> 50대        </option>
-		                                                </select>
-		                                            </div>
-													<hr>
-		                                            <div class="form-group mb-3">
-		                                                <label for="skinType">피부타입</label>     
-		                                                <fieldset>
-														                 건성 <input type="radio" name="skinType" value="DR" checked />
-														        &nbsp;&nbsp;
-														                 중성 <input type="radio" name="skinType" value="NE" />
-														        &nbsp;&nbsp;
-														                 지성 <input type="radio" name="skinType" value="OI" />
-														        &nbsp;&nbsp;       
-														                 복합성 <input type="radio" name="skinType" value="CO" />
-														        &nbsp;&nbsp;         
-														                 민감성 <input type="radio" name="skinType" value="SE" />
-												        </fieldset>
-		                                            </div>
-		
-		                                            <div class="box-footer" align="center">
-		                                                <button type="submit" class="btn btn-outline-success btn-rounded">제품 추천 받기</button>
-		                                            </div>
-		                                            
-		                                        </form>
-		                                    
-		                               
-		                            </div> <!-- end card-body -->
-		                        </div><!-- end card -->
-		                    </div> <!-- end col -->
-		                </div>
-		                <!-- end row-->
-		
-		            </div> <!-- container -->
-		
-		        </div> <!-- content -->
-		
-		        <!-- Footer Start -->
-		        <footer class="footer">
-		            <div class="container-fluid">
-		                <div class="row">
-		                    <div class="col-md-6">
-		                        2018 - 2019 © Hyper - Coderthemes.com
-		                    </div>
-		                    <div class="col-md-6">
-		                        <div class="text-md-right footer-links d-none d-md-block">
-		                            <a href="javascript: void(0);">About</a>
-		                            <a href="javascript: void(0);">Support</a>
-		                            <a href="javascript: void(0);">Contact Us</a>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </footer>
-		        <!-- end Footer -->
-		
-		    </div>
-		
-		    <!-- ============================================================== -->
-		    <!-- End Page content -->
-		    <!-- ============================================================== -->
-		
-		
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="inner">
+			<div text-align="center">
+			<h2>세안 제품 추천</h2>
+			<p>
+			<hr>
+			피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안 제품을 추천 받으세요
+			<hr>
+			</p>
+			</div>
+			<form method="post">
+				<h4>피부정보 입력</h4>
+				<div>
+					<label>성별</label>
+					<fieldset>
+						<input type="radio" name="gender" value="U1" id="U1"><label for="U1">여성</label> 
+						&nbsp; &nbsp; &nbsp;<input type="radio" name="gender" value="U2" id="U2"><label for="U2">남성</label> 
+					</fieldset>
+				</div>
+				<div>
+					<h3></h3>
+				</div>
+				<div>
+					<label>나이</label> 
+					<select id="age" name="age" style="width:100px">
+		                <option value = "10"> 10대        </option>
+		                <option value = "20"> 20대        </option>
+		                <option value = "30"> 30대        </option>
+		                <option value = "40"> 40대        </option>
+		                <option value = "50"> 50대        </option>
+		            </select>
+				</div>
+				<div>
+					<h1></h1>
+				</div>
+				<div>
+					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
+						<option value="DR">건성</option>
+						<option value="NE">중성</option>
+						<option value="OI">지성</option>
+						<option value="CO">복합성</option>
+						<option value="SE">민감성</option>
+					</select>
+				</div>
+				<div>
+					<h3></h3>
+				</div>
+				<div>
+					<label>미세먼지</label>
+					<%-- 	<input type="radio" name="dust" value="D1"<c:out value="${methodSuggestVO.dust eq 'D1'?'checked':''}"/>>좋음 --%>
+					<div></div>
+					<input type="radio" name="dust" value="D1" id="D1">
+					<label for="D1">좋음</label> 
+					<input type="radio" name="dust" value="D2" id="D2"><label for="D2">보통</label> 
+					<input type="radio" name="dust" value="D3" id="D3"><label for="D3">나쁨</label>
+					<input type="radio" name="dust" value="D4" id="D4"><label for="D4">매우나쁨</label>
+				</div>
 		</div>
-		<!-- END wrapper -->		
 
-	    <!-- App js -->
-        <script src="/resources/dist/assets/js/app_admin.js"></script>
+		<div class="box-footer" align="center">
+			<button type="submit" class="button small">제품 추천 받기</button>
+		</div>
 
-        <!-- third party js -->
-        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
-        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
-        <!-- third party js ends -->
+		</form>
+		</div>
+	</section>
 
-        <!-- demo app -->
-        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
-        <!-- end demo js-->
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<h2>Get In Touch</h2>
+			<ul class="actions">
+				<li><span class="icon fa-phone"></span> <a href="#">(000)
+						000-0000</a></li>
+				<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+				<li><span class="icon fa-map-marker"></span> 123 Somewhere
+					Road, Nashville, TN 00000</li>
+			</ul>
+		</div>
+		<div class="copyright">
+			&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>.
+			Images <a href="https://unsplash.com">Unsplash</a>.
+		</div>
+	</footer>
 
-	</body>
-	
-	
-	<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	
-	
+	<!-- Scripts -->
+	<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+	<script
+		src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/util.js"></script>
+	<script src="/resources/templated-intensify/assets/js/main.js"></script>
+
+
+</body>
 </html>

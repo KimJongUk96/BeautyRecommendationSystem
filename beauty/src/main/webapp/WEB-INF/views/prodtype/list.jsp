@@ -25,7 +25,29 @@
         <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
 
     </head>
-
+	<style type="text/css">
+.container {
+  width: 70%;
+  height: 70%;
+  margin: 10px auto;
+}
+.outer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.centered {
+  position: relative;
+  display: inline-block;
+ 
+  width: 50%;
+}
+    </style>
     <body class="loading">
         <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
@@ -49,24 +71,7 @@
                     <!-- Start Content-->
                     <div class="container-fluid">
                         
-                        <!-- start page title -->
-                      <!--   <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                            <li class="breadcrumb-item active">Basic Tables</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Basic Tables</h4>
-                                </div>
-                            </div>
-                        </div>      -->
-                        <!-- end page title --> 
-
-
+                       
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="card">
@@ -101,7 +106,10 @@
                                         </div> <!-- end table-responsive-->
 
 				
-
+					<div class="container">
+                        <div class="outer">
+                            <div class="inner">
+                               <div class="centered">
 					<div class="text-center" align="center">
 					<nav>
 						<ul class="pagination pagination-rounded">
@@ -113,8 +121,8 @@
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
-								<li class="page-item active"
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+								<li class="page-item
+									<c:out value="${pageMaker.cri.page == idx?'active':''}"/>">
 									<a href="list${pageMaker.makeQuery(idx)}" class="page-link">${idx}</a>
 								</li>
 							</c:forEach>
@@ -127,6 +135,7 @@
 						</ul>
 						</nav>
 					</div>
+					</div></div></div></div>
 
 				
                                     </div> <!-- end card body-->

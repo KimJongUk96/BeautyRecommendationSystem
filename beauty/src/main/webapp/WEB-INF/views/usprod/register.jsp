@@ -1,166 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
 <html>
+<head>
+<title>Beauty</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="/resources/templated-intensify/assets/css/main.css" />
 
-    <head>
-        <meta charset="utf-8" />
-        <title>관리자 페이지</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
+</head>
+<body class="subpage">
 
-        <!-- inline style to handle loading of various element-->
-        <style>body.loading {visibility: hidden;}</style>
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+		<a href="index.html" class="logo">intensify</a>
+		<nav class="right">
+			<a href="#" class="button alt">Log in</a>
+		</nav>
+	</header>
 
-        <!-- third party css -->
-        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="generic.html">세안 제품 목록</a></li>
+			<li><a href="elements.html">세안 제품 추천</a></li>
+			<li><a href="elements.html">세안법 추천</a></li>
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button fit">Login</a></li>
+		</ul>
+	</nav>
 
-        <!-- App css -->
-        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
-        
-        	<style>
-				.fileDrop {
-				  width: 80%;
-				  height: 100px;
-				  border: 1px dotted gray;
-				  margin: auto;
-				  
-				}
-			</style>
-    </head>
-
-
-	<body class="loading">
-		<div id="detached-topbar-placeholder"></div>
-		<!-- Begin page -->
-		<div class="wrapper">
-		
-		    <div id="vertical-sidebar-placeholder"></div>
-		    <div id="detached-sidebar-placeholder"></div>
-		
-		    <!-- ============================================================== -->
-		    <!-- Start Page Content here -->
-		    <!-- ============================================================== -->
-		
-		    <div class="content-page">
-		
-		        <div class="content">
-		
-		            <div id="vertical-topbar-placeholder"></div>
-		            <div id="horizontal-topbar-placeholder"></div>
-		            <div><h3></h3></div>
-		            <!-- Start Content-->
-		            <div class="container-fluid">
-		                <div class="row">
-		                    <div class="col-12">
-		                        <div class="card">
-		                            <div class="card-body">
-		                                <h4 class="header-title">제품 등록</h4>
-		                                
-		
-		                                <div class="row">
-		                                    <div class="col-lg-6">
-		                                        <form role="form" method="post">
-		                                        <input type="hidden" name="userEmail" value="${login.email}">
-		                                        <input type='hidden' name='prodNo' value="${productVO.prodNo}"> 
-												<input type='hidden' name='page' value="${cri.page}"> 
-												<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
-												<input type='hidden' name='searchType' value="${cri.searchType}">
-												<input type='hidden' name='keyword' value="${cri.keyword}">
-		                                        	<div class="form-group mb-3">
-		                                                <label for="simpleinput"><br/>제품 명</label>
-		                                                <input type="text" id="name" name='name' class="form-control" readonly 
-		                                                value = '${productVO.name }'>
-		                                            </div>
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput"><br/>카테고리</label>
-		                                                <input type="text" id="categoryName" name='categoryName' class="form-control" readonly 
-		                                                value = '${productVO.categoryName }'>
-		                                            </div>
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput"><br/>제품타입</label>
-		                                                <input type="text" id="prodtypeName" name='prodtypeName' class="form-control" readonly 
-		                                                value = '${productVO.prodtypeName }'>
-		                                            </div>
-		                                             <div class="form-group mb-3">
-		                                                <label for="simpleinput"><br/>이미지</label>
-		                                                <input type="text" id="img" name='img' class="form-control" readonly 
-		                                                value = '${productVO.img }'>
-		                                            </div>
-		                                        
-		                                        
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput"><br/>별점</label>
-		                                                <input type="text" id="rating" name='rating' class="form-control" placeholder="제품명 입력">
-		                                            </div>
-		
-		
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput">리뷰</label>
-		                                                <input type="text" id="reviewText" name='reviewText' class="form-control" placeholder="회사명 입력">
-		                                            </div>
-		
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput">추천여부</label>
-		                                                <select name="command">
-		                                                <option value ="0" selected>추천</option>
-		                                                <option value ="1">비추천</option>
-		                                                </select>
-		                                            </div>
-		
-		
-		                                            <div class="box-footer" align="center">
-		                                                <button type="submit" class="btn btn-outline-success btn-rounded">등록하기</button>
-		                                            </div>
-		                                        </form>
-		                                    </div> <!-- end col -->
-		                                </div> <!-- end row-->
-		                            </div> <!-- end card-body -->
-		                        </div><!-- end card -->
-		                    </div> <!-- end col -->
-		                </div>
-		                <!-- end row-->
-		
-		            </div> <!-- container -->
-		
-		        </div> <!-- content -->
-		
-		        <!-- Footer Start -->
-		        <footer class="footer">
-		            <div class="container-fluid">
-		                <div class="row">
-		                    <div class="col-md-6">
-		                        2018 - 2019 © Hyper - Coderthemes.com
-		                    </div>
-		                    <div class="col-md-6">
-		                        <div class="text-md-right footer-links d-none d-md-block">
-		                            <a href="javascript: void(0);">About</a>
-		                            <a href="javascript: void(0);">Support</a>
-		                            <a href="javascript: void(0);">Contact Us</a>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </footer>
-		        <!-- end Footer -->
-		
-		    </div>
-		
-		    <!-- ============================================================== -->
-		    <!-- End Page content -->
-		    <!-- ============================================================== -->
-		
-		
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="inner">
+		<div text-align="center">
+			<h2>세안법 추천</h2>
+			<p>
+			<hr>
+			피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안법을 추천 받으세요
+			<hr>
+			</p>
+			</div>
+			<form method="post">
+				<h4>피부정보 입력</h4>
+				<div>
+					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
+						<!-- 	<option value="DR">건성</option> -->
+						<option value="DR">건성</option>
+						<option value="NE">중성</option>
+						<option value="OI">지성</option>
+						<option value="CO">복합성</option>
+						<option value="SE">민감성</option>
+					</select>
+				</div>
+				<div>
+					<h3></h3>
+				</div>
+				<div>
+					<label>화장정도</label> <select name="makeUpDegree" id="makeUpDegree" style="width:150px">
+						<option value="NM">노 메이크업</option>
+						<option value="YM">메이크업</option>
+						<option value="SM">색조메이크업</option>
+					</select>
+				</div>
+				<div>
+					<h1></h1>
+				</div>
+				<h4>날씨 정보 입력</h4>
+				<div>
+					<label>날씨</label>
+					<input type="radio" name="weather" value="W1" id="W1"><label for="W1">맑음</label> 
+					<input type="radio" name="weather" value="W2" id="W2"><label for="W2">흐림</label> 
+					<input type="radio" name="weather" value="W3" id="W3"><label for="W3">눈/비</label>
+				</div>
+				<div>
+					<h3></h3>
+				</div>
+				<div>
+					<label>미세먼지</label>
+					<div></div>
+					<input type="radio" name="dust" value="D1" id="D1"><label
+						for="D1">좋음</label> <input type="radio" name="dust" value="D2"
+						id="D2"><label for="D2">보통</label> <input type="radio"
+						name="dust" value="D3" id="D3"><label for="D3">나쁨</label>
+					<input type="radio" name="dust" value="D4" id="D4"><label
+						for="D4">매우나쁨</label>
+				</div>
 		</div>
-		<!-- END wrapper -->		
 
-	    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<div class="box-footer" align="center">
+			<button type="submit" class="button small">세안법 추천 받기</button>
+		</div>
+
+		</form>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<h2>Get In Touch</h2>
+			<ul class="actions">
+				<li><span class="icon fa-phone"></span> <a href="#">(000)
+						000-0000</a></li>
+				<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+				<li><span class="icon fa-map-marker"></span> 123 Somewhere
+					Road, Nashville, TN 00000</li>
+			</ul>
+		</div>
+		<div class="copyright">
+			&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>.
+			Images <a href="https://unsplash.com">Unsplash</a>.
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+	<script
+		src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/util.js"></script>
+	<script src="/resources/templated-intensify/assets/js/main.js"></script>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	
 		<script>
 			function checkImageType(fileName){
@@ -311,19 +285,6 @@
 			
 	
 		</script>
-	
-	
-	    <!-- App js -->
-        <script src="/resources/dist/assets/js/app_admin.js"></script>
 
-        <!-- third party js -->
-        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
-        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
-        <!-- third party js ends -->
-
-        <!-- demo app -->
-        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
-        <!-- end demo js-->
-
-	</body>
+</body>
 </html>
