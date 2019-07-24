@@ -27,7 +27,7 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="/index" class="logo">Beauty</a>
+		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
 			<a href="/user/login" class="button alt">Log in</a>
 		</nav>

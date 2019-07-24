@@ -2,7 +2,47 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 
+<html>
+<head>
+<title>Beauty</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="/resources/templated-intensify/assets/css/main.css" />
+
+</head>
+<body class="subpage">
+
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+		<a href="/index" class="logo">Beauty</a>
+		<nav class="right">
+			<a href="/user/login" class="button alt">Log in</a>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="/">Home</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button fit">Login</a></li>
+		</ul>
+	</nav>
 
 <!-- Main content -->
 <section class="content">
@@ -19,65 +59,6 @@
 
 
 				<div class='box-body'>
-
-					<%--  <select name="searchCategory">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							-----</option>
-						<option value="1000"
-							<c:out value="${cri.searchType eq ''?'selected':''}"/>>
-							클렌저</option>
-						<option value="1001"
-							<c:out value="${cri.searchType eq '1001'?'selected':''}"/>>
-							모이스처라이저</option>
-						<option value="1002"
-							<c:out value="${cri.searchType eq '1002'?'selected':''}"/>>
-							토너</option>
-						<option value="1003"
-							<c:out value="${cri.searchType eq '1003'?'selected':''}"/>>
-							썬스크린</option>
-						<option value="1020"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							클렌징비누</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-						
-					<select name="searchProdtype">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							-----</option>
-						<option value="fo"
-							<c:out value="${cri.searchType eq ''?'selected':''}"/>>
-							폼</option>
-						<option value="oi"
-							<c:out value="${cri.searchType eq '1001'?'selected':''}"/>>
-							오일</option>
-						<option value="wa"
-							<c:out value="${cri.searchType eq '1002'?'selected':''}"/>>
-							워터</option>
-						<option value="g"
-							<c:out value="${cri.searchType eq '1003'?'selected':''}"/>>
-							젤</option>
-						<option value="lo"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							로션</option>
-						<option value="es"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							에센스</option>
-						<option value="cr"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							크림</option>
-						<option value="sp"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							스프레이</option>
-						<option value="st"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							스틱</option>
-						<option value="cu"
-							<c:out value="${cri.searchType eq '1020'?'selected':''}"/>>
-							쿠션</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'> --%>
 					<input type="text" name='keyword' id="keywordInput"
 						value='${cri.keyword }'>
 					<button id='searchBtn'>검색</button>
@@ -102,34 +83,6 @@
 
 				<div class="box-body">
 					<table class="table table-bordered">
-						<%-- <tr>
-							<th style="width: 90px">no</th>
-							<th>이미지</th>
-							<th>회사명</th>
-							<th>제품명</th>
-							<th>회사명</th>
-
-						</tr>
-
-						<c:forEach items="${list}" var="productVO" varStatus="listStat">
-
-							<tr>
-								<td>${listStat.count}<input type="hidden"
-									value="${productVO.prodNo }" /> <input type="hidden"
-									value="${productVO.regdate }" /> <input type="hidden"
-									value="${productVO.count }" />
-								</td>
-								<td>${productVO.img}</td>
-								<td>${productVO.compName}</td>
-								<td><a
-									href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
-										${productVO.name} </a></td>
-								<td>${productVO.prodtypeName}${productVO.categoryName}
-									${productVO.price}</td>
-
-							</tr>
-
-						</c:forEach> --%>
 					<c:forEach items="${list}" var="productVO" varStatus="listStat">
 					<tr>
 					<td>${listStat.count}
@@ -239,3 +192,31 @@
 		})
 	}
 </script>
+<footer id="footer">
+			<div class="inner">
+				<h2>Get In Touch</h2>
+				<ul class="actions">
+					<li><span class="icon fa-phone"></span> <a href="#">(000)
+							000-0000</a></li>
+					<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+					<li><span class="icon fa-map-marker"></span> 123 Somewhere
+						Road, Nashville, TN 00000</li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>.
+				Images <a href="https://unsplash.com">Unsplash</a>.
+			</div>
+		</footer>
+</body>
+
+<!-- Scripts -->
+	<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+	<script
+		src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/util.js"></script>
+	<script src="/resources/templated-intensify/assets/js/main.js"></script>
+        <!-- end demo js-->
+
+</html>
