@@ -48,14 +48,11 @@
 
 	<!-- Main -->
 	<section id="main" class="wrapper">
-		<div class="inner">
 			<form name="frm" method="POST">
-				<input type="hidden" name="skinType"
-					value="${methodSuggestVO.skinType}"> <input type="hidden"
-					name="makeUpDegree" value="${methodSuggestVO.makeUpDegree}">
-				<input type="hidden" name="weather"
-					value="${methodSuggestVO.weather}"> <input type="hidden"
-					name="dust" value="${methodSuggestVO.dust}">
+				<input type="hidden" name="skinType" value="${methodSuggestVO.skinType}"> 
+				<input type="hidden" name="makeUpDegree" value="${methodSuggestVO.makeUpDegree}">
+				<input type="hidden" name="weather" value="${methodSuggestVO.weather}"> 
+				<input type="hidden" name="dust" value="${methodSuggestVO.dust}">
 			</form>
 			<div>
 				<h4>세안법 추천</h4>
@@ -73,11 +70,9 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${methodList}" var="methodSuggestVO">
-
 							<tr>
 								<td>${methodSuggestVO.methodNo}</td>
-								<td><a
-									href="/methodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodSuggestVO.methodNo}">${methodSuggestVO.methodStep}스텝</a></td>
+								<td><a href="/methodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodSuggestVO.methodNo}">${methodSuggestVO.methodStep}스텝</a></td>
 								<td>${methodSuggestVO.name}</td>
 							</tr>
 

@@ -134,9 +134,9 @@
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
-								<li class="page-item active"
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeQuery(idx)}" class="page-link">${idx}</a>
+								<li class="page-item
+									<c:out value="${pageMaker.cri.page == idx?'active':''}"/>">
+									<a href="list${pageMaker.makeQuery(idx)}&searchType=${cri.searchType}&keyword=${cri.keyword}" class="page-link">${idx}</a>
 								</li>
 							</c:forEach>
 

@@ -36,25 +36,16 @@ public class MethodSuggestController {
 	
 	@RequestMapping(value="/suggest", method=RequestMethod.GET)
 	public void Suggest(MethodSuggestVO mVO, Model model) throws Exception{
-		
-	}
-	
-	@RequestMapping(value="/suggest", method=RequestMethod.POST)
-	public String suggest(MethodSuggestVO mVO, 
-			MethodSuggestCriteria cri, Model model, RedirectAttributes rttr) throws Exception{
-		
-		List<MethodSuggestVO> methodSuggestVO = service.search(mVO);
-		
-		model.addAttribute("list", methodSuggestVO);
-		
-		logger.info("mVo : " + mVO.toString());
-		
-		return "redirect:/methodSuggest/list";
+		//세안법 추천 화면 method
 	}
 	
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public void List(@ModelAttribute("cri") MethodSuggestCriteria cri, Model model) throws Exception{
+	
+	@RequestMapping(value="/list", method=RequestMethod.POST)
+	public void ListPost(MethodSuggestCriteria cri, Model model) throws Exception{
+		//세안법 추천 결과 화면 method
+		
+		logger.info(cri.toString());
 		
 		model.addAttribute("methodList", service.listSearch(cri));
 		
@@ -70,8 +61,9 @@ public class MethodSuggestController {
 	@RequestMapping(value="/readPage", method = RequestMethod.GET)
 	public void readPage(@RequestParam("methodNo") int methodNo,
 						 @ModelAttribute("dVO") MethodDetailVO dVO,
-						 
 						 @ModelAttribute("cri") MethodSuggestCriteria cri, Model model) throws Exception {
+		
+		logger.info("methodNo: " + methodNo);
 	
 		model.addAttribute(service.read(methodNo));
 		

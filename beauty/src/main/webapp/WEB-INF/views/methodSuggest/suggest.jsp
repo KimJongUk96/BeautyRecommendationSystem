@@ -45,6 +45,7 @@
 
 	<!-- Main -->
 	<section id="main" class="wrapper">
+			<form method="post" action="list">
 		<div class="inner">
 		<div text-align="center">
 			<h2>세안법 추천</h2>
@@ -54,7 +55,6 @@
 			<hr>
 			</p>
 			</div>
-			<form method="post">
 				<h4>피부정보 입력</h4>
 				<div>
 					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
@@ -106,7 +106,6 @@
 		</div>
 
 		</form>
-		</div>
 	</section>
 
 	<!-- Footer -->

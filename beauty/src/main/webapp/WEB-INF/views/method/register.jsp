@@ -77,7 +77,7 @@
 							<option value="NM">노 메이크업</option>
 							<option value="YM">메이크업</option>
 							<option value="SM">색조 메이크업</option>
-							</select>
+							</select> 
 						</div>
 						
 						<div class="form-group mb-3">
@@ -89,10 +89,7 @@
 							</select>
 						</div>
 						
-						<div class="form-group mb-3">
-							<label for="simpleinput">step</label> <input type="text"
-								name="step" class="form-control" id="step">
-						</div>
+							 <input type="hidden" name="step" class="form-control" value="0" id="step">
 						
 						<div class="form-group mb-3" id="method">
 							<label for="simpleinput">세안법</label>
