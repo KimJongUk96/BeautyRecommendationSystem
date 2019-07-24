@@ -103,7 +103,11 @@
 
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">제품 종류</label>
-                                                        <textarea class="form-control"  name="prodtypeNo" rows="2">${productVO.prodtypeNo}</textarea>
+                                                        <select class="form-control" id="prodtypeNo" name="prodtypeNo">
+															<c:forEach items="${prodTypeList}" var="prodTypeVO">
+							                        			<option value="${prodTypeVO.prodtypeNo}" <c:out value="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo?'selected':prodTypeVO.prodtypeNo}"/>>${prodTypeVO.name}&nbsp;${prodTypeVO.category}</option>
+							                        	 	</c:forEach>
+		                                                </select>
                                                     </div>
 
                                                     <div class="form-group mb-3">
@@ -205,7 +209,7 @@
             $(".btn-outline-danger")
                 .on("click",function() {
                     self.location = "/product/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
-                        + "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+                        + "&searchType=n&keyword=${cri.keyword}";
                 });
 
             $(".btn-outline-success").on("click",

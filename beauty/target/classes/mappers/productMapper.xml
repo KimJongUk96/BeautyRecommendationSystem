@@ -81,15 +81,83 @@
 	
 		
 	<sql id="search">
+		<if test="searchType == null">
+			    select 
+		   			PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0 
+		  		order by 
+					PROD_NO desc, 
+					regdate desc
+				)
+		</if>
+		
+		
 		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">
+			    select 
+		   			PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0 
+		  		order by 
+					PROD_NO desc, 
+					regdate desc
+				)
+		    </if>
+		    <if test="searchType == ''.toString()">
+			    select 
+		   			PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0 
+		  		order by 
+					PROD_NO desc, 
+					regdate desc
+				)
+		    </if>	
+		
 			<if test="searchType == 'pn'.toString()">
-				and NAME like '%' || #{keyword} || '%'
+				select 
+		   			PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0
+		  			and NAME like '%' || #{keyword} || '%' 
+		  		order by 
+					PROD_NO desc, 
+					regdate desc
+				)
 			</if>
 			<if test="searchType == 'cn'.toString()">
-				and COMP_NAME like '%' || #{keyword} || '%'
+			    select 
+		   			PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  		from 
+		  			tbl_product 
+		  		where 
+		  			PROD_NO > 0
+		  			and COMP_NAME like '%' || #{keyword} || '%' 
+		  		order by 
+					PROD_NO desc, 
+					regdate desc
+				)
 			</if>
 			<if test="searchType == 'ptn'.toString()">
-				and PRODTYPE_NO like '%' || #{keyword} || '%'
+			            select 
+                           p.PROD_NO, p.NAME,  p.CUS_GENDER, p.COMP_NAME, p.PRICE, p.LINK, p.IMG,  p.REGDATE,  p.ADMIN_NO, p.PRODTYPE_NO, t.NAME || c.category_name as typename
+                        from 
+                           tbl_product p, tbl_prod_type t, tbl_category c
+                        where  
+                            p.prodtype_no = t.prodtype_no and c.category_no=t.category_no and PROD_NO > 0 
+                    )
+		  		where 
+		  			PROD_NO > 0 
+                    and typename like '%' || #{keyword} || '%'
 			</if>
 		</if>
 	</sql>
@@ -102,42 +170,12 @@
 			* 
 		from (
 		  	select
-		  		rownum rnum,
-		  		PROD_NO, 
-		  		NAME, 
-		  		CUS_GENDER, 
-		  		COMP_NAME, 
-		  		PRICE, 
-		  		LINK, 
-		  		IMG, 
-		  		REGDATE, 
-		  		ADMIN_NO, 
-		  		PRODTYPE_NO
-		  	from (
-		  		select 
-		   			PROD_NO, 
-			  		NAME, 
-			  		CUS_GENDER, 
-			  		COMP_NAME, 
-			  		PRICE, 
-			  		LINK, 
-			  		IMG, 
-			  		REGDATE, 
-			  		ADMIN_NO, 
-			  		PRODTYPE_NO
-		  		from 
-		  			tbl_product 
-		  		where 
-		  			PROD_NO > 0 
-		]]>
+		  		rownum rnum, PROD_NO, NAME, CUS_GENDER, COMP_NAME, PRICE, LINK, IMG, REGDATE, ADMIN_NO, PRODTYPE_NO
+		  	from ( ]]>
+		  		
 				<include refid="search"></include>
-				
-				order by 
-					PROD_NO desc, 
-					regdate desc
-		  
-		<![CDATA[    
-		 		)
+			
+		<![CDATA[
 		 	) 
 		 where(
 		 	rnum >= #{pageStart} AND rnum <= #{pageEnd}
@@ -148,18 +186,64 @@
 		]]>
 
 	</select>
+	
+	<sql id="search2">
+	    <if test="searchType == null">
+	    	    tbl_product 
+		     where 
+		  	    PROD_NO > 0
+	    </if>
+		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">
+	    	    tbl_product 
+		     where 
+		  	    PROD_NO > 0
+	        </if>
+	        
+	        <if test="searchType == ''.toString()">
+	    	    tbl_product 
+		     where 
+		  	    PROD_NO > 0
+	        </if>
+		    
+			<if test="searchType == 'pn'.toString()">
+				tbl_product 
+		     where 
+		  	    PROD_NO > 0 
+				and NAME like '%' || #{keyword} || '%' 
+			</if>
+			<if test="searchType == 'cn'.toString()">
+				tbl_product 
+		     where 
+		  	    PROD_NO > 0
+				and COMP_NAME like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'ptn'.toString()">
+				   (
+                        select 
+                           p.PROD_NO, p.NAME,  p.CUS_GENDER, p.COMP_NAME, p.PRICE, p.LINK, p.IMG,  p.REGDATE,  p.ADMIN_NO, p.PRODTYPE_NO, t.NAME || c.category_name as typename
+                        from 
+                           tbl_product p, tbl_prod_type t, tbl_category c
+                        where  
+                            p.prodtype_no = t.prodtype_no and c.category_no=t.category_no and PROD_NO > 0 
+                    )
+		  		where 
+		  			PROD_NO > 0 
+                    and typename like '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
 
 
 	<select id="listSearchCount" resultType="int">
 		<![CDATA[  
 		  select 
 		  	count(PROD_NO) 
-		  from 
-		  	tbl_product 
-		  where 
-		  	PROD_NO > 0 
-		]]>
-				<include refid="search"></include>
+		  from]]> 
+		  <include refid="search2"></include>
+		  	
+		
+				
 
 	</select>
 	

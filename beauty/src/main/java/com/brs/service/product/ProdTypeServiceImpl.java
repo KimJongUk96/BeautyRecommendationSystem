@@ -52,6 +52,12 @@ public class ProdTypeServiceImpl implements ProdTypeService{
 		
 	}
 
+	@Override
+	public List<ProdTypeVO> getAllType() throws Exception {
+		// TODO Auto-generated method stub
+		return pDao.getAllType();
+	}
+
 
 
 }

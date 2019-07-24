@@ -85,6 +85,7 @@
 					<button id='newBtn'>등록</button>
 					<button id='logout'>logout</button>
 
+
 				</div>
 			</div>
 
@@ -93,30 +94,59 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">LIST PAGING</h3>
 				</div>
+
+				<select id="order" name="order">
+					<option value="avg">평점 높은 순</option>
+					<option value="regdate">최신 등록 순</option>
+					<option value="count">리뷰 많은 순</option>
+				</select>
+
 				<div class="box-body">
 					<table class="table table-bordered">
-						<tr>
+						<%-- <tr>
 							<th style="width: 90px">no</th>
-							<th>제품명</th>
-							<th>제품 종류</th>
+							<th>이미지</th>
 							<th>회사명</th>
-							
+							<th>제품명</th>
+							<th>회사명</th>
+
 						</tr>
 
-						<c:forEach items="${list}" var="productVO">
+						<c:forEach items="${list}" var="productVO" varStatus="listStat">
 
 							<tr>
-								<td>${productVO.prodNo}
-								<input type="hidden" value = "${productVO.ratingAvg}"></input></td>
-								<td><a href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+								<td>${listStat.count}<input type="hidden"
+									value="${productVO.prodNo }" /> <input type="hidden"
+									value="${productVO.regdate }" /> <input type="hidden"
+									value="${productVO.count }" />
+								</td>
+								<td>${productVO.img}</td>
+								<td>${productVO.compName}</td>
+								<td><a
+									href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
 										${productVO.name} </a></td>
-								<td>${productVO.prodtypeName} ${productVO.categoryName}</td>
-								<td>${productVO.compName}</td>	
-								
+								<td>${productVO.prodtypeName}${productVO.categoryName}
+									${productVO.price}</td>
+
 							</tr>
 
-						</c:forEach>
-
+						</c:forEach> --%>
+					<c:forEach items="${list}" var="productVO" varStatus="listStat">
+					<tr>
+					<td>${listStat.count}
+					<input type="hidden" value="${productVO.prodNo }" /> 
+					<input type="hidden" value="${productVO.regdate }" />
+					<input type="hidden" value="${productVO.count }" />
+					</td>
+					<td>${productVO.img}</td>
+					<td>${productVO.compName}<br>
+					<a href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+					${productVO.name}</a><br>
+					${productVO.ratingAvg}</td>
+					<td>
+					${productVO.prodtypeName} / ${productVO.categoryName} / ${productVO.price}</td>
+					</tr>
+					</c:forEach>
 					</table>
 				</div>
 				<!-- /.box-body -->
@@ -128,10 +158,12 @@
 						<ul class="pagination">
 
 							<c:if test="${pageMaker.prev}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
-							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
 									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
@@ -139,7 +171,8 @@
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
@@ -186,7 +219,7 @@
 					self.location = "register";
 
 				});
-				
+
 				$('#logout').on("click", function(evt) {
 
 					self.location = "/admin/logout";
@@ -195,4 +228,15 @@
 
 			});
 </script>
+<script>
+	function boardChange() {
+		var order = $('#order option:selected').val();
 
+		$.ajax({
+			type : 'POST',
+			url : '/usprod/list/' + order,
+			data : order
+
+		})
+	}
+</script>

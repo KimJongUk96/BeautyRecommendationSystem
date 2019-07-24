@@ -8,12 +8,13 @@ CATEGORY_NO: NUMBER() NOT NULL (FK
 
 import java.util.Date;
 
-public class ProdTypeVO {
+public class ProdTypeVO{
 	private int prodtypeNo;
 	private String name;
 	private Date regdate;
 	private int categoryNo;
 	private String category;
+	
 	public int getProdtypeNo() {
 		return prodtypeNo;
 	}

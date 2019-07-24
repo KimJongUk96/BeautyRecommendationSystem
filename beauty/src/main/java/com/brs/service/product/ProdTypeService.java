@@ -15,6 +15,8 @@ public interface ProdTypeService {
 	public void delete(int prodtypeNo) throws Exception;
 	
 	public ProdTypeVO read(int prodtypeNo) throws Exception;
+	
+	public List<ProdTypeVO> getAllType() throws Exception;
 
 	public List<ProdTypeVO> listCriteria(Criteria cri) throws Exception;
 

@@ -15,6 +15,8 @@
 
 				<form role="form" method="post">
 					<div class="box-body">
+
+
 						<div class="form-group">
 							<label for="exampleInputEmail1">이메일</label> <input type="text"
 								id="email" name='email' class="form-control"
@@ -22,21 +24,35 @@
 							<!-- oninput="checkId()" -->
 							<span id="chkMsg">email 중복 확인 하세요</span>
 						</div>
+
+
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name='password' class="form-control"
-								placeholder="Enter Title">
+								id='pw' placeholder="Enter Title" onchange="isSame()">
 						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">비밀번호 확인</label> <input
+								type="password" name='passwordCheck' class="form-control"
+								id='pwCheck' placeholder="Enter Title" onchange="isSame()">
+							&nbsp;&nbsp;&nbsp;<span id="same"></span>
+						</div>
+
+
 						<div class="form-group">
 							<label for="exampleInputEmail1">닉네임</label> <input type="text"
 								name='nickName' class="form-control" placeholder="Enter Title">
 						</div>
+
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">성별</label> <input type="radio"
 								name="gender" value="U1" checked="checked" /> 여성 <input
 								type="radio" name="gender" value="U2" /> 남성
 						</div>
+
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">연령</label> <select name="age">
@@ -110,34 +126,25 @@
 					},
 				});
 
-			}else{
+			} else {
 				//SPAN 초기화
 				$('#chkMsg').html('email 중복 확인 하세요');
-				
+
 			}
 		});
 	});
-
-	/* 	var idCheck = 0;
-
-	 function checkId() {
-	 var email = $('#email').val();
-	 $.ajax({
-	 url : '/user/checkid',
-	 type : 'post',
-	 data : {
-	 email : email
-	 },
-	 success : function(data) {
-	 if ($.trim(data) == 0) {
-	 $('#chkMsg').html("사용가능");
-	 } else {
-	 $('#chkMsg').html("사용불가");
-	 }
-	 },
-	 /* error:function(){
-	 alert("에러입니다");
-	 }
-	 });
-	 }; */
+	
+	function isSame() {
+		
+		if(document.getElementById('pw').value != '' && document.getElementById('pwCheck').value!='')
+		{	if(document.getElementById('pw').value==document.getElementById('pwCheck').value){
+			document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+			document.getElementById('same').style.color='blue';
+		}
+		else {
+			document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+			document.getElementById('same').style.color='red';
+		}
+	}
+}
 </script>

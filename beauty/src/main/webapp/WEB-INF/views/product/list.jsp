@@ -76,10 +76,9 @@
 														제품 종류</option>
 													
 												</select>
-												<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
+												<input type="text" name='keyword' id="keywordInput" value='${cri.keyword}'>
 											   <button id='searchBtn' type="button" class="btn btn-light btn-rounded">검색</button>
 											   <button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
-											   <button id='logout' type="button" class="btn btn-light btn-rounded">로그아웃</button>
 										     </div>
 							
 							
@@ -106,8 +105,12 @@
 																<td> <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" alt="이미지 없음"/> </td>
 																<td><a href='/product/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
 																		${productVO.name} </a></td>
-																<td>${productVO.compName}</td>	
-																<td>${productVO.prodtypeNo}</td>
+																<td>${productVO.compName}</td>
+																<c:forEach items="${prodTypeList}" var="prodTypeVO">
+			                                                        <c:if test="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo}">
+			                                                        	<td>${prodTypeVO.name}&nbsp;${prodTypeVO.category}</td>
+											                        </c:if>
+										                        </c:forEach>	
 																<td>${productVO.price}</td>
 																<td><fmt:formatDate pattern="yyyy-MM-dd" value="${productVO.regdate}"></fmt:formatDate></td>
 																
@@ -213,16 +216,22 @@
 <script>
 	$(document).ready(
 			function() {
-
+				//<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
 				$('#searchBtn').on(
 						"click",
 						function(event) {
+							var keyword = $('#keywordInput').val();
+							var keyArray = keyword.split(' ');
+							keyword = '';
+							for(i=0; i<keyArray.length; i++){
+								keyword = keyword + keyArray[i];
+							}
 
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
+									+ "&keyword=" + keyword;
 
 						});
 

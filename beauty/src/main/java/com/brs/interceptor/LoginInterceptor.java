@@ -24,7 +24,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
       ModelMap modelMap = modelAndView.getModelMap();
       Object userVO = modelMap.get("userVO");
-      Object adminVO = modelMap.get("adminVO");
 
       if (userVO != null) { //사용자 로그인
 
@@ -34,14 +33,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
          Object dest = session.getAttribute("dest");
          response.sendRedirect(dest != null ? (String) dest : "/");
          
-      }else if(adminVO != null) { //관리자 로그인 
-    	  
-    	  logger.info("new login success");
-          session.setAttribute(LOGIN, adminVO);
-          
-          Object dest = session.getAttribute("dest");
-          response.sendRedirect(dest != null ? (String) dest : "/");
-    	  
       }
    }
 
@@ -56,7 +47,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
          logger.info("clear login data before");
          session.removeAttribute(LOGIN);
       }
-
+      
       return true;
    }
 

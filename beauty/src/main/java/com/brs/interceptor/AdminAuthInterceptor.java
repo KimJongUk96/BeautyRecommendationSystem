@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.brs.domain.AdminVO;
+
 public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminAuthInterceptor.class);
@@ -23,18 +25,17 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
+		Object adminVO = modelMap.get("adminVO");
 
-		if (userVO != null) {
-
-			logger.info("new login success");
-			session.setAttribute(LOGIN, userVO);
-			// response.sendRedirect("/");
-
-			// 로그?�� ?��?�� 보고 ?��?�� 경로, 로그?�� ?�� 보여줘야 ?��?�� ?��?���? 경로
-			Object dest = session.getAttribute("dest");
-			response.sendRedirect(dest != null ? (String) dest : "/");
-		}
+		if(adminVO != null) { //관리자 로그인 
+	    	  
+	    	  logger.info("new login success");
+	          session.setAttribute(LOGIN, adminVO);
+	          
+	          Object dest = session.getAttribute("dest");
+	          response.sendRedirect(dest != null ? (String) dest : "/");
+	    	  
+	      }
 	}
 
 	// 미리 ?��?�� : HttpSession초기?��
@@ -45,11 +46,24 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute(LOGIN) != null) {
-			logger.info("clear login data before");
-			session.removeAttribute(LOGIN);
+			
+			try {
+				
+				//사용자 인지 관리자 인지 확인
+				AdminVO vo = (AdminVO)session.getAttribute(LOGIN);
+				
+			} catch (ClassCastException e) {
+				logger.error("사용자 관리자 페이지 접속");
+				
+				response.sendRedirect("/user/login");
+		         return false;
+				
+			}
+			
 		}
-
+		
 		return true;
 	}
-
+	
+	
 }

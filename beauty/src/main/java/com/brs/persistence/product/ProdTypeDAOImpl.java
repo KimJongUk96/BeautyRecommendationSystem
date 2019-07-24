@@ -56,6 +56,12 @@ public class ProdTypeDAOImpl implements ProdTypeDAO{
 		return session.selectOne(namespace+".check", pVO);
 	}
 
+	@Override
+	public List<ProdTypeVO> getAllType() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".allType");
+	}
+
 	
 
 }

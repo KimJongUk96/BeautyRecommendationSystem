@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 
 <!DOCTYPE html>
 <html>
@@ -97,8 +100,14 @@
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">제품 종류</label>
-		                                                <input type="text" id="prodtypeNo" name='prodtypeNo' class="form-control" placeholder="제품 종류">
+		                                                <select class="form-control" id="prodtypeNo" name="prodtypeNo">
+															<c:forEach items="${prodTypeList}" var="prodTypeVO">
+							                        			<option value="${prodTypeVO.prodtypeNo}">${prodTypeVO.name}&nbsp;${prodTypeVO.category}</option>
+							                        	 	</c:forEach>
+		                                                </select>
+		                                                 
 		                                            </div>
+		                                           
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">관리자</label>
@@ -108,7 +117,7 @@
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">사진첨부</label>
-		                                                <input type="text" name='img' class="form-control" id="imgName" readonly="readonly">
+		                                                <input type="text" name='img' class="form-control" id="imgName" value='null' readonly="readonly">
 		                                                <hr>
 		                                                <div class="fileDrop">
 		                                                    <span>사진을 드래그 하거나 </br></span>

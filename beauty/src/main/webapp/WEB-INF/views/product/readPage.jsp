@@ -98,11 +98,18 @@
                                                         <label for="simpleinput">제품 구매 링크</label>
                                                         <input type="text" id="link" name='link' class="form-control" value="${productVO.link}" readonly="readonly">
                                                     </div>
-
+                                                    
+													
+													
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">제품 종류</label>
-                                                        <input type="text" id="prodtypeNo" name='prodtypeNo' class="form-control" value="${productVO.prodtypeNo}" readonly="readonly">
+                                                        <c:forEach items="${prodTypeList}" var="prodTypeVO">
+	                                                        <c:if test="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo}">
+									                        	<input type="text" name='prodtypeNo' class="form-control" value="${prodTypeVO.name}&nbsp;${prodTypeVO.category}" readonly="readonly">
+									                        </c:if>
+								                        </c:forEach>
                                                     </div>
+                                                    
 
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">관리자</label>

@@ -21,4 +21,6 @@ public interface ProdTypeDAO {
 	public int countPaging(Criteria cri) throws Exception;
 	
 	public String check(ProdTypeVO pVO) throws Exception;
+	
+	public List<ProdTypeVO> getAllType() throws Exception;
 }
