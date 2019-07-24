@@ -117,33 +117,33 @@ MERGE INTO tbl_method_detail USING dual ON (
 <sql id="searchSkin">
 		<if test="searchType != null">
 			<if test="searchType == 'DR'.toString()">
-				and skin_type like '%' || #{keyword} || '%'
+				and skin_type = 'DR'
 			</if>
 			<if test="searchType == 'NE'.toString()">
-				and skin_type like '%' || #{keyword} || '%'
+				and skin_type = 'NE'
 			</if>
 			<if test="searchType == 'OI'.toString()">
-				and skin_type like '%' || #{keyword} || '%'
+				and skin_type = 'OI'
 			</if>
 			<if test="searchType == 'CO'.toString()">
-				and skin_type like '%' || #{keyword} || '%'
+				and skin_type = 'CO'
 			</if>
 			<if test="searchType == 'SE'.toString()">
-				and skin_type like '%' || #{keyword} || '%'
+				and skin_type = 'SE'
 			</if>
 		</if>
 	</sql>
 	
 	<sql id="searchMakeUp">
-		<if test="searchType != null">
-			<if test="searchType == 'NM'.toString()">
-				and makeup_degree like '%' || #{keyword} || '%'
+		<if test="keyword != null">
+			<if test="keyword == 'NM'.toString()">
+				and makeup_degree = 'NM'
 			</if>
-			<if test="searchType == 'YM'.toString()">
-				and makeup_degree like '%' || #{keyword} || '%'
+			<if test="keyword == 'YM'.toString()">
+				and makeup_degree = 'YM'
 			</if>
-			<if test="searchType == 'SM'.toString()">
-				and makeup_degree like '%' || #{keyword} || '%'
+			<if test="keyword == 'SM'.toString()">
+				and makeup_degree = 'SM'
 			</if>
 		</if>
 	</sql>

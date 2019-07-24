@@ -99,7 +99,7 @@
                     	<div>
                     <div style="width:150px; height:100px;float:left;">               
 					<label for="example-select">피부타입</label>
-					<select class="form-control" name="searchType" style="width:110px">
+					<select class="form-control" name="searchType" id="searchType" style="width:110px">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -123,18 +123,18 @@
 					
 					<div style="width:150px; height:100px;float:left;">
 					<label for="example-select">화장정도</label>
-					<select class="form-control" name="searchType" style="width:110px">
+					<select class="form-control" name="keyword" id="keyword" style="width:110px">
 						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
+							<c:out value="${cri.keyword == null?'selected':''}"/>>
 							---</option>
 						<option value="NM"
-							<c:out value="${cri.searchType eq 'NM'?'selected':''}"/>>
+							<c:out value="${cri.keyword eq 'NM'?'selected':''}"/>>
 							노메이크업</option>
 						<option value="YM"
-							<c:out value="${cri.searchType eq 'YM'?'selected':''}"/>>
+							<c:out value="${cri.keyword eq 'YM'?'selected':''}"/>>
 							메이크업</option>
 						<option value="SE"
-							<c:out value="${cri.searchType eq 'SE'?'selected':''}"/>>
+							<c:out value="${cri.keyword eq 'SE'?'selected':''}"/>>
 							색조 메이크업</option>
 					</select>
 					</div>
@@ -216,7 +216,7 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li class = "page-item
 									<c:out value="${pageMaker.cri.page == idx?'active':''}"/>">
-									<a href="list${pageMaker.makeQuery(idx)}" class="page-link">${idx}</a>
+									<a href="list${pageMaker.makeSearch(idx)}" class="page-link">${idx}</a>
 								</li>
 							</c:forEach>
 
@@ -319,8 +319,9 @@
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
+									+ $("#searchType option:selected").val()
+									+ "&keyword="
+									+ $("#keyword option:selected").val();
 
 						});
 
