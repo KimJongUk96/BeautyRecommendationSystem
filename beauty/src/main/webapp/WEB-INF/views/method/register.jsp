@@ -77,7 +77,7 @@
 							<option value="NM">노 메이크업</option>
 							<option value="YM">메이크업</option>
 							<option value="SM">색조 메이크업</option>
-							</select>
+							</select> 
 						</div>
 						
 						<div class="form-group mb-3">
