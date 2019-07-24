@@ -189,7 +189,7 @@
 								<c:if test="${methodVO.makeUpDegree eq 'SM'}">
 								<td>색조 메이크업</td>
 								</c:if>
-								
+								 
 								<td>${methodVO.methodStep}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${methodVO.regdate}"></fmt:formatDate></td>
 								
