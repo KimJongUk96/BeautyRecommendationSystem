@@ -5,6 +5,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+    
+<style type="text/css">
+.container {
+  width: 70%;
+  height: 70%;
+  margin: 10px auto;
+}
+.outer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.centered {
+  position: relative;
+  display: inline-block;
+ 
+  width: 50%;
+}
+    </style>
+    
         <meta charset="utf-8" />
         <title>관리자 페이지</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,63 +96,58 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">세안법 등록</h4>
-                                        <div align="right">
-                                        <div align="left">
-                                        <div class="form-group mb-3">
+                    	<div>
+                    <div style="width:150px; height:100px;float:left;">               
 					<label for="example-select">피부타입</label>
-					<select class="form-control" name="searchType" style="width:110px">
+					<select class="form-control" name="searchType" id="searchType" style="width:110px">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
-						<option value="p"
-							<c:out value="${cri.searchType eq 'p'?'selected':''}"/>>
+						<option value="DR"
+							<c:out value="${cri.searchType eq 'DR'?'selected':''}"/>>
 							건성</option>
-						<option value="g"
-							<c:out value="${cri.searchType eq 'g'?'selected':''}"/>>
+						<option value="NE"
+							<c:out value="${cri.searchType eq 'NE'?'selected':''}"/>>
 							중성</option>
-						<option value="b"
-							<c:out value="${cri.searchType eq 'b'?'selected':''}"/>>
+						<option value="OI"
+							<c:out value="${cri.searchType eq 'OI'?'selected':''}"/>>
 							지성</option>
-						<option value="gb"
-							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
+						<option value="CO"
+							<c:out value="${cri.searchType eq 'CO'?'selected':''}"/>>
 							복합성</option>
-						<option value="gb"
-							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
+						<option value="SE"
+							<c:out value="${cri.searchType eq 'SE'?'selected':''}"/>>
 							민감성</option>
 					</select>
-					<div><h4>   </h1></div>	
+					</div>
+					
+					<div style="width:150px; height:100px;float:left;">
 					<label for="example-select">화장정도</label>
-					<select class="form-control" name="searchType" style="width:110px">
+					<select class="form-control" name="keyword" id="keyword" style="width:110px">
 						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
+							<c:out value="${cri.keyword == null?'selected':''}"/>>
 							---</option>
-						<option value="p"
-							<c:out value="${cri.searchType eq 'p'?'selected':''}"/>>
-							건성</option>
-						<option value="g"
-							<c:out value="${cri.searchType eq 'g'?'selected':''}"/>>
-							중성</option>
-						<option value="b"
-							<c:out value="${cri.searchType eq 'b'?'selected':''}"/>>
-							지성</option>
-						<option value="gb"
-							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
-							복합성</option>
-						<option value="gb"
-							<c:out value="${cri.searchType eq 'gb'?'selected':''}"/>>
-							민감성</option>
+						<option value="NM"
+							<c:out value="${cri.keyword eq 'NM'?'selected':''}"/>>
+							노메이크업</option>
+						<option value="YM"
+							<c:out value="${cri.keyword eq 'YM'?'selected':''}"/>>
+							메이크업</option>
+						<option value="SE"
+							<c:out value="${cri.keyword eq 'SE'?'selected':''}"/>>
+							색조 메이크업</option>
 					</select>
-					<div align="right">
+					</div>
+					
+					<div style="width:150px; height:100px;float:left;">
+					<br>
 					<button id='searchBtn' class="btn btn-outline-info btn-rounded">검색</button>
 					</div>
-										</div>
-										<div align="right">
-											<button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
-										</div>
-										</div>
-										</div>
-										<div><h4>   </h1></div>
+					</div>
+					
+					<div align="right">
+					<button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+					</div>
 		
                                         <div class="table-responsive-sm">
                                             <table class="table table-hover table-centered mb-0">
@@ -169,7 +189,7 @@
 								<c:if test="${methodVO.makeUpDegree eq 'SM'}">
 								<td>색조 메이크업</td>
 								</c:if>
-								
+								 
 								<td>${methodVO.methodStep}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${methodVO.regdate}"></fmt:formatDate></td>
 								
@@ -180,8 +200,10 @@
                                         </div> <!-- end table-responsive-->
 
 				
-
-					<div class="text-center" align="center">
+							<div class="container">
+								<div class="outer">
+   									 <div class="inner">
+    									<div class="centered">
 					<nav>
 						<ul class="pagination pagination-rounded">
 
@@ -190,11 +212,11 @@
 									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }" >&laquo;</a></li>
 							</c:if>
 
-							<c:forEach begin="${pageMaker.startPage }"
+							<c:forEach begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage }" var="idx">
-								<li class="page-item active"
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeQuery(idx)}" class="page-link">${idx}</a>
+								<li class = "page-item
+									<c:out value="${pageMaker.cri.page == idx?'active':''}"/>">
+									<a href="list${pageMaker.makeSearch(idx)}" class="page-link">${idx}</a>
 								</li>
 							</c:forEach>
 
@@ -205,6 +227,9 @@
 
 						</ul>
 						</nav>
+					</div>
+					</div>
+					</div>
 					</div>
 
 				
@@ -276,7 +301,6 @@
 		if (result == 'SUCCESS') {
 			alert("등록되었습니다.");
 		} else if (result == 'ERROR') {
-			alert("중복된 값이 있습니다.");
 		} else if (result == 'MODSUCCESS') {
 			alert("수정되었습니다.");
 		} else if (result == 'DELSUCCESS') {
@@ -295,8 +319,9 @@
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
+									+ $("#searchType option:selected").val()
+									+ "&keyword="
+									+ $("#keyword option:selected").val();
 
 						});
 

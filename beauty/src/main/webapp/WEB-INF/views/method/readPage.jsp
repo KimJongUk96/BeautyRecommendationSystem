@@ -82,18 +82,18 @@
 						<div class="form-group">
 							<label for="example-select">화장정도</label>
 							<select class="form-control" name="makeUpDegree">
-							<option value="NM"<c:out value="${methodVO.makeUpDegree eq 'NM'?'selected':''}"/>>노 메이크업</option>
-							<option value="YM"<c:out value="${methodVO.makeUpDegree eq 'YM'?'selected':''}"/>>메이크업</option>
-							<option value="SM"<c:out value="${methodVO.makeUpDegree eq 'SM'?'selected':''}"/>>색조메이크업</option>
+							<option disabled="disabled" value="NM"<c:out value="${methodVO.makeUpDegree eq 'NM'?'selected':''}"/>>노 메이크업</option>
+							<option disabled="disabled" value="YM"<c:out value="${methodVO.makeUpDegree eq 'YM'?'selected':''}"/>>메이크업</option>
+							<option disabled="disabled" value="SM"<c:out value="${methodVO.makeUpDegree eq 'SM'?'selected':''}"/>>색조메이크업</option>
 							</select>
 						</div>
 						
 						<div class="form-group">
 							<label for="example-select">세안법 Step</label>
 							<select class="form-control" name="methodStep" id="methodStep">
-							<option value="1" id="step1"<c:out value="${methodVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
-							<option value="2" id="step2"<c:out value="${methodVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
-							<option value="3" id="step3"<c:out value="${methodVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
+							<option disabled="disabled" value="1" id="step1"<c:out value="${methodVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
+							<option disabled="disabled" value="2" id="step2"<c:out value="${methodVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
+							<option disabled="disabled" value="3" id="step3"<c:out value="${methodVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
 							</select>
 						</div>
 						
@@ -115,11 +115,11 @@
 						
 						<div class="form-group" id="prodNo">
 							<label for="example-select">사용제품명</label>
-							<select name="prodNo" id="prodNo">
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '1'}">
-							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							<option disabled="disabled" value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
 							</c:if>
 							</c:forEach>
 							</c:forEach>
@@ -142,7 +142,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '2'}">
-							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							<option disabled="disabled" value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
 							</c:if>
 							</c:forEach>
 							</c:forEach>
@@ -161,11 +161,11 @@
 						
 						<div class="form-group" id="prodNo3">
 							<label for="example-select">사용제품명3</label>
-							<select name="prodNo" id="prodNo">
+							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
 							<c:if test="${status.count eq '3'}">
-							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							<option disabled="disabled" value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
 							</c:if>
 							</c:forEach>
 							</c:forEach>
@@ -174,25 +174,25 @@
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">계절</label> 
-							<input type="radio" name="season" value="S1"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
-							<input type="radio" name="season" value="S2"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
-							<input type="radio" name="season" value="S3"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
-							<input type="radio" name="season" value="S4"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
+							<input type="radio" name="season" value="S1" disabled="disabled"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
+							<input type="radio" name="season" value="S2" disabled="disabled"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
+							<input type="radio" name="season" value="S3" disabled="disabled"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
+							<input type="radio" name="season" value="S4" disabled="disabled"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">날씨</label>
-							<input type="radio" name="weather" value="W1"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
-							<input type="radio" name="weather" value="W2"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
-							<input type="radio" name="weather" value="W3"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
+							<input type="radio" name="weather" value="W1" disabled="disabled"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
+							<input type="radio" name="weather" value="W2" disabled="disabled"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
+							<input type="radio" name="weather" value="W3" disabled="disabled"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">미세먼지</label> 
-							<input type="radio" name="dust" value="D1"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
-							<input type="radio" name="dust" value="D2"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
-							<input type="radio" name="dust" value="D3"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
-							<input type="radio" name="dust" value="D4"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
+							<input type="radio" name="dust" value="D1" disabled="disabled"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
+							<input type="radio" name="dust" value="D2" disabled="disabled"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
+							<input type="radio" name="dust" value="D3" disabled="disabled"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
+							<input type="radio" name="dust" value="D4" disabled="disabled"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
 						</div>
 											</form>
 												<div class="box-footer" align="center">

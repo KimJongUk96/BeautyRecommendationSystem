@@ -37,9 +37,9 @@
 	<nav id="menu">
 		<ul class="links">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">세안 제품 목록</a></li>
-			<li><a href="elements.html">세안 제품 추천</a></li>
-			<li><a href="elements.html">세안법 추천</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		<ul class="actions vertical">
 			<li><a href="#" class="button fit">Login</a></li>

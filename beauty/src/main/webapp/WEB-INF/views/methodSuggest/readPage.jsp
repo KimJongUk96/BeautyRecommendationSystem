@@ -1,82 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>관리자 페이지</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
+<head>
+<title>Beauty</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="/resources/templated-intensify/assets/css/main.css" />
 
-        <!-- inline style to handle loading of various element-->
-        <style>body.loading {visibility: hidden;}</style>
+</head>
+<body class="subpage">
 
-        <!-- third party css -->
-        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+		<a href="index.html" class="logo">intensify</a>
+		<nav class="right">
+			<a href="#" class="button alt">Log in</a>
+		</nav>
+	</header>
 
-        <!-- App css -->
-        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button fit">Login</a></li>
+		</ul>
+	</nav>
 
-    </head>
-
-    <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
-        <!-- Begin page -->
-        <div class="wrapper">
-
-            <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                <div class="content">
-
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
-					<div><h3></h3></div>
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                       
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">세안법 상세보기</h4>
-                                       
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                            
-                      <form role="form" method="post">
-
-						<input type='hidden' name='methodNo' value="${methodSuggestVO.methodNo}">
-						<input type='hidden' name='page' value="${cri.page}"> 
-	 					<input type='hidden' name='searchType' value="${cri.searchType}">
-						<input type='hidden' name='keyword' value="${cri.keyword}">
-						
-						<div class="form-group">
-							<label for="example-select">세안법 Step</label>
-							<select class="form-control" name="methodStep" id="methodStep">
-							<option value="1" id="step1"<c:out value="${methodSuggestVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
-							<option value="2" id="step2"<c:out value="${methodSuggestVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
-							<option value="3" id="step3"<c:out value="${methodSuggestVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
-							</select>
-						</div>
-                                                	
-						
-						<div class="form-group mb-3" id="method">
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="inner">
+		<div text-align="center">
+			<h2>세안법 상세 보기</h2>
+			</p>
+			</div>
+			<form role="form" method="post">
+				<input type='hidden' name='methodNo' value="${methodSuggestVO.methodNo}">
+				<input type='hidden' name='page' value="${cri.page}"> 
+	 			<input type='hidden' name='searchType' value="${cri.searchType}">
+				<input type='hidden' name='keyword' value="${cri.keyword}">
+				<h4>피부정보 입력</h4>
+				<div class="form-group">
+					<label for="example-select">세안법 Step</label>
+					<select class="form-control" name="methodStep" id="methodStep">
+					<option value="1" id="step1"<c:out value="${methodSuggestVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
+					<option value="2" id="step2"<c:out value="${methodSuggestVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
+					<option value="3" id="step3"<c:out value="${methodSuggestVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
+					</select>
+				</div>
+				<div class="form-group mb-3" id="method">
 							<label for="simpleinput">세안법</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
@@ -133,72 +121,43 @@
 								</c:if>
 								</c:forEach>
 						</div>
-						
-					</form>
-						<div class="box-footer" align="center">
-						<button type="submit" class="btn btn-outline-info btn-rounded">목록</button>
-						</div>
-						
-                        </div> <!-- end col -->
-
-                                          
-                                               
-                                            </div> <!-- end col -->
-                                        </div>
-                                        <!-- end row-->
-
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-                <!-- Footer Start -->
-                 <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                2018 - 2019 © Hyper - Coderthemes.com
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right footer-links d-none d-md-block">
-                                    <a href="javascript: void(0);">About</a>
-                                    <a href="javascript: void(0);">Support</a>
-                                    <a href="javascript: void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
+				<div>
+					
+		</div>
 
 
-        </div>
-        <!-- END wrapper -->
+		</form>
+		<div class="box-footer" align="center">
+			<button type="submit" class="button small">목록</button>
+		</div>
+		</div>
+	</section>
 
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<h2>Get In Touch</h2>
+			<ul class="actions">
+				<li><span class="icon fa-phone"></span> <a href="#">(000)
+						000-0000</a></li>
+				<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+				<li><span class="icon fa-map-marker"></span> 123 Somewhere
+					Road, Nashville, TN 00000</li>
+			</ul>
+		</div>
+		<div class="copyright">
+			&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>.
+			Images <a href="https://unsplash.com">Unsplash</a>.
+		</div>
+	</footer>
 
-        <!-- App js -->
-        <script src="/resources/dist/assets/js/app_admin.js"></script>
-
-        <!-- third party js -->
-        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
-        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
-        <!-- third party js ends -->
-
-        <!-- demo app -->
-        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
-        <!-- end demo js-->
-    </body>
+	<!-- Scripts -->
+	<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+	<script
+		src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/util.js"></script>
+	<script src="/resources/templated-intensify/assets/js/main.js"></script>
     <script>
 	$(document).ready(function() {
 
@@ -259,4 +218,6 @@ jQuery('#methodStep').change(function(){
 		}
 	});
 </script>
+
+</body>
 </html>

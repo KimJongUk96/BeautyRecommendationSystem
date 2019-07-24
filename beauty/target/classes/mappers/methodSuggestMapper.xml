@@ -20,27 +20,30 @@
 <select id="listSearch" resultType="com.brs.domain.method.MethodSuggestVO">
 		<![CDATA[
 	
-	 select * from(
- 	 select rownum rnum, prod_no, name, method_no, method_step, regdate from (
- 	 select 
-  	 m.method_no, m.method_step, m.regdate, p.prod_no, p.name
- 	 from tbl_method m,tbl_method_detail md, tbl_product p
- 	 where md.prod_no = p.prod_no
-	 and m.method_no = md.method_no
+   select * from (
+   select rownum rnum, method_no, name, method_step, regdate from(
+    select method_no, LISTAGG(name, ', ') WITHIN GROUP (ORDER BY name) as name, count(method_no) as method_step, regdate
+     from (
+     select name, method_no, method_step, regdate from (
+     select 
+      m.method_no, m.method_step, m.regdate, p.prod_no, p.name as name
+     from tbl_method m,tbl_method_detail md, tbl_product p
+     where md.prod_no = p.prod_no
+     and m.method_no = md.method_no
      and m.skin_type= #{skinType, jdbcType=VARCHAR}
      and m.makeup_degree = #{makeUpDegree, jdbcType=VARCHAR}
      and m.weather = #{weather, jdbcType=VARCHAR}
-     and m.dust = #{dust, jdbcType=VARCHAR}
- 	 
-	]]>
-	
-	 order by method_no desc, regdate desc
+     and m.dust = #{dust, jdbcType=VARCHAR})) group by method_no, regdate
+     
+   ]]>
+   
+    )order by method_no desc, regdate desc
   
-	<![CDATA[    
-	 )) where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
-	 order by method_no desc, regdate desc
-	]]>
-	</select>
+   <![CDATA[    
+     )where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
+    order by method_no desc, regdate desc
+   ]]> 
+   </select>
 	
 	<select id="countPaging" resultType="int">
 	<![CDATA[  

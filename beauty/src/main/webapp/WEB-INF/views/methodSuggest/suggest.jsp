@@ -34,9 +34,9 @@
 	<nav id="menu">
 		<ul class="links">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">세안 제품 목록</a></li>
-			<li><a href="elements.html">세안 제품 추천</a></li>
-			<li><a href="elements.html">세안법 추천</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		<ul class="actions vertical">
 			<li><a href="#" class="button fit">Login</a></li>
@@ -46,12 +46,20 @@
 	<!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="inner">
+		<div text-align="center">
+			<h2>세안법 추천</h2>
+			<p>
+			<hr>
+			피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안법을 추천 받으세요
+			<hr>
+			</p>
+			</div>
 			<form method="post">
 				<h4>피부정보 입력</h4>
 				<div>
-					<label>피부 타입</label> <select name="skinType" id="skinType">
+					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
 						<!-- 	<option value="DR">건성</option> -->
-						<option value="1">건성</option>
+						<option value="DR">건성</option>
 						<option value="NE">중성</option>
 						<option value="OI">지성</option>
 						<option value="CO">복합성</option>
@@ -62,9 +70,8 @@
 					<h3></h3>
 				</div>
 				<div>
-					<label>화장정도</label> <select name="makeUpDegree" id="makeUpDegree">
-						<%-- 	<option value="NM"<c:out value="${methodSuggestVO.makeUp eq 'NM'?'selected':''}"/>>노 메이크업</option> --%>
-						<option value="1">노 메이크업</option>
+					<label>화장정도</label> <select name="makeUpDegree" id="makeUpDegree" style="width:150px">
+						<option value="NM">노 메이크업</option>
 						<option value="YM">메이크업</option>
 						<option value="SM">색조메이크업</option>
 					</select>
@@ -75,19 +82,15 @@
 				<h4>날씨 정보 입력</h4>
 				<div>
 					<label>날씨</label>
-
-					<%-- 	<input type="radio" name="weather" value="W1"<c:out value="${methodSuggestVO.weather eq 'W1'?'checked':''}"/>>맑음 --%>
-					<input type="radio" name="weather" value="W1" id="W1"><label
-						for="W1">맑음</label> <input type="radio" name="weather" value="W2"
-						id="W2"><label for="W2">흐림</label> <input type="radio"
-						name="weather" value="W3" id="W3"><label for="W3">눈/비</label>
+					<input type="radio" name="weather" value="W1" id="W1"><label for="W1">맑음</label> 
+					<input type="radio" name="weather" value="W2" id="W2"><label for="W2">흐림</label> 
+					<input type="radio" name="weather" value="W3" id="W3"><label for="W3">눈/비</label>
 				</div>
 				<div>
 					<h3></h3>
 				</div>
 				<div>
 					<label>미세먼지</label>
-					<%-- 	<input type="radio" name="dust" value="D1"<c:out value="${methodSuggestVO.dust eq 'D1'?'checked':''}"/>>좋음 --%>
 					<div></div>
 					<input type="radio" name="dust" value="D1" id="D1"><label
 						for="D1">좋음</label> <input type="radio" name="dust" value="D2"
@@ -99,7 +102,7 @@
 		</div>
 
 		<div class="box-footer" align="center">
-			<button type="submit" class="button small">Submit</button>
+			<button type="submit" class="button small">세안법 추천 받기</button>
 		</div>
 
 		</form>
