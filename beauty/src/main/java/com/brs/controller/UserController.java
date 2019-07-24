@@ -86,7 +86,7 @@ public class UserController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/home";
+		return "redirect:/user/login";
 	}
 	
 	//아이디 중복 체크

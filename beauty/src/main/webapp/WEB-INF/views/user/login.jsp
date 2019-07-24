@@ -108,8 +108,10 @@
 									<li><input type="submit" class ="button fit" value="로그인" /></li>
 								</ul>
 								<ul class="actions fit small">
-									<li><input type="button" class ="button alt fit small" value="비밀번호 찾기" /></li>
-									<li><input type="button" class ="button special fit small" value="회원가입" /></li>
+									<li><a href="/user/forgetpw" class ="button alt fit small">비밀번호 찾기</a></li>
+									<!-- <li><input type="button" class ="button alt fit small" value="비밀번호 찾기" /></li> -->
+									<!-- <li><input type="button" class ="button special fit small" value="회원가입" /></li> -->
+									<li><a href="/user/register" class ="button special fit small">회원가입</a>
 								</ul>
 							</div>
 						</form>

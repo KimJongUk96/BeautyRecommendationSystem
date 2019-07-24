@@ -51,7 +51,6 @@
 				<div>
 					<label>이메일</label> 
 					<input type="text" id="email" name='email' placeholder="이메일을 입력하세요.">
-							<!-- oninput="checkId()" -->
 							<span id="chkMsg">email 중복 확인 하세요</span>
 				</div>
 				
