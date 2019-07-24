@@ -114,12 +114,35 @@ MERGE INTO tbl_method_detail USING dual ON (
 
 
 <!-- Searchlist -->
-<sql id="search">
+<sql id="searchSkin">
 		<if test="searchType != null">
-			<if test="searchType == 'p'.toString()">
+			<if test="searchType == 'DR'.toString()">
 				and skin_type like '%' || #{keyword} || '%'
 			</if>
-			<if test="searchType == 'g'.toString()">
+			<if test="searchType == 'NE'.toString()">
+				and skin_type like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'OI'.toString()">
+				and skin_type like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'CO'.toString()">
+				and skin_type like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'SE'.toString()">
+				and skin_type like '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
+	
+	<sql id="searchMakeUp">
+		<if test="searchType != null">
+			<if test="searchType == 'NM'.toString()">
+				and makeup_degree like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'YM'.toString()">
+				and makeup_degree like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'SM'.toString()">
 				and makeup_degree like '%' || #{keyword} || '%'
 			</if>
 		</if>
@@ -135,7 +158,8 @@ MERGE INTO tbl_method_detail USING dual ON (
  	 from tbl_method where method_no > 0
  	 
 	]]>
-		<include refid="search"></include>
+		<include refid="searchSkin"></include>
+		<include refid="searchMakeUp"></include>
 	 order by method_no desc, regdate desc
   
 	<![CDATA[    
@@ -150,7 +174,8 @@ MERGE INTO tbl_method_detail USING dual ON (
  	 from tbl_method 
  	 where method_no > 0 
 	]]>
-		<include refid="search"></include>
+		<include refid="searchSkin"></include>
+		<include refid="searchMakeUp"></include>
 	</select>
 	
 </mapper>
