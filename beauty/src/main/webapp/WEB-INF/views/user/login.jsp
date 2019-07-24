@@ -33,7 +33,7 @@
 	width: 50%;
 }
 </style>
-<title>Beauty</title>
+<title>로그인</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -46,7 +46,7 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="index.html" class="logo">intensify</a>
+		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
 			<a href="#" class="button alt">Log in</a>
 		</nav>
@@ -56,8 +56,9 @@
 	<nav id="menu">
 		<ul class="links">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
+			<li><a href="/usprod/list">세안 제품 목록</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		<ul class="actions vertical">
 			<li><a href="#" class="button fit">Login</a></li>
@@ -96,10 +97,12 @@
 									</div>
 								</div>
 							</div>
+							<br/>
 							<div class="4u 12u$(small)">
 								<input type="checkbox" id="useCookie" name="useCookie" checked>
 								<label for="priority-low">자동 로그인</label>
 							</div>
+							<br/>
 
 
 							<!-- Break -->
@@ -108,10 +111,8 @@
 									<li><input type="submit" class ="button fit" value="로그인" /></li>
 								</ul>
 								<ul class="actions fit small">
-									<li><a href="/user/forgetpw" class ="button alt fit small">비밀번호 찾기</a></li>
-									<!-- <li><input type="button" class ="button alt fit small" value="비밀번호 찾기" /></li> -->
-									<!-- <li><input type="button" class ="button special fit small" value="회원가입" /></li> -->
-									<li><a href="/user/register" class ="button special fit small">회원가입</a>
+									<li><input type="button" class ="button alt fit small" value="비밀번호 찾기" /></li>
+									<li><input type="button" class ="button special fit small" value="회원가입" /></li>
 								</ul>
 							</div>
 						</form>
@@ -127,9 +128,9 @@
 	</div>
 
 	<!-- Footer -->
-	<div class="container">
+
 		<footer id="footer">
-			<div class="inner">
+			<div>
 				<h2>Get In Touch</h2>
 				<ul class="actions">
 					<li><span class="icon fa-phone"></span> <a href="#">(000)
@@ -152,6 +153,5 @@
 		<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
 		<script src="/resources/templated-intensify/assets/js/util.js"></script>
 		<script src="/resources/templated-intensify/assets/js/main.js"></script>
-		</div>
 </body>
 </html>
