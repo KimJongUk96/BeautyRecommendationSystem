@@ -9,160 +9,135 @@
 <html>
 
     <head>
-        <meta charset="utf-8" />
         <title>추천 제품 목록</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="/resources/dist/assets/images/favicon.ico">
-
-        <!-- inline style to handle loading of various element-->
-        <style>body.loading {visibility: hidden;}</style>
-
-        <!-- third party css -->
-        <link href="/resources/dist/assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
-        <!-- App css -->
-        <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
-
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet"
+			href="/resources/templated-intensify/assets/css/main.css" />
+		<style>
+		
+		</style>
     </head>
 	
-	<body class="loading">
-	<div id="detached-topbar-placeholder"></div>
-        <!-- Begin page -->
-        <div class="wrapper">
+	<body class="subpage">
+		<!-- Header -->
+		<header id="header">
+			<nav class="left">
+				<a href="#menu"><span>Menu</span></a>
+			</nav>
+			<a href="index.html" class="logo">intensify</a>
+			<nav class="right">
+				<a href="#" class="button alt">Log in</a>
+			</nav>
+		</header>
+		
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="generic.html">세안 제품 목록</a></li>
+				<li><a href="elements.html">세안 제품 추천</a></li>
+				<li><a href="elements.html">세안법 추천</a></li>
+			</ul>
+			<ul class="actions vertical">
+				<li><a href="#" class="button fit">Login</a></li>
+			</ul>
+		</nav>
+		
+		
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+<!-- 				<form name="frm" method="POST"> -->
+<%-- 					<input type="hidden" name="skinType" value="${methodSuggestVO.skinType}">  --%>
+<%-- 					<input type="hidden" name="makeUpDegree" value="${methodSuggestVO.makeUpDegree}"> --%>
+<%-- 					<input type="hidden" name="weather" value="${methodSuggestVO.weather}">  --%>
+<%-- 					<input type="hidden" name="dust" value="${methodSuggestVO.dust}"> --%>
+<!-- 				</form> -->
+				<div>
+					<h4 style="float: left">제품 추천 :&nbsp;&nbsp;&nbsp;</h4>
+					<h4 id='gend' style="float: left"></h4>
+					<h4 style="float: left">&nbsp;&nbsp;&nbsp;#${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
+					<h4 id='skin' style="float: left"></h4>
+					<br/>
+                    
 
-            <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-				
-				<div class="content-page">
-				
-					<div class="content">
+					<div>
+						<hr>
+					</div>
 					
-					<div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
-				<div><h3></h3></div>
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-							<div class="row">
-								<div class="col-xl-12">
-									<div class="card">
-										<div class="card-body">
-
-										<!-- general form elements -->
-										
-											 <h2>제품 추천 순위</h2>
-											 <hr>
-											 <div align="left">
-											 	<h4 id='gend' style="float: left"></h4>
-											 	<h4 style="float: left">&nbsp;&nbsp;&nbsp;#${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
-											 	<h4 id='skin' style="float: left"></h4>
-										     </div>
-							
-							
-						
-											<div class="table-responsive-sm">
-												<table class="table table-hover table-centered mb-0">
-												 <thead>
-														<tr>
-															<th style="width: 90px">순위</th>
-															<th>제품 사진</th>
-															<th>제품 정보</th>
-															
-															
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach items="${list}" var="productVO" varStatus="status">
-								
-															<tr>
-																<td id='rank'>${status.count}</td>
-																<td>
-																   <a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
-																      <img height="125px" width="200px" src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 
-																   </a>
-																</td>
-																<td>
-																	<a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
-																	<br/>
-																	<p>제조사 : ${productVO.compName}</p>
-																	<br/>
-																	<p>타입 : ${productVO.prodtypeNo}</p>
-																	<br/>
-																	<p>가격 : ${productVO.price}</p>
-																	<br/>
-																	<a href="${productVO.link}">구매 링크</a>
-																</td>
-
-															</tr>
-								
-														</c:forEach>
-												    </tbody>
-												</table>
-											</div>
-											<!-- /.box-body -->
-											
-							
-									</div> <!-- end card body-->
-								</div> <!-- end card -->
-							</div><!-- end col-->
-							
-						</div>
-                        <!-- end row-->
+					<table>
+						<thead>
+							<tr>
+								<th>순위</th>
+								<th>제품 사진</th>
+								<th>제품 정보</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${list}" var="productVO" varStatus="status">
+								<tr>
+									<td id='rank' style="vertical-align: middle">${status.count}</td>
+									<td style="vertical-align: middle">
+										<a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+											<img id='photo' src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 
+										</a>
+									</td>
+									<td style="vertical-align: middle">
+										    <a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
+											<br/>
+											제조사 : ${productVO.compName}
+											<br/>
+											<c:forEach items="${prodTypeList}" var="prodTypeVO">
+												<c:if test="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo}">
+													타입 : ${prodTypeVO.name}&nbsp;${prodTypeVO.category}
+												</c:if>
+											</c:forEach>
+											<br/>
+											가격 : ${productVO.price}
+											<br/>
+											<a href="${productVO.link}">구매 링크</a>
+									</td>
+								 </tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 				
-				  </div> <!-- container -->
-				 
-				</div> <!-- content -->
-				
-				<!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                2018 - 2019 © Hyper - Coderthemes.com
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right footer-links d-none d-md-block">
-                                    <a href="javascript: void(0);">About</a>
-                                    <a href="javascript: void(0);">Support</a>
-                                    <a href="javascript: void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-				
+		</section>
+		
+		
+		
+		
+		
+		
+		
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<h2>Get In Touch</h2>
+				<ul class="actions">
+					<li><span class="icon fa-phone"></span> <a href="#">(000)
+							000-0000</a></li>
+					<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+					<li><span class="icon fa-map-marker"></span> 123 Somewhere
+						Road, Nashville, TN 00000</li>
+				</ul>
 			</div>
-			
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
+			<div class="copyright">
+				&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>.
+				Images <a href="https://unsplash.com">Unsplash</a>.
+			</div>
+		</footer>
 </body>
 
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  		<!-- App js -->
-        <script src="/resources/dist/assets/js/app_admin.js"></script>
-
-        <!-- third party js -->
-        <script src="/resources/dist/assets/js/vendor/jquery-ui.min.js"></script>
-        <script src="/resources/dist/assets/js/vendor/fullcalendar.min.js"></script>
-        <!-- third party js ends -->
-
-        <!-- demo app -->
-        <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
+<!-- Scripts -->
+	<script src="/resources/templated-intensify/assets/js/jquery.min.js"></script>
+	<script
+		src="/resources/templated-intensify/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
+	<script src="/resources/templated-intensify/assets/js/util.js"></script>
+	<script src="/resources/templated-intensify/assets/js/main.js"></script>
         <!-- end demo js-->
 
 <script>
@@ -170,6 +145,12 @@
 
 	if (result == 'SUCCESS') {
 		alert("처리가 완료되었습니다.");
+	}else if (result == 'ERROR') {
+		alert("중복된 값이 있습니다.");
+	} else if (result == 'MODSUCCESS') {
+		alert("수정되었습니다.");
+	} else if (result == 'DELSUCCESS') {
+		alert("삭제되었습니다.");
 	}
 </script>
 
@@ -235,6 +216,7 @@
 	
 	document.getElementById("gend").innerHTML = changeName(gen);
 	document.getElementById("skin").innerHTML = changeName(skn);
+	
 	
 </script>
 </html>
