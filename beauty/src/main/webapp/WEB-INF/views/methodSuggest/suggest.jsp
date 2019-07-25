@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE HTML>
+<!DOCTYPE HTML> 
 <!--
 	Intensify by TEMPLATED
 	templated.co @templatedco
