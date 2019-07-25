@@ -26,10 +26,10 @@
 		</nav>
 		<a href="/index" class="logo">Beauty</a>
 		<nav class="right">
-		<c:if test="${userVO.email == 'null'}">
+		<c:if test="${userVO.email eq null}">
 			<a href="/user/login" class="button alt">Log in</a>
 		</c:if>
-		<c:if test="${userVO.email != 'null'}">
+		<c:if test="${userVO.email ne null}">
 			<a href="/user/logout" class="button alt">Log out</a>
 			<a href="/user/read" class="button alt">내 정보 수정</a>
 		</c:if>
@@ -39,7 +39,7 @@
 	<!-- Menu -->
 	<nav id="menu">
 		<ul class="links">
-			<li><a href="/index">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
 			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>

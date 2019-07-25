@@ -142,21 +142,17 @@ body.loading {
 														<td><img height="125px" width="200px"
 															src="displayFile?fileName=${productVO.img}" alt="이미지 없음" />
 														</td>
-														<td><a
-															href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
-																${productVO.name} </a></td>
-														<td>${productVO.compName}</td>
-														<td>${productVO.categoryName}</td>
-														<td>${productVO.prodtypeName}</td>
-														<td>${productVO.count}</td>
-														<td>${productVO.ratingAvg}</td>
-														<%-- <c:forEach items="${prodTypeList}" var="prodTypeVO">
-			                                                        <c:if test="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo}">
-			                                                        	<td>${prodTypeVO.name}&nbsp;${prodTypeVO.category}</td>
-											                        </c:if>
-										                        </c:forEach>	 --%>
-														<td><fmt:formatDate pattern="yyyy-MM-dd"
-																value="${productVO.regdate}"></fmt:formatDate></td>
+														<td>
+														<span style=" font-size: 1.1em; line-height: 1.0em; color: grey;">${productVO.compName}</span> <br>
+														<span style=" font-size: 1.4em; line-height: 1.0em; color: grey;">
+															<a href='/usprod/read${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> ${productVO.name} </a> </span> <br>
+														${productVO.ratingAvg} (${productVO.count})		
+																</td>
+														<td>${productVO.categoryName} &nbps; ${productVO.prodtypeName} <br>
+														${productVO.price}
+														</td>
+														<fmt:formatDate pattern="yyyy-MM-dd"
+																value="${productVO.regdate}" type="hidden"></fmt:formatDate>
 
 													</tr>
 
