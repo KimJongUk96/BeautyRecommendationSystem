@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <!--
 	Intensify by TEMPLATED
@@ -55,7 +55,13 @@
 				
 				<div>
 					<label>비밀번호</label> 
-					<input type="password" name='password' id='pw' value = "${userVO.password }" readonly>
+					<input type="password" name='password' id='pw' value = "${userVO.password }" onchange="isSame()">
+				</div>
+				
+				<div>
+					<label>비밀번호 확인</label> 
+					<input type="password" name='passwordCheck' id='pwCheck' placeholder="비밀번호를 확인하세요." onchange="isSame()">
+							&nbsp;&nbsp;&nbsp;<span id="same"></span>
 				</div>
 				
 				<div>
@@ -63,6 +69,8 @@
 					<input type="text" name='nickName' class="form-control" value = "${userVO.nickName }">
 				</div>
 				<div>
+				
+					
 					<p>
 					<h1></h1>
 					<h1></h1>
@@ -70,10 +78,10 @@
 				<h4>피부 정보 입력</h4>
 				<div>
 					<label>성별</label>
-					<input type="radio" name="gender" value="U1"> 
-					<label for="U1"<c:out value="${userVO.gender eq 'U1'?'checked':''}"/>>여성</label>
-					<input type="radio" name="gender" value="U2">
-					<label for="U2"<c:out value="${userVO.gender eq 'U2'?'checked':''}"/>>남성</label>
+					<input type="radio" name="gender" value="U1" id="U1"<c:out value="${userVO.gender eq 'U1'?'selected':''}"/>>
+					<label for="U1">여성</label> 
+					<input type="radio" name="gender" value="U2" id="U2"<c:out value="${userVO.gender eq 'U2'?'selected':''}"/>>
+					<label for="U2">남성</label> 
 				</div>
 				<div>
 					<h1></h1>
@@ -81,32 +89,32 @@
 				
 				<div>
 					<label>연령대</label>
-					<input type="radio" name="age" value="10"<c:out value="${userVO.age eq '10'?'checked':''}"/>>
-					<label for="10">10대</label>
-					<input type="radio" name="age" value="20"<c:out value="${userVO.age eq '20'?'checked':''}"/>>
-					<label for="20">20대</label>
-					<input type="radio" name="age" value="30"<c:out value="${userVO.age eq '30'?'checked':''}"/>>
-					<label for="30">30대</label>
-					<input type="radio" name="age" value="40"<c:out value="${userVO.age eq '40'?'checked':''}"/>>
-					<label for="40">40대</label>
-					<input type="radio" name="age" value="50"<c:out value="${userVO.age eq '50'?'checked':''}"/>>
-					<label for="50">50대 이상</label>
+					<input type="radio" name="age" value="10" id="10"<c:out value="${userVO.age eq '10'?'selected':''}"/>>
+					<label for="10">10대</label> 
+					<input type="radio" name="age" value="20" id="20"<c:out value="${userVO.age eq '20'?'selected':''}"/>>
+					<label for="20">20대</label> 
+					<input type="radio" name="age" value="30" id="30"<c:out value="${userVO.age eq '30'?'selected':''}"/>>
+					<label for="30">30대</label> 
+					<input type="radio" name="age" value="40" id="40"<c:out value="${userVO.age eq '40'?'selected':''}"/>>
+					<label for="40">40대</label> 
+					<input type="radio" name="age" value="50" id="50"<c:out value="${userVO.age eq '50'?'selected':''}"/>>
+					<label for="50">50대이상</label>  
 				</div>
 				<div>
 					<h3></h3>
 				</div>
 				<div>
 					<label>피부 타입</label>
-					<input type="radio" name="skinType" value="DR"<c:out value="${userVO.skinType eq 'DR'?'checked':''}"/>>
-					<label>건성</label> 
-					<input type="radio" name="skinType" value="NE"<c:out value="${userVO.skinType eq 'NE'?'checked':''}"/>>
-					<label>중성</label>
-					<input type="radio" name="skinType" value="OI"<c:out value="${userVO.skinType eq 'OI'?'checked':''}"/>>
-					<label>지성</label>
-					<input type="radio" name="skinType" value="CO"<c:out value="${userVO.skinType eq 'CO'?'checked':''}"/>> 
-					<label>복합성</label>
-					<input type="radio" name="skinType" value="SE"<c:out value="${userVO.skinType eq 'SE'?'checked':''}"/>>
-					<label for="SE">민감성</label>
+					<input type="radio" name="skinType" value="DR" id="DR"<c:out value="${userVO.skinType eq 'DR'?'selected':''}"/>>
+					<label for="DR">건성</label> 
+					<input type="radio" name="skinType" value="NE" id="NE"<c:out value="${userVO.skinType eq 'NE'?'selected':''}"/>>
+					<label for="NE">중성</label> 
+					<input type="radio" name="skinType" value="CO" id="CO"<c:out value="${userVO.skinType eq 'CO'?'selected':''}"/>>
+					<label for="CO">복합성</label> 
+					<input type="radio" name="skinType" value="SE" id="SE"<c:out value="${userVO.skinType eq 'SE'?'selected':''}"/>>
+					<label for="SE">민감성</label> 
+					<input type="radio" name="skinType" value="OI" id="OI"<c:out value="${userVO.skinType eq 'OI'?'selected':''}"/>>
+					<label for="OI">지성</label>  
 				</div>
 
 		<div class="box-footer" align="center">

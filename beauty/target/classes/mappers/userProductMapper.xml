@@ -3,8 +3,9 @@
 
 <mapper namespace="com.brs.mapper.UserProductMapper">
 
-	<!-- 높은 별점 순으로 리스트  -->
-	<select id="listSearch" resultType="com.brs.domain.product.ProductVO">
+	<!-- 높은 별점 순으로 리스트 default -->
+	<select id="listSearch"
+		resultType="com.brs.domain.product.ProductVO">
 	<![CDATA[  
 	 select * from(
     select rownum rnum, prod_no, name, comp_name, img, rating_avg, 
@@ -18,16 +19,21 @@
            and pt.prodtype_no = prod.prodtype_no
            and ca.category_no = pt.category_no
 	]]>
-		<include refid="searchCategory"></include>
-		<include refid="searchProdtype"></include>
-		<!-- <include refid="order"></include> -->
+		<include refid="search"></include>
   
-	<![CDATA[    
-	 			)) where (rnum >= #{pageStart} AND rnum <= #{pageEnd})
+	<![CDATA[   
+	 	)) where (rnum >= #{pageStart} AND rnum <= #{pageEnd})
+	 	 order by		  
+	]]>
+		<include refid="search2"></include>
+	<![CDATA[ 			 
+	 			 rating_avg desc 
 				 
 	]]>
 	</select>
-	
+
+
+
 	<select id="listSearchCount" resultType="int">
 	<![CDATA[  
  	select count(prod_no) 
@@ -38,120 +44,103 @@
            where prod.prod_no = rt.prod_no 
              and pt.prodtype_no = prod.prodtype_no
              and ca.category_no = pt.category_no
+	]]>
+		<include refid="search"></include>
+	<![CDATA[   
            order by rating_avg desc
      )
  	 where prod_no > 0
 	]]>
-		<include refid="searchCategory"></include>
-		<include refid="searchProdtype"></include>
 	</select>
-	
-	
-	<sql id="searchCategory">
+
+
+	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == '1000'.toString()">
-				and ca.category_no like '%' || #{keyword} || '%'
+			<if test="searchType == 'n'.toString()">
 			</if>
-			<if test="searchType == '1001'.toString()">
-				and ca.category_no like '%' || #{keyword} || '%'
+			<if test="searchType == 'pn'.toString()">
+				and prod.NAME like '%' || #{keyword} || '%'
 			</if>
-			<if test="searchType == '1002'.toString()">
-				and ca.category_no like '%' || #{keyword} || '%'
+			<if test="searchType == 'cn'.toString()">
+				and prod.COMP_NAME like '%' || #{keyword} || '%'
 			</if>
-			<if test="searchType == '1003'.toString()">
-				and ca.category_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == '1020'.toString()">
-				and ca.category_no like '%' || #{keyword} || '%'
+			<if test="searchType == 'ptn'.toString()">
+				and ca.category_name like '%' || #{keyword} || '%'
 			</if>
 		</if>
 	</sql>
-	
-	
-	<sql id="searchProdtype">
-		<if test="searchType != null">
-			<if test="searchType == 'fo'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
+
+	<sql id="search2">
+		<if test="listType != null">
+			<if test="listType == 'regdate'">
+				regdate desc,
 			</if>
-			<if test="searchType == 'oi'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
+			<if test="listType == 'rating'">
 			</if>
-			<if test="searchType == 'wa'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'g'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'lo'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'es'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'cr'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'sp'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'st'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
-			</if>
-			<if test="searchType == 'cu'.toString()">
-				and pt.prodtype_no like '%' || #{keyword} || '%'
+			<if test="listType == 'count'">
+				count desc,
 			</if>
 		</if>
 	</sql>
 
 
-	<!-- <sql id="order">
-		<if test="order != null">
-			<if test="order == 'regdate'">
-				order by regdate desc
-			</if>
-			<if test="order == 'avg'">
-				order by rating_avg desc
-			</if>
-			<if test="order == 'count'.toString()">
-				order by count desc
-			</if>
-		</if>
-	</sql> -->
-	
 
-	<select id = "read" resultType="com.brs.domain.product.ProductVO">
-	select prod.prod_no, prod.name, prod.comp_name, prod.price, prod.link,prod.img,
-	        prod.regdate, ct.category_name, pt.name as prodtypeName, rt.rating_avg
-	       
-	  from tbl_product prod, rating_avg_view rt, tbl_prod_type pt, tbl_category ct
-	 where prod.prod_no = rt.prod_no
-       and pt.prodtype_no = prod.prodtype_no
-       and ct.category_no = pt.category_no
-	   and prod.prod_no = #{prodNo}
-	</select>
-	
-	
-	<select id = "readReivew" resultType="com.brs.domain.review.ReviewVO">
-	select us.nick_name as userNickName, us.gender as userGender, us.skin_type as userSkinType, 
-		   us.age as userAge, re.rating, re.review_text, re.regdate
- 	  from tbl_review re, tbl_user us
-	 where us.email = re.email
-  	   and re.prod_no = #{prodNo}
-	 order by regdate desc
+
+	<!-- <sql id="order"> <if test="order != null"> <if test="order == 'regdate'"> 
+		order by regdate desc </if> <if test="order == 'avg'"> order by rating_avg 
+		desc </if> <if test="order == 'count'.toString()"> order by count desc </if> 
+		</if> </sql> -->
+
+
+	<select id="read" resultType="com.brs.domain.product.ProductVO">
+		select prod.prod_no, prod.name,
+		prod.comp_name, prod.price,
+		prod.link,prod.img,
+		prod.regdate,
+		ct.category_name, pt.name as prodtypeName, rt.rating_avg
+
+		from
+		tbl_product prod, rating_avg_view rt, tbl_prod_type pt, tbl_category
+		ct
+		where prod.prod_no = rt.prod_no
+		and pt.prodtype_no = prod.prodtype_no
+		and ct.category_no = pt.category_no
+		and prod.prod_no = #{prodNo}
 	</select>
 
-	<select id = "readReviewRegister" resultType="com.brs.domain.product.ProductVO">
-	select prod.prod_no, prod.name, ct.category_name, pt.name as prodtype_name
- 	  from tbl_product prod, tbl_prod_type pt, tbl_category ct
- 	 where pt.prodtype_no = prod.prodtype_no
-       and ct.category_no = pt.category_no
- 	   and prod_no = #{prodNo}
- 	 </select>
- 	 
- 	<insert id="create">
- 	insert into tbl_review
-	values(SEQ_REVIEW.nextval, #{rating}, #{reviewText}, SYSDATE, #{userEmail}, #{command}, #{prodNo})
+
+	<select id="readReivew"
+		resultType="com.brs.domain.review.ReviewVO">
+		select us.nick_name as userNickName, us.gender as
+		userGender, us.skin_type
+		as userSkinType,
+		us.age as userAge, re.rating,
+		re.review_text, re.regdate
+		from tbl_review re, tbl_user us
+		where
+		us.email = re.email
+		and re.prod_no = #{prodNo}
+		order by regdate desc
+	</select>
+
+	<select id="readReviewRegister"
+		resultType="com.brs.domain.product.ProductVO">
+		select prod.prod_no, prod.name, ct.category_name, pt.name
+		as prodtype_name
+		from tbl_product prod, tbl_prod_type pt, tbl_category
+		ct
+		where pt.prodtype_no = prod.prodtype_no
+		and ct.category_no =
+		pt.category_no
+		and prod_no = #{prodNo}
+	</select>
+
+	<insert id="create">
+		insert into tbl_review
+		values(SEQ_REVIEW.nextval,
+		#{rating}, #{reviewText}, SYSDATE, #{userEmail}, #{command},
+		#{prodNo})
 	</insert>
-	
-	
+
+
 </mapper>

@@ -47,4 +47,11 @@ public class UserProductServiceImpl implements UserProductService {
 		return dao.listReview(prodNo);
 	}
 
+	@Override
+	public List<ProductVO> listSearchOrderRegdate(SearchCriteria cri) throws Exception {
+		return dao.listSearchOrderRegdate(cri);
+	}
+
+	
+
 }

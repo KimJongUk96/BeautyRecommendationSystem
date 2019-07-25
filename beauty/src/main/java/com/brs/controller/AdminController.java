@@ -58,6 +58,9 @@ public class AdminController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws Exception {
+		logger.info("logout get...");
+		
+		
 		Object obj = session.getAttribute("login");
 
 		if (obj != null) {
@@ -67,7 +70,7 @@ public class AdminController {
 
 		}
 
-		return "admin/logout";
+		return "admin/login";
 
 	}
 
