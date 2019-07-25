@@ -35,7 +35,7 @@ public class ProdSuggestController {
 	private ProdTypeService typeService;
 	
 	@Inject
-	private  UserProductService userProductService;
+	private ReviewService reviewService;
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -89,7 +89,7 @@ public class ProdSuggestController {
 		
 		model.addAttribute("prodTypeList", typeService.getAllType());
 	
-		model.addAttribute("list", userProductService.listReview(prodNo));
+		model.addAttribute("list", reviewService.readProdReview(prodNo));
 		
 		model.addAttribute(service.read(prodNo));
 	}
