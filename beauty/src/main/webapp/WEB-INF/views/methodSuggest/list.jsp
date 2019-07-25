@@ -29,7 +29,13 @@
 		</nav>
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
+		<c:if test="${userVO.email == 'null'}">
 			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${userVO.email != 'null'}">
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read" class="button alt">내 정보 수정</a>
+		</c:if>
 		</nav>
 	</header>
 

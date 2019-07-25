@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form role="form" method="post">
+                                                <form role="form" name="frm" id="frm" method="post">
                                                 	
 
                          <div class="form-group mb-3">
@@ -176,7 +176,8 @@
 						</div>
 						
 												<div class="box-footer" align="center">
-													<button type="submit" class="btn btn-outline-success btn-rounded">Submit</button>
+													<button type="submit" id="btn" class="btn btn-outline-success btn-rounded">등록</button>
+													<button type="button" class="btn btn-outline-fail btn-rounded">취소</button>
 												</div>
 											</form>
                                             </div> <!-- end col -->
@@ -282,5 +283,26 @@ jQuery('#methodStep').change(function(){
 		}
 	});
 });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	   $('#btn').click(function(){
+		   return check();        
+	    });
+	   
+});
+
+	check = function(){
+		var method = $("#method").val();
+	
+		if(method == "" || method == null){
+			alert("세안법을 작성해주세요.");
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 </script>
 </html>

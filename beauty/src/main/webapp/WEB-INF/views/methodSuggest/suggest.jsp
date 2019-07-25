@@ -27,9 +27,13 @@
 		</nav>
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
+		<c:if test="${userVO.email == 'null'}">
 			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${userVO.email != 'null'}">
 			<a href="/user/logout" class="button alt">Log out</a>
 			<a href="/user/read" class="button alt">내 정보 수정</a>
+		</c:if>
 		</nav>
 	</header>
 
@@ -61,7 +65,6 @@
 				<h4>피부정보 입력</h4>
 				<div>
 					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
-						<!-- 	<option value="DR">건성</option> -->
 						<option value="DR">건성</option>
 						<option value="NE">중성</option>
 						<option value="OI">지성</option>

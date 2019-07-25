@@ -108,7 +108,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step1 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step1 세안법" readonly="readonly" style="font-weight:bold;font-size:12pt;">${methodDetailVO.method}</textarea>
 								</c:if>
 								</c:forEach>
 						</div>
@@ -131,7 +131,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '2'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step2 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step2 세안법" readonly="readonly" style="font-weight:bold;font-size:12pt;">${methodDetailVO.method}</textarea>
 							</c:if>
 								</c:forEach>
 						</div>
@@ -154,7 +154,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '3'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step3 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step3 세안법" readonly="readonly" style="font-weight:bold;font-size:12pt;">${methodDetailVO.method}</textarea>
 							</c:if>
 								</c:forEach>
 						</div>

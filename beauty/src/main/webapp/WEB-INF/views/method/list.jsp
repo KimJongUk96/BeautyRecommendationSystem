@@ -7,30 +7,6 @@
     <head>
     
     
-<style type="text/css">
-.container {
-  width: 70%;
-  height: 70%;
-  margin: 10px auto;
-}
-.outer {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-.inner {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-.centered {
-  position: relative;
-  display: inline-block;
- 
-  width: 50%;
-}
-    </style>
-    
         <meta charset="utf-8" />
         <title>관리자 페이지</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -201,12 +177,9 @@
                                         </div> <!-- end table-responsive-->
 
 				
-							<div class="container">
-								<div class="outer">
-   									 <div class="inner">
-    									<div class="centered">
 					<nav>
-						<ul class="pagination pagination-rounded">
+<!-- 						<ul class="pagination pagination-rounded-center"> -->
+							<ul class="pagination pagination-rounded justify-content-center">
 
 							<c:if test="${pageMaker.prev}">
 								<li class="page-item"><a
@@ -228,10 +201,6 @@
 
 						</ul>
 						</nav>
-					</div>
-					</div>
-					</div>
-					</div>
 
 				
                                     </div> <!-- end card body-->
@@ -296,18 +265,6 @@
         <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
         <!-- end demo js-->
 
-	<script>
-	var result = '${msg}';
-
-		if (result == 'SUCCESS') {
-			alert("등록되었습니다.");
-		} else if (result == 'ERROR') {
-		} else if (result == 'MODSUCCESS') {
-			alert("수정되었습니다.");
-		} else if (result == 'DELSUCCESS') {
-			alert("삭제되었습니다.");
-		}
-	</script>
 
 	<script>
 	$(document).ready(
@@ -334,5 +291,6 @@
 				
 			});
 	</script>
+	
 </body>
 </html>

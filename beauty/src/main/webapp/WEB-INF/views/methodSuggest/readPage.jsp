@@ -26,7 +26,13 @@
 		</nav>
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
+		<c:if test="${userVO.email == 'null'}">
 			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${userVO.email != 'null'}">
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read" class="button alt">내 정보 수정</a>
+		</c:if>
 		</nav>
 	</header>
 
@@ -59,9 +65,9 @@
 				<div class="form-group">
 					<label for="example-select">세안법 Step</label>
 					<select class="form-control" name="methodStep" id="methodStep">
-					<option value="1" id="step1"<c:out value="${methodSuggestVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
-					<option value="2" id="step2"<c:out value="${methodSuggestVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
-					<option value="3" id="step3"<c:out value="${methodSuggestVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
+					<option value="1" id="step1" disabled="disabled" <c:out value="${methodSuggestVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
+					<option value="2" id="step2" disabled="disabled" <c:out value="${methodSuggestVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
+					<option value="3" id="step3" disabled="disabled" <c:out value="${methodSuggestVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
 					</select>
 				</div>
 				<h3></h3>
@@ -70,7 +76,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step1 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step1 세안법" readonly="readonly" style="font-weight:bold;font-size:15pt;">${methodDetailVO.method}</textarea>
 								</c:if>
 								</c:forEach>
 						</div>
@@ -89,7 +95,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '2'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step2 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step2 세안법" readonly="readonly" style="font-weight:bold;font-size:15pt;">${methodDetailVO.method}</textarea>
 							</c:if>
 								</c:forEach>
 						</div>
@@ -109,7 +115,7 @@
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '3'}">
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step3 세안법" readonly="readonly">${methodDetailVO.method}</textarea>
+								placeholder="Step3 세안법" readonly="readonly" style="font-weight:bold;font-size:15pt;">${methodDetailVO.method}</textarea>
 							</c:if>
 								</c:forEach>
 						</div>
@@ -129,7 +135,7 @@
 
 		</form>
 		<div class="box-footer" align="center">
-			<button type="submit" class="button special small">목록</button>
+			<button type="button" class="button special small" onclick = "goBack()">목록</button>
 		</div>
 		</div>
 	</section>
@@ -159,21 +165,6 @@
 	<script src="/resources/templated-intensify/assets/js/skel.min.js"></script>
 	<script src="/resources/templated-intensify/assets/js/util.js"></script>
 	<script src="/resources/templated-intensify/assets/js/main.js"></script>
-    <script>
-	$(document).ready(function() {
-
-		var formObj = $("form[role='form']");
-
-		console.log(formObj);
-
-		$(".btn-outline-info").on("click", function() {
-			formObj.attr("method", "get");
-			formObj.attr("action", "/methodSuggest/list");
-			formObj.submit();
-		});
-
-	});
-	</script>
 	
 	<script>
 $(document).ready(function(){
@@ -218,6 +209,12 @@ jQuery('#methodStep').change(function(){
 		$('#prodNo3').show();
 		}
 	});
+</script>
+
+<script>
+function goBack() {
+    window.history.back();
+}
 </script>
 
 </body>
