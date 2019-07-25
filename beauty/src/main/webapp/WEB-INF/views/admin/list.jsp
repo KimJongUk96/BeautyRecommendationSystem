@@ -73,7 +73,7 @@ body.loading {
 										<table class="table table-hover table-centered mb-0">
 											<thead>
 												<tr>
-													<th>ID</th>
+													<th>ID ${login.id }</th>
 													<th>NAME</th>
 													<th>REGDATE</th>
 												</tr>

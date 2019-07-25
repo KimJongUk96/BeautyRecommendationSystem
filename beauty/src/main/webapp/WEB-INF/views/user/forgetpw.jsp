@@ -83,12 +83,12 @@
 
 					<br/>
 					<!-- Form -->
-					<form action="/user/loginPost" method="post">
+					<form action="/user/forgetpw" method="post">
 
 						<div class="container">
 							<div class="row uniform">
 								<div class="12u$">
-									<input type="text" name="email" class="form-control" placeholder="USER ID"/>
+									<input type="text" name="email" class="form-control" placeholder="아이디"/>
 								</div>
 							</div>
 						</div>

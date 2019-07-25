@@ -51,7 +51,7 @@
 				<div>
 					<label>이메일</label> 
 					<input type="text" id="email" name='email' placeholder="이메일을 입력하세요.">
-							<span id="chkMsg">email 중복 확인 하세요</span>
+							<span id="same2"></span>
 				</div>
 				
 				<div>
@@ -169,9 +169,12 @@
 					},
 					success : function(data) {
 						if ($.trim(data) == 0) {
-							$('#chkMsg').html("사용가능");
+							document.getElementById('same2').innerHTML='사용가능합니다.';
+							document.getElementById('same2').style.color='blue';
 						} else {
-							$('#chkMsg').html("사용불가");
+							document.getElementById('same2').innerHTML='사용 불가능합니다.';
+							document.getElementById('same2').style.color='red';
+							/* $('#chkMsg').html("사용불가"); */
 						}
 					},
 				});

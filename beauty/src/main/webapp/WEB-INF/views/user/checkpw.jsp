@@ -76,7 +76,7 @@
 				<section id="main" class="wrapper">
 					<header class="align-center">
 						<h1>뷰티 큐레이션</h1>
-						<p>비밀번호 확인</p>
+						<p>${login.nickName }의 비밀번호 확인</p>
 					</header>
 
 					<!-- Content -->
@@ -88,6 +88,7 @@
 						<div class="container">
 							<div class="row uniform">
 								<div class="12u$">
+									<input type="hidden" name="email" value="${login.email }">
 									<input type="password" name="password" class="form-control" placeholder="Password"/>
 								</div>
 							</div>

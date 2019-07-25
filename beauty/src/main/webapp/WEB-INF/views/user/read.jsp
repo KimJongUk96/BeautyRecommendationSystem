@@ -50,7 +50,7 @@
 	<!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="inner">
-			<form role="form" method="post" action="modify">
+			<form role="form" method="post" action="modify" name="frm">
 				<h4>피부정보 입력</h4>
 				<div>
 					<label>이메일</label> 
@@ -82,9 +82,9 @@
 				<h4>피부 정보 입력</h4>
 				<div>
 					<label>성별</label>
-					<input type="radio" name="gender" value="U1" id="U1"<c:out value="${userVO.gender eq 'U1'?'selected':''}"/>>
+					<input type="radio" name="gender" value="U1" id="U1" />
 					<label for="U1">여성</label> 
-					<input type="radio" name="gender" value="U2" id="U2"<c:out value="${userVO.gender eq 'U2'?'selected':''}"/>>
+					<input type="radio" name="gender" value="U2" id="U2" >
 					<label for="U2">남성</label> 
 				</div>
 				<div>
@@ -93,15 +93,15 @@
 				
 				<div>
 					<label>연령대</label>
-					<input type="radio" name="age" value="10" id="10"<c:out value="${userVO.age eq '10'?'selected':''}"/>>
+					<input type="radio" name="age" value="10" id="10"  >
 					<label for="10">10대</label> 
-					<input type="radio" name="age" value="20" id="20"<c:out value="${userVO.age eq '20'?'selected':''}"/>>
+					<input type="radio" name="age" value="20" id="20" >
 					<label for="20">20대</label> 
-					<input type="radio" name="age" value="30" id="30"<c:out value="${userVO.age eq '30'?'selected':''}"/>>
+					<input type="radio" name="age" value="30" id="30" >
 					<label for="30">30대</label> 
-					<input type="radio" name="age" value="40" id="40"<c:out value="${userVO.age eq '40'?'selected':''}"/>>
+					<input type="radio" name="age" value="40" id="40" >
 					<label for="40">40대</label> 
-					<input type="radio" name="age" value="50" id="50"<c:out value="${userVO.age eq '50'?'selected':''}"/>>
+					<input type="radio" name="age" value="50" id="50" >
 					<label for="50">50대이상</label>  
 				</div>
 				<div>
@@ -109,15 +109,15 @@
 				</div>
 				<div>
 					<label>피부 타입</label>
-					<input type="radio" name="skinType" value="DR" id="DR"<c:out value="${userVO.skinType eq 'DR'?'selected':''}"/>>
+					<input type="radio" name="skinType" value="DR" id="DR">
 					<label for="DR">건성</label> 
-					<input type="radio" name="skinType" value="NE" id="NE"<c:out value="${userVO.skinType eq 'NE'?'selected':''}"/>>
+					<input type="radio" name="skinType" value="NE" id="NE">
 					<label for="NE">중성</label> 
-					<input type="radio" name="skinType" value="CO" id="CO"<c:out value="${userVO.skinType eq 'CO'?'selected':''}"/>>
+					<input type="radio" name="skinType" value="CO" id="CO">
 					<label for="CO">복합성</label> 
-					<input type="radio" name="skinType" value="SE" id="SE"<c:out value="${userVO.skinType eq 'SE'?'selected':''}"/>>
+					<input type="radio" name="skinType" value="SE" id="SE">
 					<label for="SE">민감성</label> 
-					<input type="radio" name="skinType" value="OI" id="OI"<c:out value="${userVO.skinType eq 'OI'?'selected':''}"/>>
+					<input type="radio" name="skinType" value="OI" id="OI">
 					<label for="OI">지성</label>  
 				</div>
 
@@ -156,6 +156,53 @@
 
 
 </body>
+<script>
+$(document).ready(function() {
+	
+	var gender = '<c:out value="${userVO.gender}"/>'; 
+	var age = '<c:out value="${userVO.age}"/>'; 
+	var skinType = '<c:out value="${userVO.skinType}"/>'; 
+
+	
+	//성별 설정
+	$('input[name="gender"]').each(function() {
+		
+        var value = $(this).val(); 
+        
+        if(gender == value){
+        	
+		$('#'+value).prop('checked', true);
+        	
+        }        
+	});
+	
+	//나이 체크박스 설정
+	$('input[name="age"]').each(function() {
+		
+        var value = $(this).val(); 
+        	
+        if(age == value){
+        	
+		$('#'+value).prop('checked', true);
+        	
+        }        
+        
+	});
+	
+	//피부타입 설정
+	$('input[name="skinType"]').each(function() {
+		
+        var value = $(this).val(); 
+        if(skinType == value){
+		$('#'+value).prop('checked', true);
+        	
+        }        
+        
+	});
+	
+});
+</script>
+
 <script type="text/javascript">
 	//아이디가 맞지 않을 경우 가입버튼 비활성화를 위한 변수설정
 	$(function() {
@@ -202,5 +249,7 @@
 			}
 		}
 	}
+	
+	
 </script>
 </html>

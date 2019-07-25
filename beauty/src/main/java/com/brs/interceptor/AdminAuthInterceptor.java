@@ -14,8 +14,8 @@ import com.brs.domain.AdminVO;
 
 public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdminAuthInterceptor.class);
 	private static final String LOGIN = "login";
+	private static final Logger logger = LoggerFactory.getLogger(AdminAuthInterceptor.class);
 
 	// adminVO
 	@Override
@@ -33,7 +33,7 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 	          session.setAttribute(LOGIN, adminVO);
 	          
 	          Object dest = session.getAttribute("dest");
-	          response.sendRedirect(dest != null ? (String) dest : "/");
+	          response.sendRedirect(dest != null ? (String) dest : "/product/list");
 	    	  
 	      }
 	}

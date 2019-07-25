@@ -16,7 +16,8 @@
 	
 	<update id="update">
 	UPDATE TBL_USER
-	   SET PASSWORD = #{password},
+	   SET GENDER = #{gender},
+	   	   PASSWORD = #{password},
 	   	   NICK_NAME = #{nickName},
 	   	   AGE = #{age},
 	   	   SKIN_TYPE = #{skinType}

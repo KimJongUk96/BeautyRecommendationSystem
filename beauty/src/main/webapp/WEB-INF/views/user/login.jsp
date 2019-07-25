@@ -117,8 +117,8 @@
 									<li><input type="submit" class ="button fit" value="로그인" /></li>
 								</ul>
 								<ul class="actions fit small">
-									<li><input type="button" class ="button alt fit small" value="비밀번호 찾기" /></li>
-									<li><input type="button" class ="button special fit small" value="회원가입" /></li>
+									<li><input type="button" class ="button alt fit small" onclick="openPopUp()" value="비밀번호 찾기" /></li>
+									<li><a href="/user/register" class ="button special fit small">회원가입</a></li>
 								</ul>
 							</div>
 						</form>
@@ -160,4 +160,21 @@
 		<script src="/resources/templated-intensify/assets/js/util.js"></script>
 		<script src="/resources/templated-intensify/assets/js/main.js"></script>
 </body>
+<script>
+	function openPopUp() {
+		// window.name = "부모창 이름"; 
+		window.name = "parentForm";
+		// window.open("open할 window", "자식창 이름", "팝업창 옵션");
+		var width = "800";
+		var height = "500";
+		var top = (window.screen.height - height) / 2;
+		var left = (window.screen.width - width) / 2;
+		var url = "/user/forgetpw";
+		var title = "비밀번호 소개";
+		var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width="
+				+ width + ",height=" + height + ",top=" + top + ",left=" + left;
+
+		window.open(url, title, status);
+	}
+</script>
 </html>

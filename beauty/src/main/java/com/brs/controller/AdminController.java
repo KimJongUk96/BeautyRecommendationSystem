@@ -35,6 +35,7 @@ public class AdminController {
 	// admin/login.jsp 로 이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
+		logger.info("login~~~~~");
 	}
 
 	// 로그인

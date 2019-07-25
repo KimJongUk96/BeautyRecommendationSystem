@@ -59,15 +59,19 @@
 		</interceptor>
 
 		<interceptor>
+			<mapping path="/method/list" />
 			<mapping path="/method/readPage" />
 			<mapping path="/method/register" />
 			<mapping path="/method/modifyPage" />
 			<mapping path="/method/remove" />
 			<mapping path="/admin/loginPost" />
+			<mapping path="/admin/list" />
+			<mapping path="/admin/register" />
+			<mapping path="/admin/delete" />
+			<mapping path="/prodtype/list" />
 			<mapping path="/prodtype/register" />
 			<mapping path="/prodtype/modify" />
 			<mapping path="/prodtype/delete" />
-			<mapping path="/admin/delete" />
 			<beans:ref bean="adminInterceptor" />
 		</interceptor>
 
