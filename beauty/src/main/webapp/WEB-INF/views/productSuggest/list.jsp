@@ -80,12 +80,12 @@
 								<tr>
 									<td id='rank' style="vertical-align: middle">${status.count}</td>
 									<td style="vertical-align: middle">
-										<a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'>
+										<a href='/productSuggest/readPage?&prodNo=${productVO.prodNo}'>
 											<img id='photo' src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 
 										</a>
 									</td>
 									<td style="vertical-align: middle">
-										    <a href='/prodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
+										    <a href='/productSuggest/readPage?&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
 											<br/>
 											제조사 : ${productVO.compName}
 											<br/>

@@ -124,7 +124,8 @@
 							
                   <div class="text-center" align="center">
 					<nav>
-						<ul class="pagination pagination-rounded">
+				
+						<ul class="pagination pagination-rounded justify-content-center">
 
 							<c:if test="${pageMaker.prev}">
 								<li class="page-item"><a

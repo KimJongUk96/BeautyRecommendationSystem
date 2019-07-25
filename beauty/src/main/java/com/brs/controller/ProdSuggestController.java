@@ -19,6 +19,8 @@ import com.brs.domain.util.PageMaker;
 import com.brs.domain.util.SearchCriteria;
 import com.brs.service.product.ProdTypeService;
 import com.brs.service.product.ProductService;
+import com.brs.service.product.UserProductService;
+import com.brs.service.review.ReviewService;
 
 @Controller
 @RequestMapping("/productSuggest/*")
@@ -31,6 +33,9 @@ public class ProdSuggestController {
 	
 	@Inject
 	private ProdTypeService typeService;
+	
+	@Inject
+	private  UserProductService userProductService;
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -80,10 +85,16 @@ public class ProdSuggestController {
 	
 	
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	public void read(@RequestParam("prodNo") int prodNo, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void read(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
+		
+		model.addAttribute("prodTypeList", typeService.getAllType());
+	
+		model.addAttribute("list", userProductService.listReview(prodNo));
 		
 		model.addAttribute(service.read(prodNo));
 	}
+	
+
 	
 
 	
