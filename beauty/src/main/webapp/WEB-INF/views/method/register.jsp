@@ -57,7 +57,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form role="form" name="frm" id="frm" method="post">
+                                                <form role='form' name="frm" id="frm" method="post">
                                                 	
 
                          <div class="form-group mb-3">
@@ -91,10 +91,10 @@
 						
 							 <input type="hidden" name="step" class="form-control" value="0" id="step">
 						
-						<div class="form-group mb-3" id="method">
+						<div class="form-group mb-3" id="method01">
 							<label for="simpleinput">세안법</label>
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step1 세안법"></textarea>
+								placeholder="Step1 세안법" id="method"></textarea>
 						</div>
 						
 						<div class="form-group" id="prodNo">
@@ -106,10 +106,10 @@
 							</select>
 						</div> 
 						
-						<div class="form-group mb-3" id="method2">
+						<div class="form-group mb-3" id="method02">
 							<label for="simpleinput">세안법2</label>
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step2 세안법"></textarea>
+								placeholder="Step2 세안법" id="method2"></textarea>
 						</div>
 						
 						<div class="form-group mb-3" id="prodNo2">
@@ -121,10 +121,10 @@
 							</select>
 						</div> 
 						
-						<div class="form-group mb-3" id="method3">
+						<div class="form-group mb-3" id="method03">
 							<label for="simpleinput">세안법3</label>
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step3 세안법"></textarea>
+								placeholder="Step3 세안법" id="method3"></textarea>
 						</div>
 						
 						<div class="form-group" id="prodNo3">
@@ -149,35 +149,32 @@
 						
 						<div class="form-group">
 							<label for="example-select">계절</label> 
-							<input type="radio" name="season" value="S1">봄
-							<input type="radio" name="season" value="S2">여름
-							<input type="radio" name="season" value="S3">가을
-							<input type="radio" name="season" value="S4">겨울
+							<input type="radio" name="season" id="season" value="S1"> 봄
+							<input type="radio" name="season" id="season" value="S2"> 여름
+							<input type="radio" name="season" id="season" value="S3"> 가을
+							<input type="radio" name="season" id="season" value="S4"> 겨울
 						</div>
 						
 						<div class="form-group">
 							<label for="example-select">날씨</label>
-							<input type="radio" name="weather" value="W1">맑음
-							<input type="radio" name="weather" value="W2">흐림
-							<input type="radio" name="weather" value="W3">눈/비
+							<input type="radio" name="weather" id="weather" value="W1"> 맑음
+							<input type="radio" name="weather" id="weather" value="W2"> 흐림
+							<input type="radio" name="weather" id="weather" value="W3"> 눈/비
 						</div>
 						
 						<div class="form-group">
 							<label for="example-select">미세먼지</label> 
-							<input type="radio" name="dust" value="D1">좋음
-							<input type="radio" name="dust" value="D2">보통
-							<input type="radio" name="dust" value="D3">나쁨
-							<input type="radio" name="dust" value="D4">매우나쁨
+							<input type="radio" name="dust" id="dust" value="D1"> 좋음
+							<input type="radio" name="dust" id="dust" value="D2"> 보통
+							<input type="radio" name="dust" id="dust" value="D3"> 나쁨
+							<input type="radio" name="dust" id="dust" value="D4"> 매우나쁨
 						</div>
 						
-						<div class="form-group">
-							<label for="exampleInputEmail1">admin</label> <input type="text"
-								name="adminNo" class="form-control">
-						</div>
+							<input type="hidden" name="adminNo" value="${adminVO.adminNo}" class="form-control">
 						
 												<div class="box-footer" align="center">
 													<button type="submit" id="btn" class="btn btn-outline-success btn-rounded">등록</button>
-													<button type="button" class="btn btn-outline-fail btn-rounded">취소</button>
+													<button type="button" class="btn btn-outline-danger btn-rounded">취소</button>
 												</div>
 											</form>
                                             </div> <!-- end col -->
@@ -242,15 +239,16 @@
         <!-- end demo js-->
     </body>
     
+    
     <script>
 
 
 $(document).ready(function(){
-	$('#method').show();
+	$('#method01').show();
 	$('#prodNo').show();
-	$('#method2').hide();
+	$('#method02').hide();
 	$('#prodNo2').hide();
-	$('#method3').hide();
+	$('#method03').hide();
 	$('#prodNo3').hide();
 
 jQuery('#methodStep').change(function(){
@@ -258,27 +256,27 @@ jQuery('#methodStep').change(function(){
 	var value = jQuery('#methodStep option:selected').val();	
 	
 	if(value == '1'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').hide();
+		$('#method02').hide();
 		$('#prodNo2').hide();
-		$('#method3').hide();
+		$('#method03').hide();
 		$('#prodNo3').hide();
 		
 	}else if(value == '2'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').show();
+		$('#method02').show();
 		$('#prodNo2').show();
-		$('#method3').hide();
+		$('#method03').hide();
 		$('#prodNo3').hide();
 		
 	}else if(value == '3'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').show();
+		$('#method02').show();
 		$('#prodNo2').show();
-		$('#method3').show();
+		$('#method03').show();
 		$('#prodNo3').show();
 		}
 	});

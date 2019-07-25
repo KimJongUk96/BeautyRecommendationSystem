@@ -110,7 +110,7 @@
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">관리자</label>
-		                                                <input type="text" id="adminNo" name='adminNo' class="form-control" value='1000' readonly="readonly">
+		                                                <input type="text" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
 		                                                <!-- <input type="text" id="adminNo" name='adminNo' class="form-control" value='${AdminVO.adminNo}' readonly="readonly"> -->
 		                                            </div>
 		

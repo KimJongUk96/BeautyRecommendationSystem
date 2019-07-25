@@ -174,25 +174,25 @@
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">계절</label> 
-							<input type="radio" name="season" value="S1" disabled="disabled"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
-							<input type="radio" name="season" value="S2" disabled="disabled"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
-							<input type="radio" name="season" value="S3" disabled="disabled"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
-							<input type="radio" name="season" value="S4" disabled="disabled"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
+							<input type="radio" name="season" value="S1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
+							<input type="radio" name="season" value="S2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
+							<input type="radio" name="season" value="S3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
+							<input type="radio" name="season" value="S4" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">날씨</label>
-							<input type="radio" name="weather" value="W1" disabled="disabled"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
-							<input type="radio" name="weather" value="W2" disabled="disabled"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
-							<input type="radio" name="weather" value="W3" disabled="disabled"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
+							<input type="radio" name="weather" value="W1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
+							<input type="radio" name="weather" value="W2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
+							<input type="radio" name="weather" value="W3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">미세먼지</label> 
-							<input type="radio" name="dust" value="D1" disabled="disabled"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
-							<input type="radio" name="dust" value="D2" disabled="disabled"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
-							<input type="radio" name="dust" value="D3" disabled="disabled"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
-							<input type="radio" name="dust" value="D4" disabled="disabled"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
+							<input type="radio" name="dust" value="D1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
+							<input type="radio" name="dust" value="D2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
+							<input type="radio" name="dust" value="D3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
+							<input type="radio" name="dust" value="D4" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
 						</div>
 											</form>
 												<div class="box-footer" align="center">
