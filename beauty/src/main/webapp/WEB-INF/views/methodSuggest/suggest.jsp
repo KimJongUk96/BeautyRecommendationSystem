@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML>
 <!--
@@ -27,6 +28,8 @@
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
 			<a href="/user/login" class="button alt">Log in</a>
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read" class="button alt">내 정보 수정</a>
 		</nav>
 	</header>
 
