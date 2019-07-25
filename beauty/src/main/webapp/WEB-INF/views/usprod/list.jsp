@@ -124,17 +124,21 @@ body.loading {
 													<th style="width: 90px">번호</th>
 													<th>사진</th>
 													<th>제품명</th>
-													<th>회사명</th>
+													<th>제조사</th>
+													<th>카테고리</th>
 													<th>제품 종류</th>
+													<th>리뷰 수</th>
+													<th>총평점</th>
 													<th>등록일</th>
 
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${list}" var="productVO">
+												<c:forEach items="${list}" var="productVO" varStatus="listStat">
 
 													<tr>
-														<td>${productVO.prodNo}</td>
+														<td>${listStat.count}
+														<input type="hidden" value="${productVO.prodNo }"/></td>
 														<td><img height="125px" width="200px"
 															src="displayFile?fileName=${productVO.img}" alt="이미지 없음" />
 														</td>
@@ -143,6 +147,9 @@ body.loading {
 																${productVO.name} </a></td>
 														<td>${productVO.compName}</td>
 														<td>${productVO.categoryName}</td>
+														<td>${productVO.prodtypeName}</td>
+														<td>${productVO.count}</td>
+														<td>${productVO.ratingAvg}</td>
 														<%-- <c:forEach items="${prodTypeList}" var="prodTypeVO">
 			                                                        <c:if test="${prodTypeVO.prodtypeNo eq productVO.prodtypeNo}">
 			                                                        	<td>${prodTypeVO.name}&nbsp;${prodTypeVO.category}</td>
