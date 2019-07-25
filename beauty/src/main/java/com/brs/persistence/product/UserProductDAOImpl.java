@@ -49,4 +49,9 @@ public class UserProductDAOImpl implements UserProductDAO {
 		return session.selectList(namespace + ".readReivew", prodNo);
 	}
 
+	@Override
+	public List<ProductVO> listSearchOrderRegdate(SearchCriteria cri) throws Exception {
+		return session.selectList(namespace+".listSearchOrderRegdate");
+	}
+
 }

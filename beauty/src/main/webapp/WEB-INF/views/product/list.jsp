@@ -75,7 +75,7 @@
 														제품 종류</option>
 													
 												</select>
-												<input type="text" name='keyword' id="keywordInput" value='${cri.keyword}'>
+											   <input type="text" name='keyword' id="keywordInput" value='${cri.keyword}'>
 											   <button id='searchBtn' type="button" class="btn btn-light btn-rounded">검색</button>
 											   <button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
 										     </div>

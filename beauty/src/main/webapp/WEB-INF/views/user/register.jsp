@@ -70,6 +70,7 @@
 					<input type="text" name='nickName' class="form-control">
 				</div>
 				<div>
+				
 					<p>
 					<h1></h1>
 					<h1></h1>

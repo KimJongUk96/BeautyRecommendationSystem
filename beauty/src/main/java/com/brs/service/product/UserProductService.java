@@ -11,6 +11,9 @@ public interface UserProductService {
 	//세안제품 목록
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception;
 	
+	//세안제품 목록 리뷰 평점
+	public List<ProductVO> listSearchOrderRegdate(SearchCriteria cri) throws Exception;
+	
 	//세안 제품 목록 검색
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
