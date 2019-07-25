@@ -46,6 +46,7 @@ public class UserProductDAOImpl implements UserProductDAO {
 	//리뷰 조회하기
 	@Override
 	public List<ReviewVO> listReview(int prodNo) throws Exception {
+		System.out.println("DAO PART : " + session.selectList(namespace + ".readReivew", prodNo).toString());
 		return session.selectList(namespace + ".readReivew", prodNo);
 	}
 

@@ -30,6 +30,7 @@ public class ReviewVO {
 	private String userAge;
 	//사용자 피부 타입
 	private String userSkinType;
+	
 	public int getReviewNo() {
 		return reviewNo;
 	}
