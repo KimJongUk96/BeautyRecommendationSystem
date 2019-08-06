@@ -18,4 +18,6 @@ public interface ProductService {
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception;
 	
 	public int listSearchCount(SearchCriteria cri) throws Exception;
+	
+	public List<ProductVO> foundProd(int[] prodNo) throws Exception;
 }

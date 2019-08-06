@@ -51,4 +51,10 @@ public class ProductServiceImpl implements ProductService {
 		return dao.listSearchCount(cri);
 	}
 
+	@Override
+	public List<ProductVO> foundProd(int[] prodNo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.found(prodNo);
+	}
+
 }

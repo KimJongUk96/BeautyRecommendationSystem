@@ -241,10 +241,27 @@
 		  	count(PROD_NO) 
 		  from]]> 
 		  <include refid="search2"></include>
-		  	
-		
-				
-
 	</select>
+	
+	<select id="findProduct" resultType="com.brs.domain.product.ProductVO">  
+		  select 
+		  	* 
+		  from
+		  	tbl_product
+		  where
+		  	prod_no IN
+		  	<foreach collection="array" item="prodNo" index="index" open="(" close=")" separator=",">
+		  		${array[index]}
+		  	</foreach>
+		    order by DECODE(prod_no
+		    <foreach collection="array" item="prodNo" index="index" open="," close=")" separator=",">
+		  		${array[index]}, ${index+1}
+		  	</foreach>
+		    
+	</select>
+	
+	
+	
+	
 	
 </mapper>

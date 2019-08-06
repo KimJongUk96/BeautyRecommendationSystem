@@ -1,6 +1,10 @@
 
 package com.brs.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
+import java.net.URI;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brs.domain.product.ProdSuggestVO;
@@ -37,24 +42,84 @@ public class ProdSuggestController {
 	@Inject
 	private ReviewService reviewService;
 	
+	public String remakeJSON(String result) {
+		String remake = "";
+		for(int i=0; i<result.length(); i++) {
+        	if(result.charAt(i) == '"' || result.charAt(i) == '{' || result.charAt(i) == '}'  ) {
+        		continue;
+        	}
+        	remake = remake + result.charAt(i);
+        }
+		System.out.println("json remaked = " + remake);
+		return remake;
+	}
+	
+	public int[] findProdNums(String jsonRemaked, int[] prodNums) {
+		String[] jsonSplit = jsonRemaked.split(",");
+        String[] jsonSplit2 = jsonSplit[2].split(":");
+        jsonSplit[2] = jsonSplit2[1]+":"+jsonSplit2[2];
+        
+        for(int i=0; i<jsonSplit.length; i++) {
+        	System.out.println(i + " == " + jsonSplit[i]);
+        }
+
+        for(int i=2; i<jsonSplit.length; i++) {
+        	int index = jsonSplit[i].indexOf(":");
+        	if(jsonSplit[i].substring(0, index).length() == 1) {
+        		prodNums[i-2] = Integer.parseInt("100"+jsonSplit[i].substring(0, index));
+        	}else {
+        		prodNums[i-2] = Integer.parseInt("10"+jsonSplit[i].substring(0, index));
+        	}
+        }
+        return prodNums;
+	}
+	
+	public double[] findProdSugs(String jsonRemaked, double[] prodSugs) {
+		String[] jsonSplit = jsonRemaked.split(",");
+        String[] jsonSplit2 = jsonSplit[2].split(":");
+        jsonSplit[2] = jsonSplit2[1]+":"+jsonSplit2[2];
+
+        for(int i=2; i<jsonSplit.length; i++) {
+        	int index = jsonSplit[i].indexOf(":");
+        	if(Double.valueOf(jsonSplit[i].substring(index+1, index+6)) > 5.0) {
+        		prodSugs[i-2] = 5.0;
+        	}else {
+        		prodSugs[i-2] = Double.valueOf(jsonSplit[i].substring(index+1, index+6));
+        	}
+        	
+        }
+        return prodSugs;
+	}
+	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("prodSuggest") ProdSuggestVO prodSuggest, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		
         logger.info(cri.toString());
-		
+        
+        int num = 10;
+        String inputInfo = "";
+        int[] prodNums = new int[num]; //제품 번호 저장된 배열 (추천순위 높은 순으로)
+        double[] prodSugs = new double[num]; // 제품 추천 적합 점수 저장된 배열 (추천순위 높은 순으로)
+        if(prodSuggest.getGender().equals("U2")) { // 딥러닝쪽은 남성이 'U0' 여성이 'U1'
+        	inputInfo = "U0" + prodSuggest.getAge() + prodSuggest.getSkinType();
+        }else {
+        	inputInfo = prodSuggest.getGender() + prodSuggest.getAge() + prodSuggest.getSkinType();
+        }
+        String Url = "http://beautyrec.run.goorm.io/topNRec?num="+num+"&user="+inputInfo;
+        
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(Url, String.class);
+        System.out.println("original json = " + result);
+        
+        prodNums = findProdNums(remakeJSON(result), prodNums);
+        prodSugs = findProdSugs(remakeJSON(result), prodSugs);
+        
+
 		System.out.println("====" + cri.toString());
-		model.addAttribute("list", service.listSearch(cri));
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		//pageMaker.setTotalCount(131);
-		
-		// button을 몇개 만들어야 하는지를 담당하는 부분
-		pageMaker.setTotalCount(service.listSearchCount(cri)); //fixed
-		
+		model.addAttribute("list", service.foundProd(prodNums));
+		model.addAttribute("sugs", prodSugs);
 		model.addAttribute("prodTypeList", typeService.getAllType());
-		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("prodSuggestVO", prodSuggest);
 	}
 	
@@ -65,7 +130,7 @@ public class ProdSuggestController {
 		logger.info("infoInput get .........");
 	}
 	
-	// data 형식 [prodNo : 추첨점수] -> 제품 10개 추천 
+	
 	
 	@RequestMapping(value = "/infoInput", method = RequestMethod.POST)
 	public String prodSuggestionPOST(ProdSuggestVO prodSuggest, RedirectAttributes rttr) throws Exception {

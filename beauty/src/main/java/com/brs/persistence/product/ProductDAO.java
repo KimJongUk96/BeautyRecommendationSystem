@@ -18,4 +18,6 @@ public interface ProductDAO {
 	public List<ProductVO> listSearch(SearchCriteria cri) throws Exception;
 	
 	public int listSearchCount(SearchCriteria cri) throws Exception;
+	
+	public List<ProductVO> found(int[] prodNo) throws Exception;
 }

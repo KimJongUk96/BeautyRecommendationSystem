@@ -49,16 +49,11 @@
 		<!-- Main -->
 		<section id="main" class="wrapper">
 			<div class="inner">
-<!-- 				<form name="frm" method="POST"> -->
-<%-- 					<input type="hidden" name="skinType" value="${methodSuggestVO.skinType}">  --%>
-<%-- 					<input type="hidden" name="makeUpDegree" value="${methodSuggestVO.makeUpDegree}"> --%>
-<%-- 					<input type="hidden" name="weather" value="${methodSuggestVO.weather}">  --%>
-<%-- 					<input type="hidden" name="dust" value="${methodSuggestVO.dust}"> --%>
-<!-- 				</form> -->
+
 				<div>
 					<h4 style="float: left">제품 추천 :&nbsp;&nbsp;&nbsp;</h4>
 					<h4 id='gend' style="float: left"></h4>
-					<h4 style="float: left">&nbsp;&nbsp;&nbsp;#${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
+					<h4 style="float: left">&nbsp;&nbsp;&nbsp;${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
 					<h4 id='skin' style="float: left"></h4>
 					<br/>
                     
@@ -70,7 +65,7 @@
 					<table>
 						<thead>
 							<tr>
-								<th>순위</th>
+								<th>순위/점수</th>
 								<th>제품 사진</th>
 								<th>제품 정보</th>
 							</tr>
@@ -78,7 +73,11 @@
 						<tbody>
 							<c:forEach items="${list}" var="productVO" varStatus="status">
 								<tr>
-									<td id='rank' style="vertical-align: middle">${status.count}</td>
+									<td id='rank' style="vertical-align: middle">
+										<h3 style="vertical-align: middle">${status.count}</h4>
+										<br/>
+										${sugs[status.count-1]} / 5.0
+									</td>
 									<td style="vertical-align: middle">
 										<a href='/productSuggest/readPage?&prodNo=${productVO.prodNo}'>
 											<img id='photo' src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 

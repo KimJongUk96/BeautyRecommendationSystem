@@ -48,5 +48,11 @@ public class ProductDAOImpl implements ProductDAO  {
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
+
+	@Override
+	public List<ProductVO> found(int[] prodNo) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".findProduct", prodNo);
+	}
 	
 }
