@@ -24,15 +24,15 @@
         <link href="/resources/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="/resources/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
 
+
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -41,8 +41,6 @@
             <div class="content-page">
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 					<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -50,14 +48,14 @@
                        
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Product Type READ</h4>
+                                        <h4 class="header-title">Admin Read</h4>
                                        
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <form role="form" action="modify" method="post">
                                                 
                                                 <input type='hidden' name='adminNo' value="${adminVO.adminNo}">

@@ -5,6 +5,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+    
+    <style>
+input[type='radio'] {
+  -webkit-appearance:none;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  outline:none;
+  background-color: #fff;
+  border: #CCCCCC solid 1px;
+}
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:60%;
+  height:60%;
+  margin: 20% auto;   
+  border-radius:50%;   
+}
+input[type='radio']:checked:before {
+  background:#727cf5;
+}
+    </style>
+    
         <meta charset="utf-8" />
         <title>관리자 페이지</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +51,11 @@
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -41,8 +64,7 @@
             <div class="content-page">
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
+                    
 					<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -50,14 +72,14 @@
                        
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">세안법 수정</h4>
                                        
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                             
 					<form role="form" action="modifyPage" method="post">
 
@@ -103,11 +125,11 @@
 							</c:forEach>
 						</div>
 						
-						<div class="form-group mb-3" id="method">
+						<div class="form-group mb-3" id="method01">
 							<label for="exampleInputPassword1">세안법</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
-							<textarea class="form-control" name="method" rows="5"
+							<textarea class="form-control" name="method" rows="5" id="method"
 								placeholder="Step1 세안법">${methodDetailVO.method}</textarea>
 								</c:if>
 								</c:forEach>
@@ -126,13 +148,13 @@
 							</select>
 						</div> 
 						
-						<div class="form-group mb-3" id="method2">
+						<div class="form-group mb-3" id="method02">
 							<label for="exampleInputPassword1">세안법2</label>
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 1}">
 							<!-- 3번 세안법이 없을 경우 -->
 							<div class="form-group mb-3" id="method2">
-								<textarea class="form-control" name="method" rows="5"
+								<textarea class="form-control" name="method" rows="5" id="method2"
 									placeholder="Step2 세안법"></textarea>
 							</div>
 							
@@ -146,8 +168,8 @@
 							
 							<c:if test="${not empty methodDetailVO}">
 							 <!-- 실제 값 있을 경우 만들어라 -->
-								<div class="form-group mb-3" id="method2">
-								<textarea class="form-control" name="method" rows="5"
+								<div class="form-group mb-3" id="method02">
+								<textarea class="form-control" name="method" rows="5" id="method2"
 									placeholder="Step2 세안법">${methodDetailVO.method}</textarea>
 							</div>							
 							</c:if>
@@ -155,8 +177,8 @@
 							
 							<c:if test="${empty methodDetailVO}">
 							 <!-- 빈통을 만들어라 -->
-							 <div class="form-group mb-3" id="method2">
-								<textarea class="form-control" name="method" rows="5"
+							 <div class="form-group mb-3" id="method02">
+								<textarea class="form-control" name="method" rows="5" id="method2"
 									placeholder="Step2 세안법"></textarea>
 							</div>
 							</c:if>
@@ -184,14 +206,14 @@
 							</select>
 						</div> 
 						
-						<div class="form-group mb-3" id="method3">
+						<div class="form-group mb-3" id="method03">
 							<label for="exampleInputPassword1">세안법3</label>
 							
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 2}">
 							<!-- 3번 세안법이 없을 경우 -->
 							<div class="form-group mb-3" id="method3">
-								<textarea class="form-control" name="method" rows="5"
+								<textarea class="form-control" name="method" rows="5" id="method3"
 									placeholder="Step3 세안법"></textarea>
 							</div>
 							
@@ -205,8 +227,8 @@
 							
 							<c:if test="${not empty methodDetailVO}">
 							 <!-- 실제 값 있을 경우 만들어라 -->
-								<div class="form-group mb-3" id="method3">
-								<textarea class="form-control" name="method" rows="5"
+								<div class="form-group mb-3" id="method03">
+								<textarea class="form-control" name="method" rows="5" id="method3"
 									placeholder="Step3 세안법">${methodDetailVO.method}</textarea>
 							</div>							
 							</c:if>
@@ -214,8 +236,8 @@
 							
 							<c:if test="${empty methodDetailVO}">
 							 <!-- 빈통을 만들어라 -->
-							 <div class="form-group mb-3" id="method3">
-								<textarea class="form-control" name="method" rows="5"
+							 <div class="form-group mb-3" id="method03">
+								<textarea class="form-control" name="method" rows="5" id="method3"
 									placeholder="Step3 세안법"></textarea>
 							</div>
 							</c:if>
@@ -245,32 +267,35 @@
 							</select>
 							</div> 
 						
-						<div class="custom-control custom-radio">
-							<label for="exampleInputEmail1">계절</label> 
-							<input type="radio" name="season" value="S1" class="custom-control-input"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
-							<input type="radio" name="season" value="S2" class="custom-control-input"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
-							<input type="radio" name="season" value="S3" class="custom-control-input"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
-							<input type="radio" name="season" value="S4" class="custom-control-input"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
+						<div class="form-group">
+							<label for="exampleInputEmail1">계절</label>
+							&nbsp;
+							<input type="radio" name="season" value="S1" <c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>&nbsp;봄
+							<input type="radio" name="season" value="S2" <c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>&nbsp;여름
+							<input type="radio" name="season" value="S3" <c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>&nbsp;가을
+							<input type="radio" name="season" value="S4" <c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>&nbsp;겨울
 						</div>
 						
-						<div class="custom-control custom-radio">
+						<div class="form-group">
 							<label for="exampleInputEmail1">날씨</label>
-							<input type="radio" name="weather" value="W1" class="custom-control-input"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
-							<input type="radio" name="weather" value="W2" class="custom-control-input"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
-							<input type="radio" name="weather" value="W3" class="custom-control-input"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
+							&nbsp;
+							<input type="radio" name="weather" value="W1" <c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>&nbsp;맑음
+							<input type="radio" name="weather" value="W2" <c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>&nbsp;흐림
+							<input type="radio" name="weather" value="W3" <c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>&nbsp;눈/비
 						</div>
 						
-						<div class="custom-control custom-radio">
-							<label for="exampleInputEmail1">미세먼지</label> 
-							<input type="radio" name="dust" value="D1" class="custom-control-input"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
-							<input type="radio" name="dust" value="D2" class="custom-control-input"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
-							<input type="radio" name="dust" value="D3" class="custom-control-input"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
-							<input type="radio" name="dust" value="D4" class="custom-control-input"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
+						<div class="form-group">
+							<label for="exampleInputEmail1">미세먼지</label>
+							&nbsp; 
+							<input type="radio" name="dust" value="D1" <c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>&nbsp;좋음
+							<input type="radio" name="dust" value="D2" <c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>&nbsp;보통
+							<input type="radio" name="dust" value="D3" <c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>&nbsp;나쁨
+							<input type="radio" name="dust" value="D4" <c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>&nbsp;매우나쁨
 						</div>
 											</form>
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">수정</button>
-					<button type="submit" class="btn btn-warning">취소</button>
+				<div class="box-footer" align="center">
+					<button type="submit" id="btn" class="btn btn-outline-success btn-rounded">수정</button>
+					<button type="submit" class="btn btn-outline-danger btn-rounded">취소</button>
 				</div>
                                             </div> <!-- end col -->
 
@@ -340,16 +365,18 @@ $(document).ready(
 
 		console.log(formObj);
 
-		$(".btn-warning")
+		$(".btn-outline-danger")
 				.on("click",function() {
 					self.location = "/method/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
 							+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 				});
-
-		$(".btn-primary").on("click",
+		
+		$(".btn-outline-success").on("click",
 				function() {
 					formObj.submit();
 				});
+
+
 	});
 </script>
 	
@@ -366,8 +393,6 @@ $(document).ready(function(){
 		   $('#methodStep').change();
 	   }
 	
-	
-	
 	});
 </script>
 
@@ -377,27 +402,28 @@ jQuery('#methodStep').change(function(){
 	var value = jQuery('#methodStep option:selected').val();	
 	// selectbox value값에 따라서 textArea 보기 / 숨기기
 	if(value == '1'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').hide();
+		$('#method02').hide();
 		$('#prodNo2').hide();
-		$('#method3').hide();
+		$('#method03').hide();
 		$('#prodNo3').hide();
 	}else if(value == '2'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').show();
+		$('#method02').show();
 		$('#prodNo2').show();
-		$('#method3').hide();
+		$('#method03').hide();
 		$('#prodNo3').hide();
 	}else if(value == '3'){
-		$('#method').show();
+		$('#method01').show();
 		$('#prodNo').show();
-		$('#method2').show();
+		$('#method02').show();
 		$('#prodNo2').show();
-		$('#method3').show();
+		$('#method03').show();
 		$('#prodNo3').show();
 		}
 	});
 </script>
+
 </html>

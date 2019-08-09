@@ -45,13 +45,19 @@
 <body class="subpage">
 <!-- Header -->
 <header id="header">
-	<nav class="left">
-		<a href="#menu"><span>Menu</span></a>
-	</nav>
-	<a href="index.html" class="logo">intensify</a>
-	<nav class="right">
-		<a href="#" class="button alt">Log in</a>
-	</nav>
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a>
+		</nav>
+		<a href="/" class="logo">Beauty</a>
+		<nav class="right">
+		<c:if test="${login.email eq null}">
+			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${login.email ne null}">
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
+		</c:if>
+		</nav>
 </header>
 
 <!-- Menu -->

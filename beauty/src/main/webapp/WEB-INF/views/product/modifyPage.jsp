@@ -38,11 +38,10 @@
 </head>
 
 <body class="loading">
-<div id="detached-topbar-placeholder"></div>
 <!-- Begin page -->
         <div class="wrapper">
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -52,20 +51,18 @@
 
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
                     <div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">제품 정보 수정</h4>
 
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <form role="form" action="modifyPage" method="post">
                                                 	<input type='hidden' name='prodNo' value="${productVO.prodNo}"> 
 													<input type='hidden' name='page' value="${cri.page}">
@@ -110,11 +107,7 @@
 		                                                </select>
                                                     </div>
 
-                                                    <div class="form-group mb-3">
-                                                        <label for="simpleinput">관리자</label>
-                                                        <input type="text" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
-                                                        <!-- <input type="text" id="adminNo" name='adminNo' class="form-control" value='${AdminVO.adminNo}' readonly="readonly"> -->
-                                                    </div>
+                                                        <input type="hidden" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
 
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">사진</label>
@@ -140,8 +133,8 @@
                                                     </div>
 
                                                     <div class="box-footer" align="center">
-                                                        <button type="submit" class="btn btn-outline-success btn-rounded">수정 완료</button>
-                                                        <button type="submit" class="btn btn-outline-danger btn-rounded">수정 취소</button>
+                                                        <button type="submit" class="btn btn-outline-success btn-rounded">수정</button>
+                                                        <button type="submit" class="btn btn-outline-danger btn-rounded">취소</button>
                                                     </div>
                                                 </form>
                                             </div> <!-- end col -->

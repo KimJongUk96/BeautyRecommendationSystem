@@ -39,12 +39,11 @@
 
 
 	<body class="loading">
-		<div id="detached-topbar-placeholder"></div>
 		<!-- Begin page -->
 		<div class="wrapper">
 		
-		    <div id="vertical-sidebar-placeholder"></div>
-		    <div id="detached-sidebar-placeholder"></div>
+		   	<div id="vertical-topbar-placeholder"></div>
+            <div id="vertical-sidebar-placeholder"></div>
 		
 		    <!-- ============================================================== -->
 		    <!-- Start Page Content here -->
@@ -54,21 +53,19 @@
 		
 		        <div class="content">
 		
-		            <div id="vertical-topbar-placeholder"></div>
-		            <div id="horizontal-topbar-placeholder"></div>
 		            <div><h3></h3></div>
 		            <!-- Start Content-->
 		            <div class="container-fluid">
 		                <div class="row">
-		                    <div class="col-12">
+		                    <div class="col-lg-8">
 		                        <div class="card">
 		                            <div class="card-body">
 		                                <h4 class="header-title">제품 등록</h4>
 		
 		
 		                                <div class="row">
-		                                    <div class="col-lg-6">
-		                                        <form role="form" method="post">
+		                                    <div class="col-lg-12">
+		                                        <form role='form' method="post">
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput"><br/>제품 이름</label>
 		                                                <input type="text" id="name" name='name' class="form-control" placeholder="제품명 입력">
@@ -108,11 +105,7 @@
 		                                            </div>
 		                                           
 		
-		                                            <div class="form-group mb-3">
-		                                                <label for="simpleinput">관리자</label>
-		                                                <input type="text" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
-		                                                <!-- <input type="text" id="adminNo" name='adminNo' class="form-control" value='${AdminVO.adminNo}' readonly="readonly"> -->
-		                                            </div>
+		                                                <input type="hidden" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">사진첨부</label>
@@ -133,7 +126,8 @@
 		                                            </div>
 		
 		                                            <div class="box-footer" align="center">
-		                                                <button type="submit" class="btn btn-outline-success btn-rounded">등록하기</button>
+		                                                <button type="submit" id="btn" class="btn btn-outline-success btn-rounded">등록</button>
+		                                                <button type="button" class="btn btn-outline-danger btn-rounded">취소</button>
 		                                            </div>
 		                                        </form>
 		                                    </div> <!-- end col -->
@@ -190,7 +184,21 @@
         <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
         <!-- end demo js-->
 	</body>
-	
+
+<script>
+$(document).ready(
+	function() {
+
+		var formObj = $("form[role='form']");
+
+		console.log(formObj);
+		$(".btn-outline-danger")
+				.on("click",function() {
+					self.location = "/product/list";
+				});
+	});
+</script>
+
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
 			function checkImageType(fileName){
@@ -334,9 +342,36 @@
 				   }
 			   });
 		});
-			
-	
-			
 	
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	   $('#btn').click(function(){
+		   return check();        
+	    });
+	   
+});
+
+	check = function(){
+		var name = $("#name").val();
+		var price = $("#price").val();
+		var link = $("link").val();
+	
+		if(name == "" || name == null){
+			alert("제품이름을 작성해주세요.");
+			return false;
+		}
+		if(price == "" || price == null){
+			alert("제품가격을 작성해주세요.");
+			return false;
+		}
+
+		else{
+			return true;
+		}
+	}
+
+</script>
+
 </html>

@@ -9,7 +9,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/product/list";
+    self.location = "/method/list";
   </script>
 </body>
 </html>

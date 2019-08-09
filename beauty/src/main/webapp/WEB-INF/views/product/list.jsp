@@ -31,12 +31,11 @@
     </head>
 	
 	<body class="loading">
-	<div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -45,9 +44,6 @@
 				<div class="content-page">
 				
 					<div class="content">
-					
-					<div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 				<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -58,9 +54,10 @@
 
 										<!-- general form elements -->
 										
-											 <h4 class="header-title">제품 리스트</h4>
+											 <h4 class="header-title">제품 목록</h4>
 											 <div align="right">
-											 <select name="searchType">
+											 <div style="width:120px; height:100px;float:left;">
+											 <select class="form-control" name="searchType" style="width:110px">
 													<option value="n"
 														<c:out value="${cri.searchType == null?'selected':''}"/>>
 														---</option>
@@ -73,11 +70,17 @@
 													<option value="ptn"
 														<c:out value="${cri.searchType eq 'ptn'?'selected':''}"/>>
 														제품 종류</option>
-													
 												</select>
-											   <input type="text" name='keyword' id="keywordInput" value='${cri.keyword}'>
-											   <button id='searchBtn' type="button" class="btn btn-light btn-rounded">검색</button>
-											   <button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+												</div>
+												<div style="width:120px; height:100px;float:left;">
+											   <input class="form-control" type="text" name='keyword' id="keywordInput" value='${cri.keyword}' style="width:110px">
+											   </div>
+											   <div style="width:100px; height:100px;float:left;">
+											   <button id='searchBtn' type="button" class="btn btn-outline-info btn-rounded">검색</button>
+											   </div>
+											   <div align="right">
+											   <button id='newBtn' type="button" class="btn btn-primary">등록</button>
+											   </div>
 										     </div>
 							
 							
@@ -209,7 +212,11 @@
 	var result = '${msg}';
 
 	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
+		alert("제품이 등록되었습니다.");
+	} else if (result == 'MODIFY') {
+		alert("제품이 수정되었습니다.");
+	} else if (result == 'DELETE') {
+		alert("제품이 삭제되었습니다.");
 	}
 </script>
 

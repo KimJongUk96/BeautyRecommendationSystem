@@ -37,12 +37,11 @@ body.loading {
 </head>
 
 <body class="loading">
-	<div id="detached-topbar-placeholder"></div>
 	<!-- Begin page -->
 	<div class="wrapper">
 
-		<div id="vertical-sidebar-placeholder"></div>
-		<div id="detached-sidebar-placeholder"></div>
+		    <div id="vertical-topbar-placeholder"></div>
+            <div id="vertical-sidebar-placeholder"></div>
 
 		<!-- ============================================================== -->
 		<!-- Start Page Content here -->
@@ -53,8 +52,6 @@ body.loading {
 
 			<div class="content">
 
-				<div id="vertical-topbar-placeholder"></div>
-				<div id="horizontal-topbar-placeholder"></div>
 				<div>
 					<h3></h3>
 				</div>
@@ -65,7 +62,7 @@ body.loading {
 						<div class="col-xl-12">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="header-title">Product Type List</h4>
+									<h4 class="header-title">Admin List</h4>
 									<div align="right"></div>
 									<div></div>
 
@@ -99,7 +96,7 @@ body.loading {
 
 									<div class="text-center" align="center">
 										<nav>
-											<ul class="pagination pagination-rounded">
+											<ul class="pagination pagination-rounded justify-content-center">
 
 												<c:if test="${pageMaker.prev}">
 													<li class="page-item"><a

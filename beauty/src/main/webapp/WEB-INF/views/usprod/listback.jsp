@@ -56,12 +56,6 @@
 <%-- 					<input type="hidden" name="dust" value="${methodSuggestVO.dust}"> --%>
 <!-- 				</form> -->
 				<div>
-					<h4 style="float: left">제품 추천 :&nbsp;&nbsp;&nbsp;</h4>
-					<h4 id='gend' style="float: left"></h4>
-					<h4 style="float: left">&nbsp;&nbsp;&nbsp;#${prodSuggestVO.age}대&nbsp;&nbsp;&nbsp;</h4>
-					<h4 id='skin' style="float: left"></h4>
-					<br/>
-                    
 
 					<div>
 						<hr>
@@ -80,12 +74,12 @@
 								<tr>
 									<td id='rank' style="vertical-align: middle">${status.count}</td>
 									<td style="vertical-align: middle">
-										<a href='/productSuggest/readPage?&prodNo=${productVO.prodNo}'>
+										<a href='/usprod/read?&prodNo=${productVO.prodNo}'>
 											<img id='photo' src="displayFile?fileName=${productVO.img}" border="0" alt="이미지 없음"/> 
 										</a>
 									</td>
 									<td style="vertical-align: middle">
-										    <a href='/productSuggest/readPage?&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
+										    <a href='/usprod/read?&prodNo=${productVO.prodNo}'> ${productVO.name} </a>
 											<br/>
 											제조사 : ${productVO.compName}
 											<br/>

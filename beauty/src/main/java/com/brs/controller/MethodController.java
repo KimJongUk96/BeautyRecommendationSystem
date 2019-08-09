@@ -72,7 +72,7 @@ public class MethodController {
 			detailservice.insert(newVo);
 			
 		}
-		
+			rttr.addFlashAttribute("msg","SUCCESS");
 		return "redirect:/method/list";
 	}
 	
@@ -140,7 +140,7 @@ public class MethodController {
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		
+		rttr.addFlashAttribute("msg","MODIFY");
 		return "redirect:/method/list";
 	}
 	
@@ -154,6 +154,7 @@ public class MethodController {
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
+		rttr.addFlashAttribute("msg","DELETE");
 		
 		return "redirect:/method/list";
 	}

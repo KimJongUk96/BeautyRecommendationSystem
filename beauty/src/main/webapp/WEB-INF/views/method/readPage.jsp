@@ -5,6 +5,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+    
+    <style>
+input[type='radio'] {
+  -webkit-appearance:none;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  outline:none;
+  background-color: #fff;
+  border: #CCCCCC solid 1px;
+}
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:60%;
+  height:60%;
+  margin: 20% auto;   
+  border-radius:50%;   
+}
+input[type='radio']:checked:before {
+  background:#727cf5;
+}
+    </style>
+    
         <meta charset="utf-8" />
         <title>관리자 페이지</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +51,11 @@
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -41,23 +64,20 @@
             <div class="content-page">
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 					<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
                         
-                       
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">세안법 상세보기</h4>
                                        
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                             
                       <form role="form" action="modify" method="post">
 
@@ -173,26 +193,29 @@
 						</div> 
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">계절</label> 
-							<input type="radio" name="season" value="S1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>봄
-							<input type="radio" name="season" value="S2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>여름
-							<input type="radio" name="season" value="S3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>가을
-							<input type="radio" name="season" value="S4" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>겨울
+							<label for="exampleInputEmail1">계절</label>
+							&nbsp;
+							<input type="radio" name="season" value="S1" disabled="disabled"<c:out value="${methodVO.season eq 'S1'?'checked':''}"/>>&nbsp;봄
+							<input type="radio" name="season" value="S2" disabled="disabled"<c:out value="${methodVO.season eq 'S2'?'checked':''}"/>>&nbsp;여름
+							<input type="radio" name="season" value="S3" disabled="disabled"<c:out value="${methodVO.season eq 'S3'?'checked':''}"/>>&nbsp;가을
+							<input type="radio" name="season" value="S4" disabled="disabled"<c:out value="${methodVO.season eq 'S4'?'checked':''}"/>>&nbsp;겨울
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">날씨</label>
-							<input type="radio" name="weather" value="W1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>맑음
-							<input type="radio" name="weather" value="W2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>흐림
-							<input type="radio" name="weather" value="W3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>눈/비
+							&nbsp;
+							<input type="radio" name="weather" value="W1" disabled="disabled"<c:out value="${methodVO.weather eq 'W1'?'checked':''}"/>>&nbsp;맑음
+							<input type="radio" name="weather" value="W2" disabled="disabled"<c:out value="${methodVO.weather eq 'W2'?'checked':''}"/>>&nbsp;흐림
+							<input type="radio" name="weather" value="W3" disabled="disabled"<c:out value="${methodVO.weather eq 'W3'?'checked':''}"/>>&nbsp;눈/비
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputEmail1">미세먼지</label> 
-							<input type="radio" name="dust" value="D1" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>좋음
-							<input type="radio" name="dust" value="D2" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>보통
-							<input type="radio" name="dust" value="D3" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>나쁨
-							<input type="radio" name="dust" value="D4" class="custom-control-input" disabled="disabled"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>매우나쁨
+							<label for="exampleInputEmail1">미세먼지</label>
+							&nbsp;
+							<input type="radio" name="dust" value="D1" disabled="disabled"<c:out value="${methodVO.dust eq 'D1'?'checked':''}"/>>&nbsp;좋음
+							<input type="radio" name="dust" value="D2" disabled="disabled"<c:out value="${methodVO.dust eq 'D2'?'checked':''}"/>>&nbsp;보통
+							<input type="radio" name="dust" value="D3" disabled="disabled"<c:out value="${methodVO.dust eq 'D3'?'checked':''}"/>>&nbsp;나쁨
+							<input type="radio" name="dust" value="D4" disabled="disabled"<c:out value="${methodVO.dust eq 'D4'?'checked':''}"/>>&nbsp;매우나쁨
 						</div>
 											</form>
 												<div class="box-footer" align="center">

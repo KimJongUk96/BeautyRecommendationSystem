@@ -29,11 +29,10 @@
 
 
 <body class="loading">
-<div id="detached-topbar-placeholder"></div>
 <!-- Begin page -->
         <div class="wrapper">
+		   	<div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -43,20 +42,18 @@
 
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
                     <div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h3>${productVO.name}</h3>
 
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <form role="form" action="modifyPage" method="post">
 
                                                     <input type='hidden' name='prodNo' value="${productVO.prodNo}">
@@ -108,13 +105,6 @@
 									                        	<input type="text" name='prodtypeNo' class="form-control" value="${prodTypeVO.name}&nbsp;${prodTypeVO.category}" readonly="readonly">
 									                        </c:if>
 								                        </c:forEach>
-                                                    </div>
-                                                    
-
-                                                    <div class="form-group mb-3">
-                                                        <label for="simpleinput">관리자</label>
-                                                        <input type="text" id="adminNo" name='adminNo' class="form-control" value="${productVO.adminNo}" readonly="readonly">
-
                                                     </div>
 
                                                     <div class="form-group mb-3">

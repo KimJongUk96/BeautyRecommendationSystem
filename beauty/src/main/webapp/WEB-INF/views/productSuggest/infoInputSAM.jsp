@@ -10,22 +10,13 @@
 -->
 
 <html>
+<html>
 <head>
 <title>Beauty</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
 	href="/resources/templated-intensify/assets/css/main.css" />
-
-<style type="text/css">
-
-.centered {
-  position: relative;
-  display: inline-block;
- 
-  width: 50%;
-}
-    </style>
 
 </head>
 <body class="subpage">
@@ -37,13 +28,13 @@
 		</nav>
 		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
-			<c:if test="${login.email eq null}">
-				<a href="/user/login" class="button alt">Log in</a>
-			</c:if>
-			<c:if test="${login.email ne null}">
-				<a href="/user/logout" class="button alt">Log out</a>
-				<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
-			</c:if>
+		<c:if test="${login.email eq null}">
+			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${login.email ne null}">
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
+		</c:if>
 		</nav>
 	</header>
 
@@ -55,72 +46,65 @@
 			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
-
+		
 	</nav>
 
 	<!-- Main -->
 	<section id="main" class="wrapper">
-			<div class="inner">
-				<div class="inner">
-				<div class="align-center">
-					<h2>세안 제품 추천</h2>
-					<p>
-					<hr>
-					피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안 제품을 추천 받으세요
-					<hr>
-					</p>
-					</div>
+		<div class="inner">
+			<div text-align="center">
+			<h2>세안 제품 추천</h2>
+			<p>
+			<hr>
+			피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안 제품을 추천 받으세요
+			<hr>
+			</p>
+			</div>
+			<form method="post">
+				<h4>피부정보 입력</h4>
+				<div>
+					<label>성별</label>
+					<fieldset>
+						<input type="radio" name="gender" value="U1" id="U1" checked="checked"><label for="U1">여성</label> 
+						&nbsp; &nbsp; &nbsp;<input type="radio" name="gender" value="U2" id="U2"><label for="U2">남성</label> 
+					</fieldset>
 				</div>
-				<div class="inner">
-				<form method="post">
-					<div class="align-center">
-						<h4>피부정보 입력</h4>
-						
-						
-						<div class="centered">
-							<label>나이</label> 
-						<select id="age" name="age">
+				<div>
+					<h3></h3>
+				</div>
+				<div>
+					<label>나이</label> 
+					<select id="age" name="age" style="width:100px">
 		                <option value = "10"> 10대        </option>
 		                <option value = "20"> 20대        </option>
 		                <option value = "30"> 30대        </option>
 		                <option value = "40"> 40대        </option>
 		                <option value = "50"> 50대        </option>
-		            	</select>
-							</div>
-						<div>
-							<h3></h3>
-						</div>
-						<div class="centered">
-							<label>피부 타입</label> 
-						<select name="skinType" id="skinType">
+		            </select>
+				</div>
+				<div>
+					<h1></h1>
+				</div>
+				<div>
+					<label>피부 타입</label> <select name="skinType" id="skinType" style="width:100px">
 						<option value="DR">건성</option>
 						<option value="NE">중성</option>
 						<option value="OI">지성</option>
 						<option value="CO">복합성</option>
 						<option value="SE">민감성</option>
-						</select>
-						</div>
-						<br><br>
-						
-						<div class="align-center">
-						<label>성별</label>
-						<fieldset>
-						<input type="radio" name="gender" value="U1" id="U1" checked="checked"><label for="U1">여성</label> 
-						&nbsp; &nbsp; &nbsp;<input type="radio" name="gender" value="U2" id="U2"><label for="U2">남성</label> 
-						</fieldset>
-						</div>
-						
-					</div>
-					<br>
-				<div class="align-center">
-					<div class="box-footer" align="center">
-						<button type="submit" class="button small">제품 추천 받기</button>
-					</div>
-					</div>
+					</select>
+				</div>
+				<div>
+					<h3></h3>
+				</div>
+		</div>
 
-				</form>
-			</div>
-			</div>
+		<div class="box-footer" align="center">
+			<button type="submit" class="button small">제품 추천 받기</button>
+		</div>
+
+		</form>
+		</div>
 	</section>
 
 	<!-- Footer -->

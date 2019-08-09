@@ -24,14 +24,14 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="/index" class="logo">Beauty</a>
+		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
-		<c:if test="${userVO.email eq null}">
+		<c:if test="${login.email eq null}">
 			<a href="/user/login" class="button alt">Log in</a>
 		</c:if>
-		<c:if test="${userVO.email ne null}">
+		<c:if test="${login.email ne null}">
 			<a href="/user/logout" class="button alt">Log out</a>
-			<a href="/user/read" class="button alt">내 정보 수정</a>
+			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
 		</c:if>
 		</nav>
 	</header>
@@ -53,7 +53,7 @@
 		<section id="banner">
 				<div class="content">
 					<h1>피부에 맞는 제품을 찾아드립니다.</h1>
-					<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br />sed arcu cras consecuat lorem ipsum dolor sit amet.</p>
+					<p>매일 쓰는 화장품, 알맞게 사용하고 계신가요?<br/>적합한 제품과 올바른 세안 방법을 추천 해 드립니다.</p>
 					<ul class="actions">
 						<li><a href="/productSuggest/infoInput" class="button">세안 제품 추천 받기</a></li>
 						<li><a href="/methodSuggest/suggest" class="button special">세안 법 추천 받기</a></li>

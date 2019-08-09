@@ -27,18 +27,18 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object adminVO = modelMap.get("adminVO");
 
-		if(adminVO != null) { //관리자 로그인 
+		if(adminVO != null) { //愿�由ъ옄 濡쒓렇�씤 
 	    	  
 	    	  logger.info("new login success");
 	          session.setAttribute(LOGIN, adminVO);
 	          
 	          Object dest = session.getAttribute("dest");
-	          response.sendRedirect(dest != null ? (String) dest : "/product/list");
+	          response.sendRedirect(dest != null ? (String) dest : "/method/list");
 	    	  
 	      }
 	}
 
-	// 미리 ?��?�� : HttpSession초기?��
+	// 誘몃━ ?占쏙옙?占쏙옙 : HttpSession珥덇린?占쏙옙
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -49,11 +49,11 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 			
 			try {
 				
-				//사용자 인지 관리자 인지 확인
+				//�궗�슜�옄 �씤吏� 愿�由ъ옄 �씤吏� �솗�씤
 				AdminVO vo = (AdminVO)session.getAttribute(LOGIN);
 				
 			} catch (ClassCastException e) {
-				logger.error("사용자 관리자 페이지 접속");
+				logger.error("�궗�슜�옄 愿�由ъ옄 �럹�씠吏� �젒�냽");
 				
 				response.sendRedirect("/user/login");
 		         return false;

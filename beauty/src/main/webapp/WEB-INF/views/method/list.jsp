@@ -29,12 +29,11 @@
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -44,9 +43,6 @@
             <div class="content-page">
             
                 <div class="content">
-
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 				<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -73,8 +69,8 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                    	<div>
-                    <div style="width:150px; height:100px;float:left;">               
+                    <div align="center">
+                    <div style="width:120px; height:100px;float:left;">               
 					<label for="example-select">피부타입</label>
 					<select class="form-control" name="searchType" id="searchType" style="width:110px">
 						<option value="n"
@@ -98,7 +94,7 @@
 					</select>
 					</div>
 					
-					<div style="width:150px; height:100px;float:left;">
+					<div style="width:120px; height:100px;float:left;">
 					<label for="example-select">화장정도</label>
 					<select class="form-control" name="keyword" id="keyword" style="width:110px">
 						<option value="n"
@@ -110,20 +106,20 @@
 						<option value="YM"
 							<c:out value="${cri.keyword eq 'YM'?'selected':''}"/>>
 							메이크업</option>
-						<option value="SE"
-							<c:out value="${cri.keyword eq 'SE'?'selected':''}"/>>
+						<option value="SM"
+							<c:out value="${cri.keyword eq 'SM'?'selected':''}"/>>
 							색조 메이크업</option>
 					</select>
 					</div>
 					
-					<div style="width:150px; height:100px;float:left;">
 					<br>
+					<div style="width:120px; height:100px;float:left;">
 					<button id='searchBtn' class="btn btn-outline-info btn-rounded">검색</button>
-					</div>
 					</div>
 					
 					<div align="right">
-					<button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+					<button id='newBtn' type="button" class="btn btn-primary">등록</button>
+					</div>
 					</div>
 		
                                         <div class="table-responsive-sm">
@@ -131,9 +127,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th style="width: 10px">NO</th>
-														<th>피부타입</th>
+														<th >피부타입</th>
 														<th>화장정도</th>
-														<th>세안 Step</th>
+														<th >세안 Step</th>
 														<th>등록일</th>
 							                        </tr>
                                                 </thead>
@@ -290,6 +286,18 @@
 				});
 				
 			});
+	</script>
+	
+	<script>
+	var result = '${msg}';
+
+		if (result == 'SUCCESS') {
+			alert("세안법이 등록되었습니다.");
+		} else if (result == 'MODIFY') {
+			alert("세안법이 수정되었습니다.");
+		} else if (result == 'DELETE') {
+			alert("세안법이 삭제되었습니다.");
+		}
 	</script>
 	
 </body>

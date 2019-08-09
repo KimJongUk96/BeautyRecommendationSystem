@@ -82,7 +82,7 @@ public class UploadController {
 	}
 	
 	  @ResponseBody
-	  @RequestMapping(value= {"/product/displayFile", "/productSuggest/displayFile"})
+	  @RequestMapping(value= {"/product/displayFile", "/productSuggest/displayFile", "/usprod/displayFile"})
 	  public ResponseEntity<byte[]>  displayFile(String fileName)throws Exception{
 	    
 	    InputStream in = null; 
@@ -94,7 +94,7 @@ public class UploadController {
 	      
 	      String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
 	     
-	      // �뙆�씪 �씠由꾩뿉�꽌 �솗�옣�옄瑜� 異붿텧�븯怨�, �씠誘몄� ���엯�쓽 �뙆�씪�씤 寃쎌슦�뒗 �쟻�젅�븳 MIME ���엯�쓣 吏��젙�븿
+	      // 占쎈솁占쎌뵬 占쎌뵠�뵳袁⑸퓠占쎄퐣 占쎌넇占쎌삢占쎌쁽�몴占� �빊遺욱뀱占쎈릭�⑨옙, 占쎌뵠沃섎챷占� 占쏙옙占쎌뿯占쎌벥 占쎈솁占쎌뵬占쎌뵥 野껋럩�뒭占쎈뮉 占쎌읅占쎌쟿占쎈립 MIME 占쏙옙占쎌뿯占쎌뱽 筌욑옙占쎌젟占쎈맙
 	      MediaType mType = MediaUtils.getMediaType(formatName);
 	      
 	      HttpHeaders headers = new HttpHeaders();

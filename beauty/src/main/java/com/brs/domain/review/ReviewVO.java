@@ -12,23 +12,18 @@ PROD_NO: NUMBER NOT NULL (FK)
 EMAIL: VARCHAR2(100) NOT NULL (FK)
  */
  
-public class ReviewVO {
+public class ReviewVO{
 
 	private int reviewNo;
-	private int rating;
+	private double rating;
 	private String reviewText;
 	private String command;
 	private Date regdate;
 	private int prodNo;
-	//사용자 아이디
 	private String userEmail;
-	//사용자 닉네임
 	private String userNickName;
-	//사용자 성별
 	private String userGender;
-	//사용자 연령대
 	private String userAge;
-	//사용자 피부 타입
 	private String userSkinType;
 	
 	public int getReviewNo() {
@@ -37,10 +32,10 @@ public class ReviewVO {
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	public String getReviewText() {
@@ -97,11 +92,5 @@ public class ReviewVO {
 	public void setUserSkinType(String userSkinType) {
 		this.userSkinType = userSkinType;
 	}
-	
-	
-	
-	
-	
-	
 	
 }

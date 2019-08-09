@@ -43,7 +43,7 @@ public class ProductController {
 		pageMaker.setCri(cri);
 		//pageMaker.setTotalCount(131);
 		
-		// button을 몇개 만들어야 하는지를 담당하는 부분
+		// button�쓣 紐뉕컻 留뚮뱾�뼱�빞 �븯�뒗吏�瑜� �떞�떦�븯�뒗 遺�遺�
 		pageMaker.setTotalCount(service.listSearchCount(cri)); //fixed
 		
 		model.addAttribute("pageMaker", pageMaker);
@@ -82,7 +82,7 @@ public class ProductController {
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		rttr.addFlashAttribute("msg", "SUCCESS");
+		rttr.addFlashAttribute("msg", "DELETE");
 		
 		return "redirect:/product/list";
 	}
@@ -108,7 +108,7 @@ public class ProductController {
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		rttr.addFlashAttribute("msg", "SUCCESS");
+		rttr.addFlashAttribute("msg", "MODIFY");
 		
 		return "redirect:/product/list";
 	}

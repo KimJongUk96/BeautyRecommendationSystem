@@ -25,13 +25,11 @@
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
-
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
@@ -39,8 +37,6 @@
             <div class="content-page">
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 					<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -48,14 +44,14 @@
                        
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">Product Type Register</h4>
                                        
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <form method="post" name="frm">
                                                 	
 
@@ -67,14 +63,14 @@
                                                     <div class="form-group mb-3">
                                                         <label for="example-select">카테고리</label>
                                                         <select class="form-control" id="categoryNo" name='categoryNo'>
-                                                            <option value = "1000"> 클렌징 </option>
-															<option value = "1001"> 모이스춰라이저 </option>
-															<option value = "1002"> 토너 </option>
-															<option value = "1003"> 썬스크린 </option>
+                                                            <option value = "1020"> 클렌징 </option>
+															<option value = "1021"> 모이스춰라이저 </option>
+															<option value = "1022"> 토너 </option>
+															<option value = "1023"> 썬스크린 </option>
                                                         </select>
                                                     </div>
 												<div class="box-footer" align="center">
-													<button class="btn btn-outline-success btn-rounded" onclick="check()">등록</button>
+													<button class="btn btn-outline-success btn-rounded" id="btn">등록</button>
 												</div>
 											</form>
                                             </div> <!-- end col -->
@@ -138,21 +134,28 @@
         <script src="/resources/dist/assets/js/pages/demo.calendar.js"></script>
         <!-- end demo js-->
     </body>
-    <script>
-    function check(){
-    	var name = document.frm.name;
-    	
-    	 if (name.value == '') {
-             window.alert("타입 명을 입력해주세요.");
-             document.frm.name.focus();
-             document.getElementById("name").select();
-             return false;
-          }
-    	 $(document).ready(function(){
-    	      alert('등록되었습니다.')
-    	   });
-    	      return ture;
-    	      }
-    }
-    </script>
+
+    
+    <script type="text/javascript">
+$(document).ready(function(){
+	   $('#btn').click(function(){
+		   return check();        
+	    });
+	   
+});
+
+	check = function(){
+		var name = $("#name").val();
+	
+		if(name == "" || name == null){
+			alert("제품타입명을 작성해주세요.");
+			return false;
+		}
+
+		else{
+			return true;
+		}
+	}
+
+</script>
 </html>

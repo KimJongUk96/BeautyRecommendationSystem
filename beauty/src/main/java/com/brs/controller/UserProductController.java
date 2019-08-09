@@ -1,10 +1,6 @@
 package com.brs.controller;
 
-import java.util.Map;
-
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brs.domain.product.ProductVO;
@@ -31,8 +26,8 @@ public class UserProductController {
 
 	@Inject
 	private UserProductService service;
+	
 
-	// 리스트
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
@@ -50,7 +45,7 @@ public class UserProductController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
-	// 리스트
+	// 由ъ뒪�듃
 	@RequestMapping(value = "/listOrder", method = RequestMethod.GET)
 	public void listPageOrder(@ModelAttribute("cri") SearchCriteria cri, String order, Model model) throws Exception {
 
@@ -68,43 +63,36 @@ public class UserProductController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
-	// 세안 제품 상세보기
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("prodNo") int prodNo, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
 
-		logger.info("세안 제품 상세보기");
+		logger.info("");
 		model.addAttribute(service.read(prodNo));
 		model.addAttribute("list", service.listReview(prodNo));
 
 	}
 
-	// 리뷰 등록 화면 넘어가기
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET(ProductVO vo, Model model) throws Exception {
 
-		/*
-		 * public void registerGET(@RequestParam("prodNo") int
-		 * prodNo, @RequestParam("name") String name,
-		 * 
-		 * @RequestParam("prodtypeNo") String prodtypeNo, @RequestParam("prodtypeName")
-		 * String prodtypeName, Model model) throws Exception {
-		 */
-
 		logger.info("regiser get...");
 		logger.info(vo.toString());
+		
+		model.addAttribute(vo);
 	}
 
-	// 리뷰 등록하기
-	@RequestMapping(value = "register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPOST(ReviewVO vo, RedirectAttributes rttr) throws Exception {
 
+//		ReviewVO vo, 
 		logger.info("register post...");
 		logger.info("ReviewVO :" + vo);
-
+//
 		service.register(vo);
-
+//
 		rttr.addAttribute("prodNo", vo.getProdNo());
+		rttr.addFlashAttribute("msg","review");
 
 		return "redirect:/usprod/read";
 	}

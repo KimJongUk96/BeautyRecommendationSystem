@@ -27,12 +27,11 @@
     </head>
 
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -41,8 +40,6 @@
             <div class="content-page">
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 					<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -50,14 +47,14 @@
                        
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">Product Type READ</h4>
                                        
 
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <form role="form" action="modify" method="post">
 
 												<input type='hidden' name='prodtypeNo' value='${prodTypeVO.prodtypeNo}'>
@@ -76,13 +73,13 @@
                                                     </div>
 
                                                     <div class="form-group mb-3">
-                                                        <label for="example-select" readonly="readonly">카테고리</label>
+                                                        <label for="example-select">카테고리</label>
                                                        <select class="form-control" name = "categoryNo">
 							
-															<option value = "1000" <c:out value="${prodTypeVO.categoryNo eq '1000'?'selected':''}"/>> 클렌징 </option>
-															<option value = "1001" <c:out value="${prodTypeVO.categoryNo eq '1001'?'selected':''}"/>> 모이스춰라이저 </option>
-															<option value = "1002" <c:out value="${prodTypeVO.categoryNo eq '1002'?'selected':''}"/>> 토너 </option>
-															<option value = "1003" <c:out value="${prodTypeVO.categoryNo eq '1003'?'selected':''}"/>> 썬스크린 </option>
+															<option value = "1020" <c:out value="${prodTypeVO.categoryNo eq '1020'?'selected':''}"/>> 클렌징 </option>
+															<option value = "1021" <c:out value="${prodTypeVO.categoryNo eq '1021'?'selected':''}"/>> 모이스춰라이저 </option>
+															<option value = "1022" <c:out value="${prodTypeVO.categoryNo eq '1022'?'selected':''}"/>> 토너 </option>
+															<option value = "1023" <c:out value="${prodTypeVO.categoryNo eq '1023'?'selected':''}"/>> 썬스크린 </option>
 														</select>
                                                     </div>
 											</form>

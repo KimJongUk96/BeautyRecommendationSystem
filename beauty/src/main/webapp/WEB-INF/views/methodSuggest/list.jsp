@@ -19,6 +19,15 @@
 <link rel="stylesheet"
 	href="/resources/templated-intensify/assets/css/main.css" />
 
+<style type="text/css">
+
+.centered {
+  position: relative;
+  display: inline-block;
+ 
+  width: 50%;
+}
+    </style>
 </head>
 <body class="subpage">
 
@@ -27,14 +36,14 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="/index" class="logo">Beauty</a>
+		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
-		<c:if test="${userVO.email eq null}">
+		<c:if test="${login.email eq null}">
 			<a href="/user/login" class="button alt">Log in</a>
 		</c:if>
-		<c:if test="${userVO.email ne null}">
+		<c:if test="${login.email ne null}">
 			<a href="/user/logout" class="button alt">Log out</a>
-			<a href="/user/read" class="button alt">내 정보 수정</a>
+			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
 		</c:if>
 		</nav>
 	</header>
@@ -52,30 +61,36 @@
 
 	<!-- Main -->
 	<section id="main" class="wrapper">
+	<div class="inner">
+	<div class="align-center">
 			<form name="frm" method="POST">
 				<input type="hidden" name="skinType" value="${methodSuggestVO.skinType}"> 
 				<input type="hidden" name="makeUpDegree" value="${methodSuggestVO.makeUpDegree}">
 				<input type="hidden" name="weather" value="${methodSuggestVO.weather}"> 
 				<input type="hidden" name="dust" value="${methodSuggestVO.dust}">
 			</form>
-			<div style="margin-right:150px; margin-left:150px">
-				<h4>세안법 추천</h4>
+			<div>
+			
+				<h3>세안법 추천</h3>
 				
 				<div>
 					<h4></h4>
 				</div>
-				<table class="alt">
+				
+				<div class="inner">
+				<div class="align-center">
+				 <table class="alt">
 					<thead>
 						<tr>
-							<th>no</th>
+							<th>No</th>
 							<th>세안법 STEP</th>
 							<th>사용제품</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${methodList}" var="methodSuggestVO">
+						<c:forEach items="${methodList}" var="methodSuggestVO" varStatus="status">
 							<tr>
-								<td>${methodSuggestVO.methodNo}</td>
+								<td>${status.count}</td>
 								<td><a href="/methodSuggest/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodSuggestVO.methodNo}">${methodSuggestVO.methodStep}스텝</a></td>
 								<td>${methodSuggestVO.name}</td>
 							</tr>
@@ -86,6 +101,11 @@
 			</div>
 			<div align="center">
 				<a href="/methodSuggest/suggest"><button class="button special small">세안법 다시 추천 받기</button></a>
+			</div>
+			
+			</div>
+			</div>
+			</div>
 			</div>
 	</section>
 

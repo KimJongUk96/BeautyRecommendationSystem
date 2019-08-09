@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/brs/controller/ProductController.java=UTF-8
+encoding//src/main/java/com/brs/controller/UploadController.java=UTF-8
+encoding//src/main/java/com/brs/controller/UserProductController.java=UTF-8
+encoding//src/main/java/com/brs/domain/review/ReviewSampleVO.java=UTF-8
+encoding//src/main/java/com/brs/domain/review/ReviewVO.java=UTF-8
+encoding//src/main/java/com/brs/interceptor/AdminAuthInterceptor.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/user/login.jsp=UTF-8
+encoding//src/main/webapp/resources/dist/partials/left-sidebar.html=UTF-8
 encoding//src/test/java/AdminDAOTest.java=UTF-8
 encoding//src/test/java/MethodDAOTest.java=UTF-8

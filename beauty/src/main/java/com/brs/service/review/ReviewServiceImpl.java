@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Repository;
 
 import com.brs.domain.review.ReviewVO;
-
+import com.brs.domain.util.SearchCriteria;
 import com.brs.persistence.review.ReviewDAO;
 
 

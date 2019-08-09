@@ -49,12 +49,11 @@
 }
     </style>
     <body class="loading">
-        <div id="detached-topbar-placeholder"></div>
         <!-- Begin page -->
         <div class="wrapper">
 
+            <div id="vertical-topbar-placeholder"></div>
             <div id="vertical-sidebar-placeholder"></div>
-            <div id="detached-sidebar-placeholder"></div>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -65,8 +64,6 @@
             
                 <div class="content">
 
-                    <div id="vertical-topbar-placeholder"></div>
-                    <div id="horizontal-topbar-placeholder"></div>
 				<div><h3></h3></div>
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -78,7 +75,7 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Product Type List</h4>
                                         <div align="right">
-											<button id='newBtn' type="button" class="btn btn-light btn-rounded">등록</button>
+											<button id='newBtn' type="button" class="btn btn-primary">등록</button>
 										</div>
 										<div><h4>   </h1></div>
 		
@@ -112,7 +109,7 @@
                                <div class="centered">
 					<div class="text-center" align="center">
 					<nav>
-						<ul class="pagination pagination-rounded">
+						<ul class="pagination pagination-rounded justify-content-center">
 
 							<c:if test="${pageMaker.prev}">
 								<li class="page-item"><a

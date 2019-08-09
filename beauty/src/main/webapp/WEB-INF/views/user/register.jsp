@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML>
 <!--
@@ -24,9 +25,15 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="index.html" class="logo">intensify</a>
+		<a href="/" class="logo">Beauty</a>
 		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
+		<c:if test="${login.email eq null}">
+			<a href="/user/login" class="button alt">Log in</a>
+		</c:if>
+		<c:if test="${login.email ne null}">
+			<a href="/user/logout" class="button alt">Log out</a>
+			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
+		</c:if>
 		</nav>
 	</header>
 
