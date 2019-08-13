@@ -89,7 +89,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 		<ul class="links">
 			<li><a href="/">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
-			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+			<li><a href="/productSuggest/list">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		
@@ -100,7 +100,7 @@ ul.paging li a:hover, ul.paging li a:focus {
       <ul class="links">
          <li><a href="/">Home</a></li>
          <li><a href="/usprod/list">세안 제품 목록</a></li>
-         <li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
+         <li><a href="/productSuggest/list">세안 제품 추천</a></li>
          <li><a href="/methodSuggest/suggest">세안법 추천</a></li>
       </ul>
 
