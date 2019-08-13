@@ -22,5 +22,11 @@ public class ReviewServiceImpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return dao.readProdReview(prodNo);
 	}
+	
+	@Override
+	public List<ReviewVO> getAllReview() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.readAll();
+	}
 
 }

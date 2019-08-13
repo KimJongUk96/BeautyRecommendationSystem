@@ -79,6 +79,7 @@
 											   <button id='searchBtn' type="button" class="btn btn-outline-info btn-rounded">검색</button>
 											   </div>
 											   <div align="right">
+											   <button id='newBtn1' type="button" class="btn btn-primary">최신 리뷰 업로드 및 훈련</button>
 											   <button id='newBtn' type="button" class="btn btn-primary">등록</button>
 											   </div>
 										     </div>
@@ -210,6 +211,7 @@
 
 <script>
 	var result = '${msg}';
+	var result2 = '${msgAlert}'
 
 	if (result == 'SUCCESS') {
 		alert("제품이 등록되었습니다.");
@@ -217,6 +219,14 @@
 		alert("제품이 수정되었습니다.");
 	} else if (result == 'DELETE') {
 		alert("제품이 삭제되었습니다.");
+	}
+	
+	if(result2 == 'COMPLETE'){
+		alert("리뷰 업로드 및 훈련이 완료되었습니다.");
+	} else if (result2 == 'ERROR1'){
+		alert("업로드하는데 문제가 있습니다.");
+	} else if (result2 == 'ERROR2'){
+		alert("훈련하는데 문제가 있습니다.");
 	}
 </script>
 
@@ -247,6 +257,13 @@
 					self.location = "register";
 
 				});
+				
+				$('#newBtn1').on("click", function(evt) {
+
+					self.location = "review";
+
+				});
+				
 				
 				$('#logout').on("click", function(evt) {
 

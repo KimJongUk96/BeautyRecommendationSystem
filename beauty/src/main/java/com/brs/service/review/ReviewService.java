@@ -9,5 +9,5 @@ public interface ReviewService {
 
 	public List<ReviewVO> readProdReview(int prodNo) throws Exception;
 	
-
+	public List<ReviewVO> getAllReview() throws Exception;
 }

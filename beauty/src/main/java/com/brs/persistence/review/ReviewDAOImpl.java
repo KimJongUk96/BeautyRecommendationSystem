@@ -21,9 +21,16 @@ public class ReviewDAOImpl implements ReviewDAO{
 	@Override
 	public List<ReviewVO> readProdReview(int prodNo) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(prodNo);
-		System.out.println("DAO Array Size : " + session.selectList(namespace + ".read", prodNo).size());
+		//System.out.println(prodNo);
+		//System.out.println("DAO Array Size : " + session.selectList(namespace + ".read", prodNo).size());
 		return session.selectList(namespace + ".read", prodNo);
+	}
+	
+	@Override
+	public List<ReviewVO> readAll() throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("DAO Array Size : " + session.selectList(namespace + ".readAll").size());
+		return session.selectList(namespace + ".readAll");
 	}
 
 }

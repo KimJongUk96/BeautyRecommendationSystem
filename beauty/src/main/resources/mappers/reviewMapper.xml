@@ -15,6 +15,15 @@
             prod_no =#{prodNo}
 	</select>
 	
+	<select id="readAll" resultType="com.brs.domain.review.ReviewVO">
+		select 
+			u.gender AS userGender, u.age AS userAge, u.skin_type AS userSkinType, r.prod_no AS prodNo, r.rating AS rating
+		from 
+			tbl_review r, tbl_user u
+		where  
+			r.email = u.email and PROD_NO > 0
+	</select>
+	
 	
 	
 </mapper>

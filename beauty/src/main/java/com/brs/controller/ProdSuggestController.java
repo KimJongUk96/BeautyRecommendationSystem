@@ -1,9 +1,7 @@
-
 package com.brs.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
-import java.net.URI;
 
 import javax.inject.Inject;
 
@@ -65,11 +63,7 @@ public class ProdSuggestController {
 
         for(int i=2; i<jsonSplit.length; i++) {
         	int index = jsonSplit[i].indexOf(":");
-        	if(jsonSplit[i].substring(0, index).length() == 1) {
-        		prodNums[i-2] = Integer.parseInt("100"+jsonSplit[i].substring(0, index));
-        	}else {
-        		prodNums[i-2] = Integer.parseInt("10"+jsonSplit[i].substring(0, index));
-        	}
+        	prodNums[i-2] = Integer.parseInt(jsonSplit[i].substring(0, index));
         }
         return prodNums;
 	}
@@ -93,62 +87,50 @@ public class ProdSuggestController {
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("prodSuggest") ProdSuggestVO prodSuggest, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void listPage() throws Exception {
 		
-        logger.info(cri.toString());
+        logger.info("suggest list....");
         
-        int num = 10;
+        
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public void listPagePOST(ProdSuggestVO prodSuggest, Model model) throws Exception {
+		logger.info("infoInput post .........");
+		logger.info(prodSuggest.toString());
+		
+		
+		int num = 10;
         String inputInfo = "";
         int[] prodNums = new int[num]; //제품 번호 저장된 배열 (추천순위 높은 순으로)
         double[] prodSugs = new double[num]; // 제품 추천 적합 점수 저장된 배열 (추천순위 높은 순으로)
-        if(prodSuggest.getGender().equals("U2")) { // 딥러닝쪽은 남성이 'U0' 여성이 'U1'
-        	inputInfo = "U0" + prodSuggest.getAge() + prodSuggest.getSkinType();
-        }else {
-        	inputInfo = prodSuggest.getGender() + prodSuggest.getAge() + prodSuggest.getSkinType();
-        }
+        inputInfo = prodSuggest.getGender() + prodSuggest.getAge() + prodSuggest.getSkinType();
+        
         String Url = "http://beautyrec.run.goorm.io/topNRec?num="+num+"&user="+inputInfo;
         
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(Url, String.class);
-        System.out.println("original json = " + result);
+        String remaked = remakeJSON(result);
+        String[] remakedArr = remaked.split(",");
         
-        prodNums = findProdNums(remakeJSON(result), prodNums);
-        prodSugs = findProdSugs(remakeJSON(result), prodSugs);
+        if(remakedArr[0].substring(remakedArr[0].indexOf(":")+1, remakedArr[0].length()).equals("100")){
+	        prodNums = findProdNums(remakeJSON(result), prodNums);
+	        prodSugs = findProdSugs(remakeJSON(result), prodSugs);
+	        
+	        model.addAttribute("prodSuggestVO", prodSuggest);
+			model.addAttribute("list", service.foundProd(prodNums));
+			model.addAttribute("sugs", prodSugs);
+			model.addAttribute("prodTypeList", typeService.getAllType());
+        }
         
-
-		System.out.println("====" + cri.toString());
-		model.addAttribute("list", service.foundProd(prodNums));
-		model.addAttribute("sugs", prodSugs);
-		model.addAttribute("prodTypeList", typeService.getAllType());
-		model.addAttribute("prodSuggestVO", prodSuggest);
-	}
-	
-	
-	@RequestMapping(value = "/infoInput", method = RequestMethod.GET)
-	public void prodSuggestionGET() throws Exception {
-		
-		logger.info("infoInput get .........");
-	}
-	
-	
-	
-	@RequestMapping(value = "/infoInput", method = RequestMethod.POST)
-	public String prodSuggestionPOST(ProdSuggestVO prodSuggest, RedirectAttributes rttr) throws Exception {
-		logger.info("infoInput post .........");
-		logger.info(prodSuggest.toString());
-		
-		//service.create(product);
-		//rttr.addFlashAttribute("msg", "");
-		rttr.addAttribute("gender", prodSuggest.getGender());
-		rttr.addAttribute("age", prodSuggest.getAge());
-		rttr.addAttribute("skinType", prodSuggest.getSkinType());
-		return "redirect:/productSuggest/list";
+        if(remakedArr[0].substring(remakedArr[0].indexOf(":")+1, remakedArr[0].length()).equals("102")) {
+        	model.addAttribute("msg", "ERROR");
+        	model.addAttribute("prodSuggestVO", prodSuggest);
+        }
 		
 	}
 	
-	
-	
-	
+		
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
 	public void read(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 		

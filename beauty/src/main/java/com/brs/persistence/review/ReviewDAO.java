@@ -10,6 +10,7 @@ public interface ReviewDAO {
 	
 	public List<ReviewVO> readProdReview(int prodNo) throws Exception;
 	
+	public List<ReviewVO> readAll() throws Exception;
 	
 
 }
