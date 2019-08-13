@@ -121,11 +121,10 @@ ul.paging li a:hover, ul.paging li a:focus {
          <h4 class="header-title">제품 리스트</h4>
          <div align="right">
             <div style="margin-bottom: 10px">
-               <select name="listType"
+               <select name="listType" id="listType"
                   onchange="if(this.value) location.href=(this.value);"
                   style="width: 150px; height: 40px; line-height: 40px">
-                  <option value="/usprod/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}">정렬
-                     기준</option>
+                  <option>정렬 기준</option>
                   <option <c:out value="${cri.listType eq 'regdate'?'selected':''}" />
                      value="/usprod/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}&listType=regdate">최근
                      등록일 순</option>
@@ -137,7 +136,7 @@ ul.paging li a:hover, ul.paging li a:focus {
                </select>
             </div>
             <div class="row" style="float: right; margin-bottom: 10px">
-               <select name="searchType"
+               <select name="searchType" id="searchType"
                   style="width: 150px; height: 40px; line-height: 40px; margin-right: 5px">
                   <option value="pn"
                      <c:out value="${cri.searchType eq 'pn'?'selected':''}"/> selected>
@@ -150,9 +149,7 @@ ul.paging li a:hover, ul.paging li a:focus {
                      제품 종류</option>
 
                </select> <input type="text" name='keyword' id="keywordInput"
-                  value='${cri.keyword}'
-                  style="width: 200px; height: 40px; line-height: 40px; margin-right: 5px">
-
+                  style="width: 200px; height: 40px; line-height: 40px; margin-right: 5px"></input>
                <button id='searchBtn' type="button" class="button small">검색</button>
             </div>
 
@@ -318,7 +315,7 @@ ul.paging li a:hover, ul.paging li a:focus {
                         self.location = "list"
                               + '${pageMaker.makeQuery(1)}'
                               + "&searchType="
-                              + $("select option:selected").val()
+                              + $("#searchType option:selected").val()
                               + "&keyword=" + keyword;
 
                      });
