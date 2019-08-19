@@ -52,6 +52,8 @@ public class ProdSuggestController {
 		return remake;
 	}
 	
+	//jsonRemaked statusCode:100,msgStr:successfully recommended!,recBeautySet:1001:4.4545794,1004:4.4243913,1005:4.421576,.....
+	// ,로 배열 생성 -> 3번째 recBeautySet:1001:4.4545794에서 :로 배열 생성하고 recBeautySet 제외, substring으로 1001이후 자름, prodNums 저장
 	public int[] findProdNums(String jsonRemaked, int[] prodNums) {
 		String[] jsonSplit = jsonRemaked.split(",");
         String[] jsonSplit2 = jsonSplit[2].split(":");
@@ -68,6 +70,8 @@ public class ProdSuggestController {
         return prodNums;
 	}
 	
+	//jsonRemaked statusCode:100,msgStr:successfully recommended!,recBeautySet:1001:4.4545794,1004:4.4243913,1005:4.421576,.....
+	// ,로 배열 생성 -> 3번째 recBeautySet:1001:4.4545794에서 :로 배열 생성하고 recBeautySet 제외, substring으로 1001:까지 자름, prodSugs 저장
 	public double[] findProdSugs(String jsonRemaked, double[] prodSugs) {
 		String[] jsonSplit = jsonRemaked.split(",");
         String[] jsonSplit2 = jsonSplit[2].split(":");
@@ -141,11 +145,6 @@ public class ProdSuggestController {
 		model.addAttribute(service.read(prodNo));
 	}
 	
-
-	
-
-	
-
 	
 
 }

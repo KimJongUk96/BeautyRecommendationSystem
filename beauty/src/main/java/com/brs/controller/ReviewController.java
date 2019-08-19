@@ -62,7 +62,7 @@ private static final Logger logger = LoggerFactory.getLogger(ProdSuggestControll
 		    writer = new CSVWriter(fileWriter);
 		    String[] data= new String[3]; //1줄에 들어갈 데이터 사이즈 선언
 		  
-		  // 1줄에 들어갈 데이터로 다음과 같은 형태로 입력 됨.ex) "A01","홍길동","010-000-0000"
+		  // 1줄에 들어갈 데이터로 다음과 같은 형태로 입력 됨. ex)"U120NE","1000", "4.523"
 		    for(ReviewVO review: reviews){ 
 		      data[0] = review.getUserGender() + review.getUserAge() + review.getUserSkinType();
 		      data[1] = Integer.toString(review.getProdNo());
@@ -115,7 +115,6 @@ private static final Logger logger = LoggerFactory.getLogger(ProdSuggestControll
         }else {
         	rttr.addFlashAttribute("msgAlert", "ERROR1");
         }
-        
         
 		return "redirect:/product/list";
 	}
