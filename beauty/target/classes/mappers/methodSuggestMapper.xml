@@ -17,42 +17,42 @@
      and dust = #{dust, jdbcType=VARCHAR}
 </select>
 
-<select id="listSearch" resultType="com.brs.domain.method.MethodSuggestVO">
+<select id="methodList" resultType="com.brs.domain.method.MethodSuggestVO">
 		<![CDATA[
 	
-   select * from (
-   select rownum rnum, method_no, name, method_step, regdate from(
-    select method_no, LISTAGG(name, ', ') WITHIN GROUP (ORDER BY name) as name, count(method_no) as method_step, regdate
-     from (
-     select name, method_no, method_step, regdate from (
-     select 
-      m.method_no, m.method_step, m.regdate, p.prod_no, p.name as name
-     from tbl_method m,tbl_method_detail md, tbl_product p
-     where md.prod_no = p.prod_no
-     and m.method_no = md.method_no
-     and m.skin_type= #{skinType, jdbcType=VARCHAR}
-     and m.makeup_degree = #{makeUpDegree, jdbcType=VARCHAR}
-     and m.weather = #{weather, jdbcType=VARCHAR}
-     and m.dust = #{dust, jdbcType=VARCHAR})) group by method_no, regdate
+    select * from(
+	select rownum rnum, method_no, method_step, regdate
+	from tbl_method
+	where skin_type= #{skinType, jdbcType=VARCHAR}
+      and makeup_degree = #{makeUpDegree, jdbcType=VARCHAR}
+      and weather = #{weather, jdbcType=VARCHAR}
+      and dust = #{dust, jdbcType=VARCHAR}
      
    ]]>
    
-    )order by method_no desc, regdate desc
+    order by method_no desc, regdate desc
   
    <![CDATA[    
      )where (rnum >= #{pageStart} AND rnum <= #{pageEnd}) 
     order by method_no desc, regdate desc
    ]]> 
-   </select>
+</select>
 	
-	<select id="countPaging" resultType="int">
+<select id="countPaging" resultType="int">
 	<![CDATA[  
  	 select count(method_no) 
  	 from tbl_method 
  	 where method_no > 0 
 	]]>
 	
-	</select>
+</select>
 	
+<select id="methodDetail" resultType="com.brs.domain.method.MethodDetailVO">
+	select m.method_no, m.step , m.method, p.name
+	from tbl_method_detail m, tbl_product p
+	where m.prod_no = p.prod_no 
+	and m.method_no=#{methodNo}
+	order by m.step asc
+</select>
 		
 </mapper>

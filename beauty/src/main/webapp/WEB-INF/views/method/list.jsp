@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <style type="text/css">
+    </style>
     
     
         <meta charset="utf-8" />
@@ -69,10 +71,10 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                    <div align="center">
-                    <div style="width:120px; height:100px;float:left;">               
+                    <div class="main" align="center">
+                    <div style="float:left;">               
 					<label for="example-select">피부타입</label>
-					<select class="form-control" name="searchType" id="searchType" style="width:110px">
+					<select class="form-control" name="searchType" id="searchType">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -94,9 +96,9 @@
 					</select>
 					</div>
 					
-					<div style="width:120px; height:100px;float:left;">
-					<label for="example-select">화장정도</label>
-					<select class="form-control" name="keyword" id="keyword" style="width:110px">
+					<div style="float:left;">
+					<label for="keyword">화장정도</label>
+					<select class="form-control" name="keyword" id="keyword">
 						<option value="n"
 							<c:out value="${cri.keyword == null?'selected':''}"/>>
 							---</option>
@@ -113,7 +115,7 @@
 					</div>
 					
 					<br>
-					<div style="width:120px; height:100px;float:left;">
+					<div style="float:left;">
 					<button id='searchBtn' class="btn btn-outline-info btn-rounded">검색</button>
 					</div>
 					
@@ -124,33 +126,40 @@
 		
                                         <div class="table-responsive-sm">
                                             <table class="table table-hover table-centered mb-0">
+                                            	<%-- <colgroup>
+                                            	<col width="10%"/>
+                                            	<col width="25%"/>
+                                            	<col width="25%"/>
+                                            	<col width="10%"/>
+                                            	<col width="30%"/>
+                                            	</colgroup> --%>
                                                 <thead>
                                                     <tr>
-                                                        <th style="width: 10px">NO</th>
-														<th >피부타입</th>
-														<th>화장정도</th>
-														<th >세안 Step</th>
-														<th>등록일</th>
+                                                        <th><label for="methodNo">NO</label></th>
+														<th><label for="skinType">피부타입</label></th>
+														<th><label for="makeUpDegree">화장정도</label></th>
+														<th><label for="methodStep">세안 Step</label></th>
+														<th><label for="regdate">등록일</label></th>
 							                        </tr>
                                                 </thead>
                                                 <tbody>
                           <c:forEach items="${methodList}" var="methodVO">
 							<tr>
-								<td>${methodVO.methodNo}</td>
+								<td id="methodNo">${methodVO.methodNo}</td>
 								<c:if test="${methodVO.skinType eq 'DR'}">
-								<td><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>건성</a></td>
+								<td id="skinType"><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>건성</a></td>
 								</c:if>
 								<c:if test="${methodVO.skinType eq 'NE'}">
-								<td><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>중성</a></td>
+								<td id="skinType"><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>중성</a></td>
 								</c:if>
 								<c:if test="${methodVO.skinType eq 'OI'}">
-								<td><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>지성</a></td>
+								<td id="skinType"><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>지성</a></td>
 								</c:if>
 								<c:if test="${methodVO.skinType eq 'CO'}">
-								<td><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>복합성</a></td>
+								<td id="skinType"><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>복합성</a></td>
 								</c:if>
 								<c:if test="${methodVO.skinType eq 'SE'}">
-								<td><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>민감성</a></td>
+								<td id="skinType"><a href='/method/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&methodNo=${methodVO.methodNo}'>민감성</a></td>
 								</c:if>
 								
 								<c:if test="${methodVO.makeUpDegree eq 'NM'}">

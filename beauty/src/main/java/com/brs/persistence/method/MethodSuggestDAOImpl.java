@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.brs.domain.method.MethodDetailVO;
 import com.brs.domain.method.MethodSuggestVO;
+import com.brs.domain.method.MethodVO;
 import com.brs.domain.util.MethodSuggestCriteria;
 
 @Repository
@@ -38,6 +39,20 @@ public class MethodSuggestDAOImpl implements MethodSuggestDAO{
 		return session.selectList(namespace+".search", mVO);
 				
 	}
+
+	@Override
+	public List<MethodVO> methodList(MethodSuggestCriteria cri) throws Exception {
+		return session.selectList(namespace+".methodList", cri);
+	}
+
+	@Override
+	public List<MethodDetailVO> methodDetail(int methodNo) throws Exception {
+		return session.selectList(namespace+".methodDetail", methodNo);
+	}
+
+	
+	
+
 
 
 }

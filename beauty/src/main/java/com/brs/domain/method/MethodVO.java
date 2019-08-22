@@ -1,6 +1,8 @@
 package com.brs.domain.method;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
 METHOD_NO: NUMBER NOT NULL
@@ -26,6 +28,16 @@ public class MethodVO extends MethodDetailVO{
 	private Date regdate;
 	private int adminNo;
 	
+	private List<MethodDetailVO> detailList = new ArrayList<MethodDetailVO>();
+	
+
+	
+	public List<MethodDetailVO> getDetailList() {
+		return detailList;
+	}
+	public void setDetailList(List<MethodDetailVO> detailList) {
+		this.detailList = detailList;
+	}
 	public int getMethodNo() {
 		return methodNo;
 	}

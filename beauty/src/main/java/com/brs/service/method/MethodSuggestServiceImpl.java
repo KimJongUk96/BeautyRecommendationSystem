@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.brs.domain.method.MethodDetailVO;
 import com.brs.domain.method.MethodSuggestVO;
+import com.brs.domain.method.MethodVO;
 import com.brs.domain.util.MethodSuggestCriteria;
 import com.brs.persistence.method.MethodSuggestDAO;
 
@@ -37,5 +38,14 @@ public class MethodSuggestServiceImpl implements MethodSuggestService{
 		return mDao.search(mVO);
 	}
 
+	@Override
+	public List<MethodVO> methodList(MethodSuggestCriteria cri) throws Exception {
+		return mDao.methodList(cri);
+	}
+
+	@Override
+	public List<MethodDetailVO> methodDetail(int methodNo) throws Exception {
+		return mDao.methodDetail(methodNo);
+	}
 
 }

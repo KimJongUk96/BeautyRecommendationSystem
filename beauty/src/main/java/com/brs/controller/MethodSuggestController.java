@@ -1,6 +1,9 @@
 package com.brs.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.brs.domain.method.MethodDetailVO;
 import com.brs.domain.method.MethodSuggestVO;
+import com.brs.domain.method.MethodVO;
 import com.brs.domain.util.MethodSuggestCriteria;
 import com.brs.domain.util.PageMaker;
 import com.brs.service.method.MethodDetailService;
@@ -34,18 +38,39 @@ public class MethodSuggestController {
 	
 	@RequestMapping(value="/suggest", method=RequestMethod.GET)
 	public void Suggest(MethodSuggestVO mVO, Model model) throws Exception{
-		//���ȹ� ��õ ȭ�� method
+		//���ȹ� ��õ ȭ�� method
 	}
 	
 	
 	
 	@RequestMapping(value="/list", method=RequestMethod.POST)
 	public void ListPost(MethodSuggestCriteria cri, Model model) throws Exception{
-		//���ȹ� ��õ ��� ȭ�� method
+		//���ȹ� ��õ ��� ȭ�� method
 		
 		logger.info(cri.toString());
 		
-		model.addAttribute("methodList", service.listSearch(cri));
+		
+		//전체 세안법 리스트 가져오기
+		List<MethodVO> methodList = service.methodList(cri);
+		
+		//디테일 정보를 가지고 있는 리스트 선언
+		List<MethodVO> methodNewList = new ArrayList<MethodVO>();
+		
+		//각 세안법 디테일 가져오기
+		for(MethodVO mVo : methodList) {
+			
+			List<MethodDetailVO> detailList = service.methodDetail(mVo.getMethodNo());
+			
+			mVo.setDetailList(detailList);
+			
+			methodNewList.add(mVo);
+		}
+		
+		
+		
+		model.addAttribute("methodList", methodNewList );
+		
+		
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

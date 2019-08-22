@@ -116,7 +116,7 @@ input[type='radio']:checked:before {
 							<option disabled="disabled" value="3" id="step3"<c:out value="${methodVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
 							</select>
 						</div> --%>
-						<input type="hidden" name="methodStep" class="form-control" value="${methodVO.methodStep}" id="methodStep">
+						<input type="hidden" name="methodStep" class="form-control" value="1" id="methodStep">
 						
 						<div class="form-group mb-3">
 							<c:forEach items="${detailList}" var="methodDetailVO">
@@ -145,7 +145,7 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</c:forEach>
 							</select>
-						</div>
+						</div> 
 						
 						<div class="form-group mb-3" id="method2">
 							<label for="simpleinput">세안법2</label>
@@ -168,8 +168,8 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</c:forEach>
 							</select>
-						</div>
-						 
+						</div> 
+						
 						<div class="form-group mb-3" id="method3">
 							<label for="simpleinput">세안법3</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
@@ -202,7 +202,7 @@ input[type='radio']:checked:before {
 							</c:if>
 								</c:forEach>
 						</div>
-					
+						
 						<div class="form-group" id="prodNo4">
 							<label for="example-select">사용제품명4</label>
 							<select class="form-control" name="prodNo" id="prodNo">
@@ -214,8 +214,8 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</c:forEach>
 							</select>
-						</div>
-					
+						</div> 
+						
 						<div class="form-group mb-3" id="method5">
 							<label for="simpleinput">세안법5</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
@@ -237,7 +237,7 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</c:forEach>
 							</select>
-						</div>
+						</div> 
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">계절</label>
@@ -358,72 +358,89 @@ input[type='radio']:checked:before {
 	</script>
 	
 	<script>
-	$(document).ready(function(){
-		
-		var methodStep = $('#methodStep').val();
-		
-		if(methodStep == '1'){
-			$('#method').show();
-			$('#prodNo').show();
-			$('#method2').hide();
-			$('#prodNo2').hide();
-			$('#method3').hide();
-			$('#prodNo3').hide();
-			$('#method4').hide();
-			$('#prodNo4').hide();
-			$('#method5').hide();
-			$('#prodNo5').hide();
-			
-		}else if(methodStep == '2'){
-			$('#method').show();
-			$('#prodNo').show();
-			$('#method2').show();
-			$('#prodNo2').show();
-			$('#method3').hide();
-			$('#prodNo3').hide();
-			$('#method4').hide();
-			$('#prodNo4').hide();
-			$('#method5').hide();
-			$('#prodNo5').hide();
-			
-		}else if(methodStep == '3'){
-			$('#method').show();
-			$('#prodNo').show();
-			$('#method2').show();
-			$('#prodNo2').show();
-			$('#method3').show();
-			$('#prodNo3').show();
-			$('#method4').hide();
-			$('#prodNo4').hide();
-			$('#method5').hide();
-			$('#prodNo5').hide();
-			
-		}else if(methodStep == '4'){
-			$('#method').show();
-			$('#prodNo').show();
-			$('#method2').show();
-			$('#prodNo2').show();
-			$('#method3').show();
-			$('#prodNo3').show();
-			$('#method4').show();
-			$('#prodNo4').show();
-			$('#method5').hide();
-			$('#prodNo5').hide();
-			
-		}else if(methodStep == '5'){
-			$('#method').show();
-			$('#prodNo').show();
-			$('#method2').show();
-			$('#prodNo2').show();
-			$('#method3').show();
-			$('#prodNo3').show();
-			$('#method4').show();
-			$('#prodNo4').show();
-			$('#method5').show();
-			$('#prodNo5').show();
-			}
-		
+$(document).ready(function(){
+	
+	var value = jQuery('#methodStep option:selected').val();
+	// selectbox value값에 따른 click,change 이벤트 강제 실행
+	   if($(value == '1').trigger('click')){
+			$('#methodStep').change();
+	   }else if($(value == '2').trigger('click')){
+		   $('#methodStep').change();
+	   }else if($(value == '3').trigger('click')){
+		   $('#methodStep').change();
+	   }else if($(value == '4').trigger('click')){
+		   $('#methodStep').change();
+	   }else if($(value == '5').trigger('click')){
+		   $('#methodStep').change();
+	   }
 	});
-	</script>
+</script>
 
+<script>
+jQuery('#methodStep').change(function(){
+	
+	var value = jQuery('#methodStep option:selected').val();	
+	// selectbox value값에 따라서 textArea 보기 / 숨기기
+	if(value == '1'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').hide();
+		$('#prodNo2').hide();
+		$('#method3').hide();
+		$('#prodNo3').hide();
+		$('#method4').hide();
+		$('#prodNo4').hide();
+		$('#method5').hide();
+		$('#prodNo5').hide();
+		
+	}else if(value == '2'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').hide();
+		$('#prodNo3').hide();
+		$('#method4').hide();
+		$('#prodNo4').hide();
+		$('#method5').hide();
+		$('#prodNo5').hide();
+		
+	}else if(value == '3'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').show();
+		$('#prodNo3').show();
+		$('#method4').hide();
+		$('#prodNo4').hide();
+		$('#method5').hide();
+		$('#prodNo5').hide();
+		
+	}else if(value == '4'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').show();
+		$('#prodNo3').show();
+		$('#method4').show();
+		$('#prodNo4').show();
+		$('#method5').hide();
+		$('#prodNo5').hide();
+		
+	}else if(value == '5'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').show();
+		$('#prodNo3').show();
+		$('#method4').show();
+		$('#prodNo4').show();
+		$('#method5').show();
+		$('#prodNo5').show();
+		}
+	});
+</script>
 </html>

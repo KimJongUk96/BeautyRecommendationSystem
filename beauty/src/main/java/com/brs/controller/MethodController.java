@@ -50,7 +50,10 @@ public class MethodController {
 			RedirectAttributes rttr)throws Exception{
 		
 		//세안법(TBL_METHOD) 저장
+		mVO.setMethodStep(methods.size());
+		logger.info("mVO.setMethodStep(methods.size()) : " + methods.size());
 		Integer methodNo = service.create(mVO);
+		
 		logger.info("methodNo : " + mVO);
 		
 		logger.info("method.size() : " + methods.size());
@@ -61,7 +64,6 @@ public class MethodController {
 			MethodDetailVO newVo = new MethodDetailVO();
 			//세안법 등록한 PK 가져와서 디데일에 부모키(FK) setting
 			newVo.setMethodNo(methodNo);
-			
 			//Step별 setting
 			newVo.setStep(i);
 			newVo.setMethod(methods.get(i-1));
@@ -119,6 +121,8 @@ public class MethodController {
 			@RequestParam(value="prodNo", required=true) List<String> prodNos,
 			RedirectAttributes rttr, SearchCriteria cri)throws Exception {
 		
+		
+			mVO.setMethodStep(methods.size());
 			Integer methodNo = service.methodUpdate(mVO);
 		
 		for(int i=1; i<=mVO.getMethodStep(); i++ ) {

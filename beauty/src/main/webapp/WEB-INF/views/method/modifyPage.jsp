@@ -110,22 +110,23 @@ input[type='radio']:checked:before {
 							</select>
 						</div>
 						
-						<div class="form-group">
+<%-- 						<div class="form-group">
 							<label for="example-select">세안법 Step</label>
 							<select class="form-control" name="methodStep" id="methodStep">
 							<option value="1" id="step1"<c:out value="${methodVO.methodStep eq '1'?'selected':''}"/>>Step1</option>
 							<option value="2" id="step2"<c:out value="${methodVO.methodStep eq '2'?'selected':''}"/>>Step2</option>
 							<option value="3" id="step3"<c:out value="${methodVO.methodStep eq '3'?'selected':''}"/>>Step3</option>
 							</select>
-						</div>
+						</div> --%>
+						<input type="hidden" name="methodStep" class="form-control" value="${methodVO.methodStep}" id="methodStep">
 						
 						<div class="form-group mb-3">
 							<c:forEach items="${detailList}" var="methodDetailVO">
 							<input type="hidden" name="step" id="step" value="${methodDetailVO.step}">
 							</c:forEach>
 						</div>
-						
-						<div class="form-group mb-3" id="method01">
+						<!-- 1 -->
+						<div class="form-group mb-3" id="method">
 							<label for="exampleInputPassword1">세안법</label>
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:if test="${status.count eq '1'}">
@@ -147,8 +148,8 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</select>
 						</div> 
-						
-						<div class="form-group mb-3" id="method02">
+						<!-- 2 -->
+						<div class="form-group mb-3" id="method2">
 							<label for="exampleInputPassword1">세안법2</label>
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 1}">
@@ -168,7 +169,7 @@ input[type='radio']:checked:before {
 							
 							<c:if test="${not empty methodDetailVO}">
 							 <!-- 실제 값 있을 경우 만들어라 -->
-								<div class="form-group mb-3" id="method02">
+								<div class="form-group mb-3" id="method2">
 								<textarea class="form-control" name="method" rows="5" id="method2"
 									placeholder="Step2 세안법">${methodDetailVO.method}</textarea>
 							</div>							
@@ -177,7 +178,7 @@ input[type='radio']:checked:before {
 							
 							<c:if test="${empty methodDetailVO}">
 							 <!-- 빈통을 만들어라 -->
-							 <div class="form-group mb-3" id="method02">
+							 <div class="form-group mb-3" id="method2">
 								<textarea class="form-control" name="method" rows="5" id="method2"
 									placeholder="Step2 세안법"></textarea>
 							</div>
@@ -205,8 +206,8 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</select>
 						</div> 
-						
-						<div class="form-group mb-3" id="method03">
+						<!-- 3 -->
+						<div class="form-group mb-3" id="method3">
 							<label for="exampleInputPassword1">세안법3</label>
 							
 							<c:choose>
@@ -227,7 +228,7 @@ input[type='radio']:checked:before {
 							
 							<c:if test="${not empty methodDetailVO}">
 							 <!-- 실제 값 있을 경우 만들어라 -->
-								<div class="form-group mb-3" id="method03">
+								<div class="form-group mb-3" id="method3">
 								<textarea class="form-control" name="method" rows="5" id="method3"
 									placeholder="Step3 세안법">${methodDetailVO.method}</textarea>
 							</div>							
@@ -236,7 +237,7 @@ input[type='radio']:checked:before {
 							
 							<c:if test="${empty methodDetailVO}">
 							 <!-- 빈통을 만들어라 -->
-							 <div class="form-group mb-3" id="method03">
+							 <div class="form-group mb-3" id="method3">
 								<textarea class="form-control" name="method" rows="5" id="method3"
 									placeholder="Step3 세안법"></textarea>
 							</div>
@@ -265,7 +266,148 @@ input[type='radio']:checked:before {
 							</c:forEach>
 							</c:forEach>
 							</select>
-							</div> 
+							</div>
+							
+							<!-- 4 -->
+							<div class="form-group mb-3" id="method4">
+							<label for="exampleInputPassword1">세안법4</label>
+							
+							<c:choose>
+							<c:when test="${methodVO.methodStep <= 3}">
+							<!-- 3번 세안법이 없을 경우 -->
+							<div class="form-group mb-3" id="method4">
+								<textarea class="form-control" name="method" rows="5" id="method4"
+									placeholder="Step4 세안법"></textarea>
+							</div>
+							
+							</c:when>
+							<c:otherwise>
+							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							
+							
+							<c:if test="${status.count eq '4'}">
+							
+							
+							<c:if test="${not empty methodDetailVO}">
+							 <!-- 실제 값 있을 경우 만들어라 -->
+								<div class="form-group mb-3" id="method4">
+								<textarea class="form-control" name="method" rows="5" id="method4"
+									placeholder="Step4 세안법">${methodDetailVO.method}</textarea>
+							</div>							
+							</c:if>
+							
+							
+							<c:if test="${empty methodDetailVO}">
+							 <!-- 빈통을 만들어라 -->
+							 <div class="form-group mb-3" id="method4">
+								<textarea class="form-control" name="method" rows="5" id="method4"
+									placeholder="Step4 세안법"></textarea>
+							</div>
+							</c:if>
+							</c:if>
+							
+							</c:forEach>
+							
+							</c:otherwise>
+							</c:choose>
+							
+						</div>
+						
+							<div class="form-group" id="prodNo4">
+							<label for="example-select">사용제품명4</label>
+							<select class="form-control" name="prodNo" id="prodNo">
+							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							<c:forEach items="${prodList}" var="productVO">
+							<c:if test="${status.count eq '4'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
+							<c:if test="${status.count eq '1'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
+							</c:forEach>
+							</c:forEach>
+							</select>
+							</div>
+							
+							<!-- 5 -->
+							<div class="form-group mb-3" id="method5">
+							<label for="exampleInputPassword1">세안법5</label>
+							
+							<c:choose>
+							<c:when test="${methodVO.methodStep <= 4}">
+							<!-- 3번 세안법이 없을 경우 -->
+							<div class="form-group mb-3" id="method5">
+								<textarea class="form-control" name="method" rows="5" id="method5"
+									placeholder="Step5 세안법"></textarea>
+							</div>
+							
+							</c:when>
+							<c:otherwise>
+							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							
+							
+							<c:if test="${status.count eq '5'}">
+							
+							
+							<c:if test="${not empty methodDetailVO}">
+							 <!-- 실제 값 있을 경우 만들어라 -->
+								<div class="form-group mb-3" id="method4">
+								<textarea class="form-control" name="method" rows="5" id="method5"
+									placeholder="Step4 세안법">${methodDetailVO.method}</textarea>
+							</div>							
+							</c:if>
+							
+							
+							<c:if test="${empty methodDetailVO}">
+							 <!-- 빈통을 만들어라 -->
+							 <div class="form-group mb-3" id="method5">
+								<textarea class="form-control" name="method" rows="5" id="method5"
+									placeholder="Step5 세안법"></textarea>
+							</div>
+							</c:if>
+							</c:if>
+							
+							</c:forEach>
+							
+							</c:otherwise>
+							</c:choose>
+							
+								
+						</div>
+						
+							<div class="form-group" id="prodNo5">
+							<label for="example-select">사용제품명5</label>
+							<select class="form-control" name="prodNo" id="prodNo">
+							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
+							<c:forEach items="${prodList}" var="productVO">
+							<c:if test="${status.count eq '5'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
+							<c:if test="${status.count eq '1'}">
+							<option value="${productVO.prodNo}"<c:out value="${methodDetailVO.prodNo eq productVO.prodNo ?'selected':''}"/>>${productVO.name}</option>
+							</c:if>
+							</c:forEach>
+							</c:forEach>
+							</select>
+							</div>
+							
+						<div id="add1" class="form-group mb-3"></div>
+						<div class="form-group" id=select2></div>
+						
+						<div id="add2" class="form-group mb-3"></div>
+						<div class="form-group" id=select3></div>
+						
+						<div id="add3" class="form-group mb-3"></div>
+						<div class="form-group" id=select4></div>
+						
+						<div id="add4" class="form-group mb-3"></div>
+						<div class="form-group" id=select5></div> 
+						
+						<div class="form-group" align="right">							
+						<button type="button" id="plus" class="btn btn-icon btn-success"><i class="mdi mdi-plus"></i></button>
+						<button type="button" id="minus" class="btn btn-icon btn-danger"><i class="mdi mdi-minus"></i></button>
+						</div>
+							
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">계절</label>
@@ -379,11 +521,11 @@ $(document).ready(
 
 	});
 </script>
-	
-	<script>
+
+<script>
 $(document).ready(function(){
 	
-	var value = jQuery('#methodStep option:selected').val();
+	var methodStep = $('#methodStep').val();
 	// selectbox value값에 따른 click,change 이벤트 강제 실행
 	   if($(value == '1').trigger('click')){
 			$('#methodStep').change();
@@ -391,39 +533,286 @@ $(document).ready(function(){
 		   $('#methodStep').change();
 	   }else if($(value == '3').trigger('click')){
 		   $('#methodStep').change();
+	   }else if($(value == '4').trigger('click')){
+		   $('#methodStep').change();
+	   }else if($(value == '5').trigger('click')){
+		   $('#methodStep').change();
 	   }
-	
 	});
 </script>
-
+	
 <script>
-jQuery('#methodStep').change(function(){
+$(document).ready(function(){
 	
-	var value = jQuery('#methodStep option:selected').val();	
-	// selectbox value값에 따라서 textArea 보기 / 숨기기
-	if(value == '1'){
-		$('#method01').show();
+	var methodStep = $('#methodStep').val();
+	
+	if(methodStep == '1'){
+		$('#method').show();
 		$('#prodNo').show();
-		$('#method02').hide();
-		$('#prodNo2').hide();
-		$('#method03').hide();
-		$('#prodNo3').hide();
-	}else if(value == '2'){
-		$('#method01').show();
+		$('#method2').remove();
+		$('#prodNo2').remove();
+		$('#method3').remove();
+		$('#prodNo3').remove();
+		$('#method4').remove();
+		$('#prodNo4').remove();
+		$('#method5').remove();
+		$('#prodNo5').remove();
+		
+	}else if(methodStep == '2'){
+		$('#method').show();
 		$('#prodNo').show();
-		$('#method02').show();
+		$('#method2').show();
 		$('#prodNo2').show();
-		$('#method03').hide();
-		$('#prodNo3').hide();
-	}else if(value == '3'){
-		$('#method01').show();
+		$('#method3').remove();
+		$('#prodNo3').remove();
+		$('#method4').remove();
+		$('#prodNo4').remove();
+		$('#method5').remove();
+		$('#prodNo5').remove();
+		
+	}else if(methodStep == '3'){
+		$('#method').show();
 		$('#prodNo').show();
-		$('#method02').show();
+		$('#method2').show();
 		$('#prodNo2').show();
-		$('#method03').show();
+		$('#method3').show();
 		$('#prodNo3').show();
+		$('#method4').remove();
+		$('#prodNo4').remove();
+		$('#method5').remove();
+		$('#prodNo5').remove();
+		
+	}else if(methodStep == '4'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').show();
+		$('#prodNo3').show();
+		$('#method4').show();
+		$('#prodNo4').show();
+		$('#method5').remove();
+		$('#prodNo5').remove();
+		
+	}else if(methodStep == '5'){
+		$('#method').show();
+		$('#prodNo').show();
+		$('#method2').show();
+		$('#prodNo2').show();
+		$('#method3').show();
+		$('#prodNo3').show();
+		$('#method4').show();
+		$('#prodNo4').show();
+		$('#method5').show();
+		$('#prodNo5').show();
 		}
-	});
-</script>
+	
+	
+});
 
+</script>
+ 
+<script>
+
+		
+$(document).ready(function(){
+	
+	var count = $('#methodStep').val();
+	var methodStep = $('#methodStep').val();	
+	
+	
+	$('#plus').click(function(){
+		      if (count == '1') {
+		    	  
+		    	var add = document.getElementById('add' + count++);
+		    	var select = document.getElementById('select' + count);
+		    	
+		    	//label 태그 생성
+		    	var metLabel = document.createElement('label');
+		    	metLabel.htmlFor = 'method'+count;
+		    	metLabel.textContent = '세안법'
+		    	//textArea 생성
+		        var method = document.createElement('textArea');
+		    	method.name = 'method';
+		    	method.id = 'method'+count;
+		    	method.classList.add('form-control');
+		    	method.rows = 5;
+		    	method.cols = 50;
+		    	method.placeholder='Step'+count+' 세안법';
+		    	//div(id값 매핑)의 자식으로 추가
+		        add.appendChild(metLabel);
+		        add.appendChild(method);
+				//label 생성	        
+		        var label = document.createElement('label');
+		        label.htmlFor = 'prodNo'+count;
+		        label.textContent = '사용제품명'
+		        //selectBox 생성
+		        var product = document.createElement('select');
+		        product.classList.add('form-control');
+		        product.name = 'prodNo';
+		        product.id = 'prodNo'+count;
+		        //selectBox option 설정
+		        select.appendChild(label);
+		        select.appendChild(product);
+		        //여러개 
+		        <c:forEach items="${prodList}" var="productVO">
+		        var option= document.createElement('option');
+		        option.text = '${productVO.name}';
+		        option.value = '${productVO.prodNo}';
+		        product.append(option);
+		        </c:forEach>
+		        
+		      }else if(count == '2'){
+		    	  var add = document.getElementById('add' + count++);
+			    	var select = document.getElementById('select' + count);
+			    	
+			    	//label 태그 생성
+			    	var metLabel = document.createElement('label');
+			    	metLabel.htmlFor = 'method'+count;
+			    	metLabel.textContent = '세안법'
+			    	//textArea 생성
+			        var method = document.createElement('textArea');
+			    	method.name = 'method';
+			    	method.id = 'method'+count;
+			    	method.classList.add('form-control');
+			    	method.rows = 5;
+			    	method.cols = 50;
+			    	method.placeholder='Step'+count+' 세안법';
+			    	//div(id값 매핑)의 자식으로 추가
+			        add.appendChild(metLabel);
+			        add.appendChild(method);
+					//label 생성	        
+			        var label = document.createElement('label');
+			        label.htmlFor = 'prodNo'+count;
+			        label.textContent = '사용제품명'
+			        //selectBox 생성
+			        var product = document.createElement('select');
+			        product.classList.add('form-control');
+			        product.name = 'prodNo';
+			        product.id = 'prodNo'+count;
+			        //selectBox option 설정
+			        select.appendChild(label);
+			        select.appendChild(product);
+			        //여러개 
+			        <c:forEach items="${prodList}" var="productVO">
+			        var option= document.createElement('option');
+			        option.text = '${productVO.name}';
+			        option.value = '${productVO.prodNo}';
+			        product.append(option);
+			        </c:forEach> 
+		      }else if(count == '3'){
+		    	  var add = document.getElementById('add' + count++);
+			    	var select = document.getElementById('select' + count);
+			    	
+			    	//label 태그 생성
+			    	var metLabel = document.createElement('label');
+			    	metLabel.htmlFor = 'method'+count;
+			    	metLabel.textContent = '세안법'
+			    	//textArea 생성
+			        var method = document.createElement('textArea');
+			    	method.name = 'method';
+			    	method.id = 'method'+count;
+			    	method.classList.add('form-control');
+			    	method.rows = 5;
+			    	method.cols = 50;
+			    	method.placeholder='Step'+count+' 세안법';
+			    	//div(id값 매핑)의 자식으로 추가
+			        add.appendChild(metLabel);
+			        add.appendChild(method);
+					//label 생성	        
+			        var label = document.createElement('label');
+			        label.htmlFor = 'prodNo'+count;
+			        label.textContent = '사용제품명'
+			        //selectBox 생성
+			        var product = document.createElement('select');
+			        product.classList.add('form-control');
+			        product.name = 'prodNo';
+			        product.id = 'prodNo'+count;
+			        //selectBox option 설정
+			        select.appendChild(label);
+			        select.appendChild(product);
+			        //여러개 
+			        <c:forEach items="${prodList}" var="productVO">
+			        var option= document.createElement('option');
+			        option.text = '${productVO.name}';
+			        option.value = '${productVO.prodNo}';
+			        product.append(option);
+			        </c:forEach>
+			        
+		      }else if(count == '4'){
+		    	  var add = document.getElementById('add' + count++);
+			    	var select = document.getElementById('select' + count);
+			    	
+			    	//label 태그 생성
+			    	var metLabel = document.createElement('label');
+			    	metLabel.htmlFor = 'method'+count;
+			    	metLabel.textContent = '세안법'
+			    	//textArea 생성
+			        var method = document.createElement('textArea');
+			    	method.name = 'method';
+			    	method.id = 'method'+count;
+			    	method.classList.add('form-control');
+			    	method.rows = 5;
+			    	method.cols = 50;
+			    	method.placeholder='Step'+count+' 세안법';
+			    	//div(id값 매핑)의 자식으로 추가
+			        add.appendChild(metLabel);
+			        add.appendChild(method);
+					//label 생성	        
+			        var label = document.createElement('label');
+			        label.htmlFor = 'prodNo'+count;
+			        label.textContent = '사용제품명'
+			        //selectBox 생성
+			        var product = document.createElement('select');
+			        product.classList.add('form-control');
+			        product.name = 'prodNo';
+			        product.id = 'prodNo'+count;
+			        //selectBox option 설정
+			        select.appendChild(label);
+			        select.appendChild(product);
+			        //여러개 
+			        <c:forEach items="${prodList}" var="productVO">
+			        var option= document.createElement('option');
+			        option.text = '${productVO.name}';
+			        option.value = '${productVO.prodNo}';
+			        product.append(option);
+			        </c:forEach>
+		      
+				 }else if(count == '5'){
+				    alert("세안법은 5개까지 등록가능합니다.");
+				    	count = 5;
+				    }
+				      
+				});
+	
+    $(document).ready(function(){
+    	$('#minus').click(function(){
+    	if(count > 1){
+    		//id 값 mapping,
+    		var div = document.getElementById('add'+ count);
+    		var selectDiv =  document.getElementById('prodNo' + count);
+    		var method= document.getElementById('method'+ count);
+    		
+    		//label for 값 mapping
+    		$("label[for = 'method"+count+"']").remove();
+    		//textArea 제거 (부모 키를 찾을 필요 없음) or ex) parent.removeChild(child) < 부모키를 알 때 사용하는 방법
+    		method.parentNode.removeChild(method);
+    		
+    		$("label[for = 'prodNo"+count+"']").remove();
+    		//selectBox 제거
+    		selectDiv.parentNode.removeChild(selectDiv);
+    		
+    	    count --;
+    		
+    	}else{
+    		
+    		alert('최소 1개의 세안법을 등록해야합니다.');
+    		count = 1;
+    	}
+    	
+		});
+    });
+});
+</script>
+ 
 </html>

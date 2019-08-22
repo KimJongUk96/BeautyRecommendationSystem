@@ -81,8 +81,8 @@ input[type='radio']:checked:before {
                                                 	
 
                          <div class="form-group mb-3">
-                            <label for="example-select">피부타입</label>
-							<select class="form-control" name="skinType">
+                            <label for="skinType">피부타입</label>
+							<select class="form-control" name="skinType" id="skinType">
 							<option value="DR">건성</option>
 							<option value="NE">중성</option>
 							<option value="OI">지성</option>
@@ -92,33 +92,35 @@ input[type='radio']:checked:before {
 						</div>
 						
 						<div class="form-group mb-3">
-							<label for="example-select">화장정도</label>
-							<select class="form-control" name="makeUpDegree">
+							<label for="makeUpDegree">화장정도</label>
+							<select class="form-control" name="makeUpDegree" id="makeUpDegree">
 							<option value="NM">노 메이크업</option>
 							<option value="YM">메이크업</option>
 							<option value="SM">색조 메이크업</option>
 							</select> 
 						</div>
 						
-						<div class="form-group mb-3">
-							<label for="example-select">세안법 Step</label>
+<!-- 						<div class="form-group mb-3">
+							<label for="methodStep">세안법 Step</label>
 							<select class="form-control" name="methodStep" id="methodStep">
 							<option value="1" id="step1">step1</option>
 							<option value="2" id="step2">step2</option>
 							<option value="3" id="step3">step3</option>
 							</select>
-						</div>
+						</div> -->
 						
-							 <input type="hidden" name="step" class="form-control" value="0" id="step">
+						<input type="hidden" name="methodStep" class="form-control" value="1" id="methodStep">
+						<input type="hidden" name="step" class="form-control" value="0" id="step">
 						
+						<div id = "plusMethod">
 						<div class="form-group mb-3" id="div">
-							<label for="simpleinput">세안법</label>
+							<label for="method">세안법</label>
 							<textarea class="form-control" name="method" rows="5"
-								placeholder="Step1 세안법" id=method></textarea>
+								placeholder="Step1 세안법" id="method"></textarea>
 						</div>
 						
 						<div class="form-group" id="prodNo">
-							<label for="example-select">사용제품명</label>
+							<label for="prodNo">사용제품명</label>
 							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${prodList}" var="productVO">
 							<option value="${productVO.prodNo}">${productVO.name}</option>
@@ -126,23 +128,28 @@ input[type='radio']:checked:before {
 							</select>
 						</div> 
 						
-						<div id="add1" class="form-group mb-3"></div>
-						<div class="form-group" id=select1></div>
+						</div>
 						
-						<div id="add2" class="form-group mb-3"></div>
+ 						<div id="add1" class="form-group mb-3"></div>
 						<div class="form-group" id=select2></div>
 						
-						<div id="add3" class="form-group mb-3"></div>
+						<div id="add2" class="form-group mb-3"></div>
 						<div class="form-group" id=select3></div>
 						
-						<div id="add4" class="form-group mb-3"></div>
+						<div id="add3" class="form-group mb-3"></div>
 						<div class="form-group" id=select4></div>
-						<input type="button" id="btn2" value="추가" onclick="addBox(this.form)"/>
 						
+						<div id="add4" class="form-group mb-3"></div>
+						<div class="form-group" id=select5></div> 
 						
-												
- 						<div class="form-group">
-							<label for="example-select">계절</label>
+						<!-- onclick="plus(this.form)" -->
+						<div class="form-group" align="right">					
+						<button type="button" id="plus" class="btn btn-icon btn-success"><i class="mdi mdi-plus"></i></button>
+						<button type="button" id="minus" class="btn btn-icon btn-danger"><i class="mdi mdi-minus"></i></button>
+						</div>
+						
+						<div class="form-group">
+							<label for="season">계절</label>
 							&nbsp;
 							<input type="radio" name="season" id="season" value="S1" checked="checked">&nbsp;봄
 							<input type="radio" name="season" id="season" value="S2">&nbsp;여름
@@ -152,7 +159,7 @@ input[type='radio']:checked:before {
 						
 						
 						<div class="form-group">
-							<label for="example-select">날씨</label>
+							<label for="weather">날씨</label>
 							&nbsp;
 							<input type="radio" name="weather" id="weather" value="W1" checked="checked">&nbsp;맑음
 							<input type="radio" name="weather" id="weather" value="W2">&nbsp;흐림
@@ -241,41 +248,84 @@ input[type='radio']:checked:before {
     
     var count = 1;
     
-    function addBox () {
+    // 동적 생성 javaScript (jquery도 사용가능)
+    $(document).ready(function(){
+    	$('#plus').click(function(){
 	      if (count <= 4) {
+	    	  
 	    	var add = document.getElementById('add' + count++);
 	    	var select = document.getElementById('select' + count);
-	        var newArea = document.createElement('textArea');
-	        newArea.name = 'method';
-	        newArea.id = 'method';
-	        newArea.classList.add('form-control');
-	        newArea.rows = 5;
-	        newArea.cols = 50;
-	        newArea.placeholder='Step'+ this.count +' 세안법';
-	        add.appendChild(newArea);
-	        
+	    	
+	    	//label 태그 생성
+	    	var metLabel = document.createElement('label');
+	    	metLabel.htmlFor = 'method'+count;
+	    	metLabel.textContent = '세안법'
+	    	//textArea 생성
+	        var method = document.createElement('textArea');
+	    	method.name = 'method';
+	    	method.id = 'method'+count;
+	    	method.classList.add('form-control');
+	    	method.rows = 5;
+	    	method.cols = 50;
+	    	method.placeholder='Step'+count+' 세안법';
+	    	//div(id값 매핑)의 자식으로 추가
+	        add.appendChild(metLabel);
+	        add.appendChild(method);
+			//label 생성	        
 	        var label = document.createElement('label');
-	        label.id = 'product' + count;
-	        label.htmlFor = 'example-select'
+	        label.htmlFor = 'prodNo'+count;
 	        label.textContent = '사용제품명'
+	        //selectBox 생성
 	        var product = document.createElement('select');
-	        var option= document.createElement('option');
 	        product.classList.add('form-control');
 	        product.name = 'prodNo';
-	        product.id = 'prodNo';
+	        product.id = 'prodNo'+count;
+	        //selectBox option 설정
+	        select.appendChild(label);
+	        select.appendChild(product);
+	        //여러개 
 	        <c:forEach items="${prodList}" var="productVO">
+	        var option= document.createElement('option');
 	        option.text = '${productVO.name}';
 	        option.value = '${productVO.prodNo}';
-	        </c:forEach>
-	        add.appendChild(label);
-	        add.appendChild(product);
 	        product.append(option);
+	        </c:forEach>
 	        
 	    }else{
-	    	alert("세안법은 5개까지 입력가능합니다.");	
+	    	alert("세안법은 5개까지 등록가능합니다.");	
 	    }
-    }
-
+	      
+	    	});
+    	});
+    
+    //제거버튼 jquery(for값을 가져오기위해서 jquery를 사용)
+    $(document).ready(function(){
+    	$('#minus').click(function(){
+    	if(count > 1){
+    		//id 값 mapping,
+    		var div = document.getElementById('add'+ count);
+    		var selectDiv =  document.getElementById('prodNo' + count);
+    		var method= document.getElementById('method'+ count);
+    		
+    		//label for 값 mapping
+    		$("label[for = 'method"+count+"']").remove();
+    		//textArea 제거 (부모 키를 찾을 필요 없음) or ex) parent.removeChild(child) < 부모키를 알 때 사용하는 방법
+    		method.parentNode.removeChild(method);
+    		
+    		$("label[for = 'prodNo"+count+"']").remove();
+    		//selectBox 제거
+    		selectDiv.parentNode.removeChild(selectDiv);
+    		
+    	    count --;
+    		
+    	}else{
+    		
+    		alert('최소 1개의 세안법을 등록해야합니다.');
+    		count = 1;
+    	}
+    	
+		});
+    });
     </script>
     
 	<script type="text/javascript">

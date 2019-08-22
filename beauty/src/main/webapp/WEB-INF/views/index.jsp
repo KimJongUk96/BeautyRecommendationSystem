@@ -41,7 +41,7 @@
 		<ul class="links">
 			<li><a href="/">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
-			<li><a href="/productSuggest/list">세안 제품 추천</a></li>
+			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
 			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
 		</ul>
 		<ul class="actions vertical">
@@ -55,8 +55,8 @@
 					<h1>피부에 맞는 제품을 찾아드립니다.</h1>
 					<p>매일 쓰는 화장품, 알맞게 사용하고 계신가요?<br/>적합한 제품과 올바른 세안 방법을 추천 해 드립니다.</p>
 					<ul class="actions">
-						<li><a href="/productSuggest/list" class="button">세안 제품 추천 받기</a></li>
-						<li><a href="/methodSuggest/suggest" class="button special">세안 법 추천 받기</a></li>
+						<li><a href="/productSuggest/infoInput" class="button">세안 제품 추천 받기</a></li>
+						<li><a href="/methodSuggest/suggest" class="button special">세안 법 검색 하기</a></li>
 					</ul>
 				</div>
 		</section>
