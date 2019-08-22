@@ -107,7 +107,7 @@
 		                                                </select>
                                                     </div>
 
-                                                        <input type="hidden" id="adminNo" name='adminNo' class="form-control" value='1020' readonly="readonly">
+                                                        <input type="hidden" id="adminNo" name='adminNo' class="form-control" value="${productVO.adminNo}" readonly="readonly">
 
                                                     <div class="form-group mb-3">
                                                         <label for="simpleinput">사진</label>

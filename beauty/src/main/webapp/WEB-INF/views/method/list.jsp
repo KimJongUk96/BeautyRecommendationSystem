@@ -123,16 +123,13 @@
 					<button id='newBtn' type="button" class="btn btn-primary">등록</button>
 					</div>
 					</div>
-		
+					
+                                        <div class="row"></div>
+                                        <div class="col-xl-12"></div>
+                                        <div class="card"></div>
+                                        <div class="card-body"></div>
                                         <div class="table-responsive-sm">
                                             <table class="table table-hover table-centered mb-0">
-                                            	<%-- <colgroup>
-                                            	<col width="10%"/>
-                                            	<col width="25%"/>
-                                            	<col width="25%"/>
-                                            	<col width="10%"/>
-                                            	<col width="30%"/>
-                                            	</colgroup> --%>
                                                 <thead>
                                                     <tr>
                                                         <th><label for="methodNo">NO</label></th>

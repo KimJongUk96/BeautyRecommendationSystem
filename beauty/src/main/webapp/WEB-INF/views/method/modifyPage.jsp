@@ -150,7 +150,7 @@ input[type='radio']:checked:before {
 						</div> 
 						<!-- 2 -->
 						<div class="form-group mb-3" id="method2">
-							<label for="exampleInputPassword1">세안법2</label>
+							<label for="exampleInputPassword1">세안법</label>
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 1}">
 							<!-- 3번 세안법이 없을 경우 -->
@@ -192,7 +192,7 @@ input[type='radio']:checked:before {
 						</div>
 						
 						<div class="form-group" id="prodNo2">
-							<label for="example-select">사용제품명2</label>
+							<label for="example-select">사용제품명</label>
 							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
@@ -208,7 +208,7 @@ input[type='radio']:checked:before {
 						</div> 
 						<!-- 3 -->
 						<div class="form-group mb-3" id="method3">
-							<label for="exampleInputPassword1">세안법3</label>
+							<label for="exampleInputPassword1">세안법</label>
 							
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 2}">
@@ -253,7 +253,7 @@ input[type='radio']:checked:before {
 						</div>
 						
 							<div class="form-group" id="prodNo3">
-							<label for="example-select">사용제품명3</label>
+							<label for="example-select">사용제품명</label>
 							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
@@ -270,7 +270,7 @@ input[type='radio']:checked:before {
 							
 							<!-- 4 -->
 							<div class="form-group mb-3" id="method4">
-							<label for="exampleInputPassword1">세안법4</label>
+							<label for="exampleInputPassword1">세안법</label>
 							
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 3}">
@@ -314,7 +314,7 @@ input[type='radio']:checked:before {
 						</div>
 						
 							<div class="form-group" id="prodNo4">
-							<label for="example-select">사용제품명4</label>
+							<label for="example-select">사용제품명</label>
 							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
@@ -331,7 +331,7 @@ input[type='radio']:checked:before {
 							
 							<!-- 5 -->
 							<div class="form-group mb-3" id="method5">
-							<label for="exampleInputPassword1">세안법5</label>
+							<label for="exampleInputPassword1">세안법</label>
 							
 							<c:choose>
 							<c:when test="${methodVO.methodStep <= 4}">
@@ -376,7 +376,7 @@ input[type='radio']:checked:before {
 						</div>
 						
 							<div class="form-group" id="prodNo5">
-							<label for="example-select">사용제품명5</label>
+							<label for="example-select">사용제품명</label>
 							<select class="form-control" name="prodNo" id="prodNo">
 							<c:forEach items="${detailList}" var="methodDetailVO" varStatus="status">
 							<c:forEach items="${prodList}" var="productVO">
