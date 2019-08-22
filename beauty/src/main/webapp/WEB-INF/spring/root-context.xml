@@ -18,11 +18,13 @@
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="url"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
+			value="jdbc:log4jdbc:oracle:thin:@database-mis.css6ctnoyzxn.ap-northeast-2.rds.amazonaws.com:1521:ORCL" />
+			
+			<!-- value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" -->
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
 			<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property> -->
-		<property name="username" value="mis"></property>
-		<property name="password" value="1234"></property>
+		<property name="username" value="admin"></property>
+		<property name="password" value="mis12345"></property>
 	</bean>
 
 	<bean id="sqlSessionFactory"
