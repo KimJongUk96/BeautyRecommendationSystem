@@ -76,10 +76,10 @@
                                                         <label for="example-select">카테고리</label>
                                                         <select class="form-control" name = "categoryNo">
 							
-															<option value = "1020" <c:out value="${prodTypeVO.categoryNo eq '1020'?'selected':'1020'}"/>>클렌징</option>
-															<option value = "1021" <c:out value="${prodTypeVO.categoryNo eq '1021'?'selected':'1021'}"/>>모이스춰라이저</option>
-															<option value = "1022" <c:out value="${prodTypeVO.categoryNo eq '1022'?'selected':'1022'}"/>>토너</option>
-															<option value = "1023" <c:out value="${prodTypeVO.categoryNo eq '1023'?'selected':'1023'}"/>>썬스크린</option>
+															<option value = "1000" <c:out value="${prodTypeVO.categoryNo eq '1000'?'selected':'1000'}"/>>클렌징</option>
+															<option value = "1001" <c:out value="${prodTypeVO.categoryNo eq '1001'?'selected':'1001'}"/>>모이스춰라이저</option>
+															<option value = "1002" <c:out value="${prodTypeVO.categoryNo eq '1002'?'selected':'1002'}"/>>토너</option>
+															<option value = "1003" <c:out value="${prodTypeVO.categoryNo eq '1003'?'selected':'1003'}"/>>썬스크린</option>
 								
 														</select>
                                                     </div>

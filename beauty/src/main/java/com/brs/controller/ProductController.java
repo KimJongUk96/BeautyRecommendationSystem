@@ -43,7 +43,7 @@ public class ProductController {
 		pageMaker.setCri(cri);
 		//pageMaker.setTotalCount(131);
 		
-		// button�쓣 紐뉕컻 留뚮뱾�뼱�빞 �븯�뒗吏�瑜� �떞�떦�븯�뒗 遺�遺�
+		// button을 searchpage에 고정
 		pageMaker.setTotalCount(service.listSearchCount(cri)); //fixed
 		
 		model.addAttribute("pageMaker", pageMaker);

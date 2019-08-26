@@ -31,7 +31,7 @@ public class ProdTypeController {
 	public void registerGET(ProdTypeVO pVO, Model model) throws Exception{
 		
 	}
-	
+	//prodtype등록,msg
 	@RequestMapping(value="register", method = RequestMethod.POST)
 	public String registerPOST(ProdTypeVO pVO, RedirectAttributes rttr) throws Exception{
 		
@@ -49,7 +49,7 @@ public class ProdTypeController {
 		return "redirect:/prodtype/list";
 		
 	}
-
+	//list, countPaging
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		
@@ -62,19 +62,19 @@ public class ProdTypeController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}
-	
+	//상세보기
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void readPage(@RequestParam("prodtypeNo") int prodtypeNo, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		logger.info("prodtypeNo : "+ prodtypeNo);
 		model.addAttribute(service.read(prodtypeNo));
 	}
-	
+	//수정 후 상세보기 페이지로 이동
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void modifyPagingGET(@RequestParam("prodtypeNo") int prodtypeNo, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(prodtypeNo));
 	}
-	
+	//수정, msg
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPagingPOST(ProdTypeVO pVO, RedirectAttributes rttr, Criteria cri) throws Exception{
 		
@@ -86,7 +86,7 @@ public class ProdTypeController {
 		
 		return "redirect:/prodtype/list";
 	}
-	
+	//삭제 후 리스트 페이지로 이동
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String remove(@RequestParam("prodtypeNo") int prodtypeNo, Criteria cri, RedirectAttributes rttr) throws Exception{
 		

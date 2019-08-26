@@ -63,10 +63,10 @@
                                                     <div class="form-group mb-3">
                                                         <label for="example-select">카테고리</label>
                                                         <select class="form-control" id="categoryNo" name='categoryNo'>
-                                                            <option value = "1020"> 클렌징 </option>
-															<option value = "1021"> 모이스춰라이저 </option>
-															<option value = "1022"> 토너 </option>
-															<option value = "1023"> 썬스크린 </option>
+                                                            <option value = "1000"> 클렌징 </option>
+															<option value = "1001"> 모이스춰라이저 </option>
+															<option value = "1002"> 토너 </option>
+															<option value = "1003"> 썬스크린 </option>
                                                         </select>
                                                     </div>
 												<div class="box-footer" align="center">
