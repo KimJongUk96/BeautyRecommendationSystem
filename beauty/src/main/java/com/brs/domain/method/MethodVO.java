@@ -28,6 +28,7 @@ public class MethodVO extends MethodDetailVO{
 	private Date regdate;
 	private int adminNo;
 	
+	//detaillist 가져오기
 	private List<MethodDetailVO> detailList = new ArrayList<MethodDetailVO>();
 	
 

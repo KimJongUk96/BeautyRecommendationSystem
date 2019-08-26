@@ -38,14 +38,14 @@ public class MethodSuggestController {
 	
 	@RequestMapping(value="/suggest", method=RequestMethod.GET)
 	public void Suggest(MethodSuggestVO mVO, Model model) throws Exception{
-		//���ȹ� ��õ ȭ�� method
+		
 	}
 	
 	
 	
 	@RequestMapping(value="/list", method=RequestMethod.POST)
 	public void ListPost(MethodSuggestCriteria cri, Model model) throws Exception{
-		//���ȹ� ��õ ��� ȭ�� method
+		
 		
 		logger.info(cri.toString());
 		

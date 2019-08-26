@@ -116,6 +116,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 							<th>세안법</th>
 						</tr>
 					</thead>
+					<!-- methodSuggestList와 각 method의 detailList를 foreach문을 통해 받아옴 -->
 					<c:choose>
 					<c:when test="${not empty methodList}">
 					<tbody>
