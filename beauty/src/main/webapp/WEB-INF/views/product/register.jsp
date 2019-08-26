@@ -105,7 +105,7 @@
 		                                            </div>
 		                                           
 		
-		                                                <input type="hidden" id="adminNo" name='adminNo' value="${login.adminNo}" class="form-control" readonly="readonly">
+		                                                <input type="hidden" id="adminNo" name='adminNo' value="${login.adminNo}">
 		
 		                                            <div class="form-group mb-3">
 		                                                <label for="simpleinput">사진첨부</label>

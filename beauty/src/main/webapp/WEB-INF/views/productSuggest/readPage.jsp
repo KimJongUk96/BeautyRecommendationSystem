@@ -26,10 +26,10 @@
 	</nav>
 	<a href="/" class="logo">Beauty</a>
 	<nav class="right">
-		<c:if test="${login.email == 'null'}">
+		<c:if test="${login.email eq null}">
 			<a href="/user/login" class="button alt">Log in</a>
 		</c:if>
-		<c:if test="${login.email != 'null'}">
+		<c:if test="${login.email ne null}">
 			<a href="/user/logout" class="button alt">Log out</a>
 			<a href="/user/read?email=${login.email}" class="button alt">내 정보 수정</a>
 		</c:if>
@@ -95,6 +95,7 @@
 
 									</div>
 								</div>
+								
 								<div class="section" style="padding-bottom:5px;">
 									<h6 class="title-attr"><small><br/>구매 링크</small></h6>
 									<div>

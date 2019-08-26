@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Topbar Start -->
 <div class="navbar-custom topnav-navbar topnav-navbar-dark">
@@ -137,34 +138,27 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-account-circle mr-1"></i>
-                        <span>My Account</span>
-                    </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-account-edit mr-1"></i>
-                        <span>Settings</span>
-                    </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lifebuoy mr-1"></i>
-                        <span>Support</span>
-                    </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lock-outline mr-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
 
                     <!-- item-->
+                    <c:if test="${login.id ne null}">
                     <a href="/admin/logout" class="dropdown-item notify-item">
                         <i class="mdi mdi-logout mr-1"></i>
                         <span>Logout</span>
                     </a>
+                    </c:if>
+                    
+                    <c:if test="${login.id eq null}">
+                    <a href="/admin/login" class="dropdown-item notify-item">
+                        <i class="mdi mdi-logout mr-1"></i>
+                        <span>Login</span>
+                    </a>
+                    </c:if>
 
                 </div>
             </li>

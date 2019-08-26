@@ -1,7 +1,7 @@
 package com.brs.domain.method;
 
 
-public class MethodSuggestVO extends MethodDetailVO {
+public class MethodSuggestVO extends MethodVO {
 	int methodNo;
 	int methodStep;
 	String skinType;
