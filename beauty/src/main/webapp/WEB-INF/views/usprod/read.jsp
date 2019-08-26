@@ -15,7 +15,15 @@
 	<link rel="stylesheet"
 		  href="/resources/templated-intensify/assets/css/main.css" />
 
-
+	<style type="text/css">
+	
+	table{
+	width:100%;
+	height: 100px;
+	margin: auto;
+	text-align: center;
+	}
+	</style>
 </head>
 
 <body class="subpage">
@@ -39,7 +47,7 @@
 <!-- Menu -->
 <nav id="menu">
 	<ul class="links">
-		<li><a href="index.html">Home</a></li>
+		<li><a href="/">Home</a></li>
 		<li><a href="/usprod/list">세안 제품 목록</a></li>
 		<li><a href="/productSuggest/list">세안 제품 추천</a></li>
 		<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
@@ -105,7 +113,12 @@
 
 
 								<div class="section" style="padding-bottom:20px;">
-									<a href="${productVO.link}"><button type="button" class="btn btn-success">구매링크 바로가기</button></a>
+									<a href="#" 
+									onclick="javascript:window.open('${productVO.link}','',
+									'left=50, top=50, width=1000, height=1000, toolbar=yes, menubar=yes, resizable=yes')">
+									<button type="button" class="button">구매링크 바로가기</button></a>
+									<a href="/usprod/list">
+									<button type="button" class="button special">목록으로</button></a>
 								</div>
 							</div>
 
@@ -127,20 +140,56 @@
 			<div style="width:100%;border-top:1px solid silver">
 				<table>
 					<thead>
-					<tr>
+					<tr style="text-align:center">
+						<th>닉네임</th>
 						<th>평점</th>
 						<th style="width:60%">리뷰</th>
 						<th>등록일</th>
 					</tr>
 					</thead>
+					<c:choose>
+					<c:when test="${not empty list}">
 					<tbody>
-					<c:forEach items="${list}" var="reviewVO">
+					<c:forEach items="${list}" var="reviewVO" varStatus="status">
 						<tr>
+							<td style="vertical-align: middle"><b>${reviewVO.userNickName}</b><br>
+							<c:if test="${reviewVO.userGender eq 'U1' }">여성
+							</c:if>
+							<c:if test="${reviewVO.userGender eq 'U2' }">남성
+							</c:if>/
+							<c:if test="${reviewVO.userAge eq '10' }">10대
+							</c:if>
+							<c:if test="${reviewVO.userAge eq '20' }">20대
+							</c:if>
+							<c:if test="${reviewVO.userAge eq '30' }">30대
+							</c:if>
+							<c:if test="${reviewVO.userAge eq '40' }">40대
+							</c:if>
+							<c:if test="${reviewVO.userAge eq '50' }">50대 이상
+							</c:if>/
+							<c:if test="${reviewVO.userSkinType eq 'DR' }">건성
+							</c:if>
+							<c:if test="${reviewVO.userSkinType eq 'NE' }">중성
+							</c:if>
+							<c:if test="${reviewVO.userSkinType eq 'OI' }">지성
+							</c:if>
+							<c:if test="${reviewVO.userSkinType eq 'CO' }">복합성
+							</c:if>
+							<c:if test="${reviewVO.userSkinType eq 'SE' }">민감성
+							</c:if></td>
 							<td style="vertical-align: middle">${reviewVO.rating}</td>
 							<td style="vertical-align: middle">${reviewVO.reviewText}</td>
 							<td style="vertical-align: middle"><fmt:formatDate pattern="yyyy-MM-dd" value="${reviewVO.regdate}"></fmt:formatDate></td>
 						</tr>
 					</c:forEach>
+					</c:when>
+					<c:otherwise>
+					<tr>
+						<td colspan="4" align="center">
+						<b>리뷰 데이터가 없습니다.</b></td>
+					</tr>
+					</c:otherwise>
+					</c:choose>
 					</tbody>
 				</table>
 

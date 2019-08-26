@@ -7,29 +7,31 @@
 	<select id="listSearch"
 		resultType="com.brs.domain.product.ProductVO">
 	<![CDATA[  
-	 select * from(
+	select * from(
     select rownum rnum, prod_no, name, comp_name, img, rating_avg, 
                   prodtype_name, category_name, price, regdate, count
-      from (
-        select prod.prod_no, prod.name, prod.comp_name, prod.img, rt.rating_avg,
-               pt.name as prodtype_name, ca.category_name, prod.price, prod.regdate, cr.count
-          from rating_avg_view rt, tbl_product prod, tbl_prod_type pt ,tbl_category ca, count_review_view cr
-         where prod.prod_no = rt.prod_no 
-           and cr.prod_no = prod.prod_no
-           and pt.prodtype_no = prod.prodtype_no
-           and ca.category_no = pt.category_no
+      from (select pv.prod_no, pv.name, pv.comp_name, pv.img, pv.prodtype_name, pv.category_name, pv.price, pv.regdate,
+		           nvl(rt.rating_avg,0) as rating_avg, nvl(cv.count,0) as count
+			 from product_view pv 
+  left outer join rating_avg_view rt on pv.prod_no = rt.prod_no
+  left outer join count_review_view cv on pv.prod_no = cv.prod_no
 	]]>
-		<include refid="search"></include>
-  
-	<![CDATA[   
-	 	)) where (rnum >= #{pageStart} AND rnum <= #{pageEnd})
-	 	 order by		  
+	<![CDATA[
+		order by
 	]]>
-		<include refid="search2"></include>
+  		<include refid="search2"></include>
 	<![CDATA[ 			 
 	 			 rating_avg desc 
-				 
 	]]>
+  
+	<![CDATA[   
+	 	)
+	 ]]>
+	 	<include refid="search"></include>
+	<![CDATA[	
+	 	) where (rnum >= #{pageStart} AND rnum <= #{pageEnd})
+	]]>
+		
 	</select>
 
 
@@ -37,20 +39,16 @@
 	<select id="listSearchCount" resultType="int">
 	<![CDATA[  
  	select count(prod_no) 
- 	  from (
-      	  select prod.prod_no, prod.name, prod.comp_name, prod.img, 
-      	  		 rt.rating_avg , pt.name as prodtype_name, ca.category_name
-            from rating_avg_view rt, tbl_product prod, tbl_prod_type pt ,tbl_category ca
-           where prod.prod_no = rt.prod_no 
-             and pt.prodtype_no = prod.prodtype_no
-             and ca.category_no = pt.category_no
-	]]>
-		<include refid="search"></include>
-	<![CDATA[   
+ 	  from (select pv.prod_no, pv.name, pv.comp_name, pv.img, pv.prodtype_name, pv.category_name, pv.price, pv.regdate,
+				   nvl(rt.rating_avg,0) as rating_avg, nvl(cv.count,0) as count
+			  from product_view pv 
+    left outer join rating_avg_view rt on pv.prod_no = rt.prod_no
+    left outer join count_review_view cv on pv.prod_no = cv.prod_no
            order by rating_avg desc
      )
- 	 where prod_no > 0
 	]]>
+		<include refid="search"></include>
+	
 	</select>
 
 
@@ -59,13 +57,13 @@
 			<if test="searchType == 'n'.toString()">
 			</if>
 			<if test="searchType == 'pn'.toString()">
-				and prod.NAME like '%' || #{keyword} || '%'
+				where NAME like '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 'cn'.toString()">
-				and prod.COMP_NAME like '%' || #{keyword} || '%'
+				where COMP_NAME like '%' || #{keyword} || '%'
 			</if>
 			<if test="searchType == 'ptn'.toString()">
-				and ca.category_name like '%' || #{keyword} || '%'
+				where category_name like '%' || #{keyword} || '%'
 			</if>
 		</if>
 	</sql>
@@ -93,19 +91,11 @@
 
 
 	<select id="read" resultType="com.brs.domain.product.ProductVO">
-		select prod.prod_no, prod.name,
-		prod.comp_name, prod.price,
-		prod.link,prod.img,
-		prod.regdate,
-		ct.category_name, pt.name as prodtypeName, rt.rating_avg
-
-		from
-		tbl_product prod, rating_avg_view rt, tbl_prod_type pt, tbl_category
-		ct
-		where prod.prod_no = rt.prod_no
-		and pt.prodtype_no = prod.prodtype_no
-		and ct.category_no = pt.category_no
-		and prod.prod_no = #{prodNo}
+		select pv.prod_no, pv.name, pv.comp_name, pv.price, prod.link, pv.img, pv.regdate, 
+		       pv.category_name, pv.prodtype_name 
+		  from product_view pv, tbl_product prod
+    	 where prod.prod_no = pv.prod_no 
+      	   and pv.prod_no = #{prodNo}
 	</select>
 
 

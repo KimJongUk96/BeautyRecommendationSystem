@@ -149,7 +149,7 @@ ul.paging li a:hover, ul.paging li a:focus {
                      제품 종류</option>
 
                </select> <input type="text" name='keyword' id="keywordInput"
-                  style="width: 200px; height: 40px; line-height: 40px; margin-right: 5px"></input>
+                  style="width: 200px; height: 40px; line-height: 40px; margin-right: 5px" value="${cri.keyword}"></input>
                <button id='searchBtn' type="button" class="button small">검색</button>
             </div>
 
@@ -167,7 +167,8 @@ ul.paging li a:hover, ul.paging li a:focus {
                <c:forEach items="${list}" var="productVO" varStatus="listStat">
 
                   <tr>
-                     <td style="width: 50px; text-align: center">${listStat.count}
+                     <td style="width: 50px; text-align: center">
+                     ${productVO.rnum}
                      <input type="hidden"
                         value="${productVO.prodNo }" /></td>
                         
@@ -291,6 +292,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 
 
    <script>
+
       var result = '${msg}';
 
       if (result == 'SUCCESS') {

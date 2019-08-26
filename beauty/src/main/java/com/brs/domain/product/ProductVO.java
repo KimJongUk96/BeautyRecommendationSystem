@@ -26,14 +26,15 @@ public class ProductVO {
 	private Date regdate;
 	private String prodtypeNo;
 	private int adminNo;
+	private int rnum;
 	
-	//�������
+	//평점 평균
 	private String ratingAvg;
-	//��ǰŸ�� �̸�
+	//제품 타입명
 	private String prodtypeName;
-	//��ǰ ī�װ�
+	//제품 카테고리명
 	private String categoryName;
-	//카운트
+	//제품 리뷰 수 
 	private String count;
 	
 	public int getProdNo() {
@@ -119,6 +120,12 @@ public class ProductVO {
 	}
 	public void setCount(String count) {
 		this.count = count;
+	}
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
 	@Override
 	public String toString() {
