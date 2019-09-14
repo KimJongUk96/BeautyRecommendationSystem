@@ -103,21 +103,13 @@
 
 									</div>
 								</div>
-								<div class="section" style="padding-bottom:5px;">
-									<h6 class="title-attr"><small><br/>구매 링크</small></h6>
-									<div>
-										${productVO.link}
-									</div>
-								</div>
-
+										<input type = "hidden" value ="${productVO.link}"></input>
 
 
 								<div class="section" style="padding-bottom:20px;">
-									<a href="#" 
-									onclick="javascript:window.open('${productVO.link}','',
-									'left=50, top=50, width=1000, height=1000, toolbar=yes, menubar=yes, resizable=yes')">
+									<a href="#" onclick="javascript:window.open('${productVO.link}','','left=50, top=50, width=1000, height=1000, toolbar=yes, menubar=yes, resizable=yes')">
 									<button type="button" class="button">구매링크 바로가기</button></a>
-									<a href="/usprod/list">
+									<a href="/usprod/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}&listType=${cri.listType}">
 									<button type="button" class="button special">목록으로</button></a>
 								</div>
 							</div>

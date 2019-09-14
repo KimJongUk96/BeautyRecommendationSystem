@@ -53,7 +53,7 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
 			<li><a href="/productSuggest/list">세안 제품 추천</a></li>
-			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 검색</a></li>
 		</ul>
 
 	</nav>
@@ -63,7 +63,7 @@
 			<div class="inner">
 				<div class="inner">
 				<div class="align-center">
-					<h2>세안법 추천</h2>
+					<h2>세안법 검색</h2>
 					<p>
 					<hr>
 					피부 타입과 피부 고민에 따른 <br />나만의 맞춤형 세안법을 추천 받으세요
@@ -90,7 +90,7 @@
 							<h3></h3>
 						</div>
 						<div class="centered">
-							<label>화장정도</label> 
+							<label>화장 정도</label> 
 							<select name="makeUpDegree" id="makeUpDegree">
 								<option value="NM">노 메이크업</option>
 								<option value="YM">메이크업</option>
@@ -125,8 +125,7 @@
 					</div>
 				<div class="align-center">
 					<div class="box-footer" align="center">
-						<button type="submit" class="button special small">세안법 추천
-							받기</button>
+						<button type="submit" class="button special small">세안법 검색 하기</button>
 					</div>
 					</div>
 

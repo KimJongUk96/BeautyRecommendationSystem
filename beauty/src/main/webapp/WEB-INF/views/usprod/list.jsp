@@ -124,7 +124,7 @@ ul.paging li a:hover, ul.paging li a:focus {
                <select name="listType" id="listType"
                   onchange="if(this.value) location.href=(this.value);"
                   style="width: 150px; height: 40px; line-height: 40px">
-                  <option>정렬 기준</option>
+                  <option value="">정렬 기준</option>
                   <option <c:out value="${cri.listType eq 'regdate'?'selected':''}" />
                      value="/usprod/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}&listType=regdate">최근
                      등록일 순</option>
@@ -163,6 +163,8 @@ ul.paging li a:hover, ul.paging li a:focus {
 
                </tr>
             </thead>
+            <c:choose>
+					<c:when test="${not empty list}">
             <tbody>
                <c:forEach items="${list}" var="productVO" varStatus="listStat">
 
@@ -192,12 +194,19 @@ ul.paging li a:hover, ul.paging li a:focus {
                      </span> <br> ★ ${productVO.ratingAvg} (${productVO.count})</td> -->
                      
                      
-                     <td style="text-align: center">${productVO.categoryName}&nbsp; ${productVO.prodtypeName} <br> ${productVO.price}
+                     <td style="text-align: center">${productVO.categoryName}&nbsp; ${productVO.prodtypeName} <br> ${productVO.price}원
                      </td>
 
                   </tr>
-
-               </c:forEach>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
+					<tr>
+						<td colspan="4" align="center">
+						<b>제품 데이터가 없습니다.</b></td>
+					</tr>
+					</c:otherwise>
+					</c:choose>
             </tbody>
          </table>
       </div>

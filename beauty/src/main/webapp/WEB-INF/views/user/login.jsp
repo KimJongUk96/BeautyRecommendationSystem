@@ -178,4 +178,14 @@
 		window.open(url, title, status);
 	}
 </script>
+
+<script>
+    var result = '${msg}';
+    if (result == 'FAIL') {
+        alert("아이디와 비밀번호를 다시 확인하세요.");
+    }
+    if (result == 'SUCCESS') {
+        alert("처리가 완료되었습니다.");
+    }
+</script>
 </html>

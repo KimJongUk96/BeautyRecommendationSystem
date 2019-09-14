@@ -8,12 +8,12 @@ public class PageMaker {
    private int totalCount;
    private int startPage;
    private int endPage;
-   private boolean prev; //?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙占�?占�? ?占쏙옙?占쏙옙占�? ?占쏙옙?占쏙옙
+   private boolean prev; 
    private boolean next;
 
    private int displayPageNum = 10;
 
-   private Criteria cri; //?占쏙옙?占쏙옙占�??占쏙옙 ???占쏙옙 ?占쏙옙占�?
+   private Criteria cri; 
 
    public void setCri(Criteria cri) {
       this.cri = cri;

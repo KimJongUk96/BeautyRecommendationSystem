@@ -3,7 +3,7 @@ package com.brs.domain.util;
 public class Criteria {
 	
 	private int page;
-	private int perPageNum;
+	private int perPageNum;  //페이지당 표시할 게시글의 수
 	private int startPage;
 	
 	public Criteria() {

@@ -58,14 +58,15 @@
 			</p>
 		</div>
 
-		<div>
+	<div>
 
+		
 			<form method="post">
 				<h4>피부정보 입력</h4>
 				<div class = "row uniform">
 
 					<div class="3u 12u$(small)">
-						<label>나이</label>
+						<label style="float: left">나이</label>
 						<select id="age" name="age">
 							<option value = "10" <c:out value="${prodSuggestVO.age eq '10'?'selected':''}"/>> 10대        </option>
 							<option value = "20" <c:out value="${prodSuggestVO.age eq '20'?'selected':''}"/>> 20대        </option>
@@ -77,7 +78,7 @@
 
 
 					<div class="3u 12u$(small)">
-						<label>피부 타입</label>
+						<label style="float: left">피부 타입</label>
 						<select name="skinType" id="skinType">
 							<option value="DR" <c:out value="${prodSuggestVO.skinType eq 'DR'?'selected':''}"/>>건성</option>
 							<option value="NE" <c:out value="${prodSuggestVO.skinType eq 'NE'?'selected':''}"/>>중성</option>
@@ -99,12 +100,13 @@
 					</div>
 
 					<div class="3u 12u$(small)">
-						<br><br>
-						<button style="float: left" type="submit" id="suggest" class="button small">제품 추천 받기</button>
+						<br>
+						<button style="float: right" type="submit" id="suggest" class="button" onclick="insert()">제품 추천 받기</button>
 					</div>
 
 				</div>
 			</form>
+			
 
 			<div>
 				<hr>
@@ -144,7 +146,9 @@
 							<br/>
 							가격 : ${productVO.price}
 							<br/>
-							<a href="${productVO.link}">구매 링크</a>
+							<a href="#" onclick="javascript:window.open('${productVO.link}','','left=50, top=50, width=1000, height=1000, toolbar=yes, menubar=yes, resizable=yes')">
+							구매링크 바로가기</a>
+							<%-- <a href="${productVO.link}">구매 링크</a> --%>
 						</td>
 					</tr>
 				</c:forEach>
@@ -233,6 +237,30 @@
 
 
         });
+
+</script>
+<script>
+/*  
+ * 중복 서브밋 방지
+ */
+ 
+ var doubleSubmitFlag = false;
+ 
+ function doubleSubmitCheck(){
+     if(doubleSubmitFlag){
+         return doubleSubmitFlag;
+     }else{
+         doubleSubmitFlag = true;
+         return false;
+     }
+ }
+
+ function insert(){
+     if(doubleSubmitCheck()) return;
+     alert("세안 제품을 추천하고 있습니다.");
+
+
+ }
 
 </script>
 </html>

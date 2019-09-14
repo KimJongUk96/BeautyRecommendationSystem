@@ -83,7 +83,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 			<li><a href="/">Home</a></li>
 			<li><a href="/usprod/list">세안 제품 목록</a></li>
 			<li><a href="/productSuggest/infoInput">세안 제품 추천</a></li>
-			<li><a href="/methodSuggest/suggest">세안법 추천</a></li>
+			<li><a href="/methodSuggest/suggest">세안법 검색</a></li>
 		</ul>
 		
 	</nav>
@@ -100,7 +100,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 			</form>
 			<div>
 			
-				<h3>세안법 추천</h3>
+				<h3>세안법 검색</h3>
 				
 				<div>
 					<h4></h4>
@@ -144,7 +144,7 @@ ul.paging li a:hover, ul.paging li a:focus {
 				</table>
 			</div>
 			<div align="center">
-				<a href="/methodSuggest/suggest"><button class="button special small">세안법 다시 추천 받기</button></a>
+				<a href="/methodSuggest/suggest"><button class="button special small">세안법 다시 검색 하기</button></a>
 			</div>
 			<br><br>
 			<div class="container">
