@@ -50,7 +50,7 @@
 
 - <a href="https://arxiv.org/pdf/1708.05031.pdf">Neural collaborative filtering (He et al., 2017)</a> 구조를 활용
 
-   <img alt="ncf" src="https://user-images.githubusercontent.com/44460142/134361090-e075961f-0da9-43b0-8669-d8e51f528f7b.png" style="zoom:33%;" />
+   <img width="383" alt="ncf" src="https://user-images.githubusercontent.com/44460142/134361090-e075961f-0da9-43b0-8669-d8e51f528f7b.png">
 
 
   - Input Layer : One-hot 형태의 사용자 그룹, 뷰티제품번호  
@@ -96,7 +96,8 @@
   ```
 
   - Attributes of dataset and code
-     <img alt="attribute" src="https://user-images.githubusercontent.com/44460142/134361103-0d2c3262-0731-4b01-95da-c32c00a4686a.png" style="zoom:30%;" />
+     
+     <img width="378" alt="attribute" src="https://user-images.githubusercontent.com/44460142/134361103-0d2c3262-0731-4b01-95da-c32c00a4686a.png">
 
   - 5점 척도의 사용자후기 평점으로 이를 이진 변환하여 3점 초과이면 1(만족), 3점 미만이면 0(불만족)으로 표현하여 학습에 사용
 
